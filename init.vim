@@ -18,18 +18,21 @@ set grepprg=ag\ --vimgrep
 Plug 'rking/ag.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
+" Git-related plugins
+Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+"
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rizzatti/dash.vim'
 Plug 'dense-analysis/ale'
 " Plug 'drewtempelmeyer/palenight.vim'
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-projectionist'
 Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
@@ -38,6 +41,10 @@ Plug 'mileszs/ack.vim'
 
 " Automatically adds ends wisely
 Plug 'tpope/vim-endwise'
+
+" Directory Viewer for Vim
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
 
 " Elegant tatusline
 " Plug 'liuchengxu/eleline.vim'
@@ -70,6 +77,18 @@ let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \}
 let g:ale_fix_on_save = 1
+
+" Signify config
+let g:signify_sign_change = '~'
+"
+" Dirvish sort folders first
+let g:dirvish_mode = ':sort ,^.*[\/],'
+"
+" Statusline
+"
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=(%Y)\ %(%{FugitiveStatusline()}[%l,%v][%p%%][%L]\ %)
+"------------------------------------------------------------------------------
 
 " colorscheme MaterialPalenightTheme
 let g:neomake_jsx_enabled_makers = ['eslint']
