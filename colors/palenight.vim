@@ -21,16 +21,16 @@ let s:overrides = get(g:, "palenight_color_overrides", {})
 " `s:colors.black`, where `number * 12` is the alpha value of the white mask
 
 let s:colors = {
-      \ "red": get(s:overrides, "red", { "gui": "#ff5572", "cterm": "204", "cterm16": "1" }),
+      \ "red": get(s:overrides, "red", { "gui": "#FF406F", "cterm": "204", "cterm16": "1" }),
       \ "light_red": get(s:overrides, "light_red", { "gui": "#ff5572", "cterm": "204", "cterm16": "1" }),
       \ "dark_red": get(s:overrides, "dark_red", { "gui": "#ff4b67", "cterm": "196", "cterm16": "9" }),
-      \ "green": get(s:overrides, "green", { "gui": "#a9c77d", "cterm": "114", "cterm16": "2" }),
-      \ "yellow": get(s:overrides, "yellow", { "gui": "#FFCB6B", "cterm": "180", "cterm16": "3" }),
-      \ "dark_yellow": get(s:overrides, "dark_yellow", { "gui": "#F78C6C", "cterm": "173", "cterm16": "11" }),
-      \ "blue": get(s:overrides, "blue", { "gui": "#82AAFF", "cterm": "39", "cterm16": "4" }),
-      \ "purple": get(s:overrides, "purple", { "gui": "#C792EA", "cterm": "170", "cterm16": "5" }),
+      \ "green": get(s:overrides, "green", { "gui": "#B9EB80", "cterm": "114", "cterm16": "2" }),
+      \ "yellow": get(s:overrides, "yellow", { "gui": "#FFCA56", "cterm": "180", "cterm16": "3" }),
+      \ "dark_yellow": get(s:overrides, "dark_yellow", { "gui": "#FF8664", "cterm": "173", "cterm16": "11" }),
+      \ "blue": get(s:overrides, "blue", { "gui": "#7AA9FF", "cterm": "39", "cterm16": "4" }),
+      \ "purple": get(s:overrides, "purple", { "gui": "#D18CF0", "cterm": "170", "cterm16": "5" }),
       \ "blue_purple": get(s:overrides, "blue_purple", { "gui": "#939ede", "cterm": "39", "cterm16": "4"}),
-      \ "cyan": get(s:overrides, "cyan", { "gui": "#89DDFF", "cterm": "38", "cterm16": "6" }),
+      \ "cyan": get(s:overrides, "cyan", { "gui": "#6DDFFF", "cterm": "38", "cterm16": "6" }),
       \ "white": get(s:overrides, "white", { "gui": "#d0d0d0", "cterm": "145", "cterm16": "7" }),
       \ "black": get(s:overrides, "black", { "gui": "#282D40", "cterm": "235", "cterm16": "0" }),
       \ "visual_black": get(s:overrides, "visual_black", { "gui": "NONE", "cterm": "NONE", "cterm16": "0" }),
@@ -590,4 +590,3 @@ endif
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
-
