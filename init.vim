@@ -162,16 +162,18 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" Run testsuite in nvim with nanobox
-function! NanoboxTransform(cmd) abort
+" Run testsuite in nvim with nanobox and docker-compose
+function! EnvironmentTransform(cmd) abort
   if filereadable("boxfile.yml")
     return 'nanobox run '.a:cmd
+  elseif filereadable("docker-compose.yml")
+    return 'docker-compose run --rm web '.a:cmd
   else
     return a:cmd
   endif
 endfunction
-let g:test#custom_transformations = {'nanobox': function('NanoboxTransform')}
-let g:test#transformation = 'nanobox'
+let g:test#custom_transformations = {'environment': function('EnvironmentTransform')}
+let g:test#transformation = 'environment'
 " A custom Neovim strategy for test.vim that reuses the terminal buffer for
 " running tests and automatically close buffer on success.
 " https://github.com/kevinsjoberg/vim-test-neovim-error-only
