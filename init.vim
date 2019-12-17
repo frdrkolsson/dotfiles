@@ -65,13 +65,23 @@ call plug#end()
 " https://github.com/joshdick/onedark.vim#neovim
 " let g:onedark_termcolors = 16
 set background=dark
-" colorscheme palenight
 colorscheme palenight
+" Highlight no breaking space characters
+" highlight NoBreakingSpace guibg=red ctermbg=red guifg=white ctermfg=white
+" syntax match NoBreakingSpace /.* .*/
 
+" highlight NoBreakingSpace guibg=red guifg=white ctermbg=red ctermfg=white
+" syntax match NoBreakingSpace / /
+
+set listchars=nbsp:⏚
+set list
+syntax match NoBreakingSpace /.* .*/
+highlight NoBreakingSpace guibg=red guifg=white ctermbg=red ctermfg=white
 " Start autocomplete for deoplete.vim
 " let g:deoplete#enable_at_startup = 1
 
 " Ale fix rubocop on save
+
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'ruby': ['rubocop'],
