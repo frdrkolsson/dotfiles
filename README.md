@@ -4,3 +4,6 @@ This is my personal config repository to keep track of what I change/add/remove 
 Feel free to use.
 
 The theme `palenight` is inspired by Whizkydee's [vscode-material-palenight-theme](https://github.com/whizkydee/vscode-material-palenight-theme) based of palenight.vim
+
+Currently it only includes my nvim config. 
+To use, put these files in `~/.config/nvim`
