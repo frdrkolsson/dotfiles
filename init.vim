@@ -80,6 +80,10 @@ set listchars=nbsp:⏚
 set list
 syntax match NoBreakingSpace /.* .*/
 highlight NoBreakingSpace guibg=red guifg=white ctermbg=red ctermfg=white
+"
+" IndentLine config
+let g:indentLine_char = '│'
+"
 " Start autocomplete for deoplete.vim
 " let g:deoplete#enable_at_startup = 1
 
