@@ -19,8 +19,9 @@ set grepprg=ag\ --vimgrep
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 " Git-related plugins
@@ -60,6 +61,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Show vertical lines
 Plug 'Yggdroot/indentLine'
+Plug 'ryanoasis/vim-devicons'
+
 " Add plugins to &runtimepath
 call plug#end()
 " https://github.com/joshdick/onedark.vim#neovim
@@ -117,14 +120,7 @@ let g:go_fmt_command = "goimports"
 " autocmd! BufReadPost * Neomake
 " Enable fzf fuzzy finder with <space>f binding"
 let mapleader = " "
-map <Leader>f :FZF<CR>
-"
-"
-"
-" eleline config to use powerline font
-let g:eleline_powerline_fonts = 1
-"
-"
+map <Leader>f :Clap files<CR>
 "
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
