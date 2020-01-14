@@ -47,9 +47,6 @@ Plug 'tpope/vim-endwise'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 
-" Elegant tatusline
-" Plug 'liuchengxu/eleline.vim'
-
 " Dark powered asynchronous completion framework for neovim
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'etordera/deoplete-rails'
@@ -92,19 +89,61 @@ let g:indentLine_char = '│'
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'ruby': ['rubocop'],
+\   'markdown': ['mdl']
 \}
 let g:ale_fix_on_save = 1
 
+" Git related stuff -------------------------------------
 " Signify config
 let g:signify_sign_change = '~'
-"
 " Dirvish sort folders first
 let g:dirvish_mode = ':sort ,^.*[\/],'
-"
 " Statusline
-"
 set laststatus=2
-set statusline=\ %f%m%r%h%w\ %=(%Y)\ %(%{FugitiveStatusline()}[%l,%v][%p%%][%L]\ %)
+set statusline=%!CreateStatusline()
+
+" Colors for ALE in statusline
+hi WarningColor guibg=#E5C07B guifg=#1E1E1E ctermbg=Yellow ctermfg=Black
+hi ErrorColor guibg=#DF6A63 guifg=#1E1E1E ctermbg=Red ctermfg=Black
+
+function! CreateStatusline()
+  let statusline=''
+  let statusline.='%#diffadd#'
+  let statusline.=' %{FugitiveHead()} '
+  let statusline.='%#CursorlineNr#'
+  let statusline.=' %f'                  " Show filename
+  let statusline.=' %m'                  " Show modified tag
+  let statusline.='%='                   " Switch elements to the right
+  if get(g:, 'streamline_enable_devicons', 1) && exists('*WebDevIconsGetFileTypeSymbol')
+      let statusline.=' %{WebDevIconsGetFileTypeSymbol()}'
+  else
+      let statusline.=' %y'              " Show filetype
+  endif
+  let statusline.=' ☰ %l:%c'             " Show line number and column
+  let statusline.=' %p%% '               " Show percentage
+  let statusline.='▏'
+  let statusline.='%#WarningColor#'
+  let statusline.='%{GetAleStatus()[0]}'
+  let statusline.='%#ErrorColor#'
+  let statusline.='%{GetAleStatus()[1]}'
+
+  return statusline
+endfunction
+
+" Lags, use this if change to faster terminal
+"function! GitBranch()
+"    let l:branch = system('cd '.expand('%:p:h').' && git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d "\n"')
+"    return !strlen(l:branch) || !isdirectory(expand('%:p:h')) ? '' : '▏' . l:branch . ' '
+"endfunction
+
+function GetAleStatus()
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:formated_errors = l:all_errors == 0 ? '' : '▏✗ ' . l:all_errors . ' '
+    let l:all_warnings = l:counts.total - l:all_errors
+    let l:formated_warnings = l:all_warnings == 0 ? '' : '▏⊖ ' . l:all_warnings . ' '
+    return [l:formated_warnings, l:formated_errors]
+endfunction
 "------------------------------------------------------------------------------
 
 " colorscheme MaterialPalenightTheme
