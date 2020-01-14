@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')
 " The Silver Searcher (AG) for grepping
 set grepprg=ag\ --vimgrep
 " Plugin options
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'tpope/vim-vinegar'
@@ -140,7 +140,7 @@ nnoremap <leader><leader> <c-^>
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
 " Find all occurences
-nnoremap <leader>g :exe 'Ag' expand('<cword>')<cr>
+nnoremap <leader>g :exe 'Ack' expand('<cword>')<cr>
 " Catch :W save typo and turn it into :w so the save works anyway
 command! W  write
 " Catch :Q quit typo and turn it into :q so the quit works anyway
