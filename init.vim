@@ -12,8 +12,7 @@ map <Down> <Nop>
 " 24-bit color support
 set termguicolors
 call plug#begin('~/.vim/plugged')
-" The Silver Searcher (AG) for grepping
-set grepprg=ag\ --vimgrep
+set grepprg=rg\ --vimgrep
 " Plugin options
 " Plug 'rking/ag.vim'
 Plug 'sheerun/vim-polyglot'
@@ -36,8 +35,6 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-projectionist'
 Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
-" search faster with 'the_silver_searcher'
-Plug 'mileszs/ack.vim'
 
 " Automatically adds ends wisely
 Plug 'tpope/vim-endwise'
@@ -243,7 +240,7 @@ nnoremap <leader><leader> <c-^>
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
 " Find all occurences
-nnoremap <leader>g :exe 'Ack' expand('<cword>')<cr>
+nnoremap <leader>g :exe Rg(expand('<cword>'))<cr>
 " Catch :W save typo and turn it into :w so the save works anyway
 command! W  write
 " Catch :Q quit typo and turn it into :q so the quit works anyway
@@ -260,10 +257,30 @@ autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
 " running tests and automatically close buffer on success.
 " https://github.com/kevinsjoberg/vim-test-neovim-error-only
 
-" Use 'the_silver_searcher' instead of Ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" Search with ripgrep
+
+function! Rg(...)
+  let l:output = system("rg --vimgrep ".join(a:000, " "))
+  let l:list = split(l:output, "\n")
+  let l:ql = []
+  for l:item in l:list
+    let sit = split(l:item, ":")
+    call add(l:ql,
+        \ {"filename": sit[0], "lnum": sit[1], "col": sit[2], "text": sit[3]})
+  endfor
+
+  call setqflist(l:ql, 'r')
+  if len(getqflist())
+    exe 'copen'
+    redraw!
+  else
+    cclose
+    redraw!
+    echo "No match found"
+  endif
+
+endfunction
+command! -nargs=* Rg call Rg(<q-args>)
 
 " Run testsuite in nvim with nanobox and docker-compose
 function! EnvironmentTransform(cmd) abort
