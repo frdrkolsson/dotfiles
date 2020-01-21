@@ -25,6 +25,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 " Git-related plugins
 Plug 'tpope/vim-fugitive'
+Plug 'tommcdo/vim-fugitive-blame-ext'
+Plug 'rhysd/git-messenger.vim'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 "
