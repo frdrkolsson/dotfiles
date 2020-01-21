@@ -5,6 +5,7 @@ set noswapfile
 set ruler
 set nowritebackup
 set nu
+set re=1
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
@@ -80,6 +81,8 @@ let g:indentLine_char = '│'
 " Start autocomplete for deoplete.vim
 " let g:deoplete#enable_at_startup = 1
 
+" Fix slow ruby with polyglot
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
 " Ale fix rubocop on save
 
 let g:ale_fixers = {
