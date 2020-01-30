@@ -15,7 +15,6 @@ set termguicolors
 call plug#begin('~/.vim/plugged')
 set grepprg=rg\ --vimgrep
 " Plugin options
-" Plug 'rking/ag.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'tpope/vim-vinegar'
@@ -25,12 +24,13 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 " Git-related plugins
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/git-messenger.vim'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 "
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 Plug 'rizzatti/dash.vim'
 Plug 'dense-analysis/ale'
 " Plug 'drewtempelmeyer/palenight.vim'
@@ -255,7 +255,7 @@ set shiftwidth=2
 set shiftround
 set expandtab
 autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
-" Projectionist provides granular project configuration using "projections".
+" Projectionist provides granular project configuration using 'projections'.
 " A Vim wrapper for running tests on different granularities.
 " https://github.com/janko-m/vim-test
 " A custom Neovim strategy for test.vim that reuses the terminal buffer for
