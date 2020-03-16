@@ -49,6 +49,9 @@ Plug 'tpope/vim-endwise'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Dark powered asynchronous completion framework for neovim
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'etordera/deoplete-rails'
@@ -237,6 +240,17 @@ nnoremap <silent> <leader>f :Files<CR>
 
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
+
+" NerdTree
+function ToggleNerdTreeFile()
+  if &filetype == 'nerdtree'
+    :NERDTreeToggle
+  else
+    :NERDTreeFind
+  endif
+endfunction
+
+map <leader>n :call ToggleNerdTreeFile()<CR>
 "" Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
