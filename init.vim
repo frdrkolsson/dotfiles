@@ -32,21 +32,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/git-messenger.vim'
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
-"
-"Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'rizzatti/dash.vim'
+
 Plug 'dense-analysis/ale'
-" Plug 'drewtempelmeyer/palenight.vim'
-Plug 'tpope/vim-rails'
+
 Plug 'tpope/vim-projectionist'
+
 Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
 
 " Automatically adds ends wisely
 Plug 'tpope/vim-endwise'
-
 " Directory Viewer for Vim
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
@@ -62,6 +60,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Show vertical lines
 Plug 'Yggdroot/indentLine'
+" Icons
 Plug 'ryanoasis/vim-devicons'
 
 " Add plugins to &runtimepath
@@ -260,12 +259,6 @@ set shiftwidth=2
 set shiftround
 set expandtab
 autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
-" Projectionist provides granular project configuration using 'projections'.
-" A Vim wrapper for running tests on different granularities.
-" https://github.com/janko-m/vim-test
-" A custom Neovim strategy for test.vim that reuses the terminal buffer for
-" running tests and automatically close buffer on success.
-" https://github.com/kevinsjoberg/vim-test-neovim-error-only
 
 " Run testsuite in nvim with nanobox and docker-compose
 function! EnvironmentTransform(cmd) abort
@@ -285,6 +278,14 @@ let g:test#transformation = 'environment'
 if has('nvim')
   let g:test#strategy = 'neovim_error_only'
 endif
+
+" Projectionist provides granular project configuration using 'projections'.
+" A Vim wrapper for running tests on different granularities.
+" https://github.com/janko-m/vim-test
+" A custom Neovim strategy for test.vim that reuses the terminal buffer for
+" running tests and automatically close buffer on success.
+" https://github.com/kevinsjoberg/vim-test-neovim-error-only
+
 " Projectionist setup
 " ===================================================
 autocmd User ProjectionistDetect
