@@ -22,6 +22,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 
+" Work habits
+Plug 'wakatime/vim-wakatime'
+
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 " Git-related plugins
