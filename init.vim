@@ -20,6 +20,8 @@ Plug 'editorconfig/editorconfig-vim'
 " Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'jremmen/vim-ripgrep'
+
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 " Git-related plugins
@@ -245,7 +247,7 @@ nnoremap <leader><leader> <c-^>
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
 " Find all occurences
-nnoremap <leader>g :exe Rg(expand('<cword>'))<cr>
+nnoremap <leader>g :Rg<cr>
 " Catch :W save typo and turn it into :w so the save works anyway
 command! W  write
 " Catch :Q quit typo and turn it into :q so the quit works anyway
@@ -261,31 +263,6 @@ autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
 " A custom Neovim strategy for test.vim that reuses the terminal buffer for
 " running tests and automatically close buffer on success.
 " https://github.com/kevinsjoberg/vim-test-neovim-error-only
-
-" Search with ripgrep
-
-function! Rg(...)
-  let l:output = system("rg --vimgrep ".join(a:000, " "))
-  let l:list = split(l:output, "\n")
-  let l:ql = []
-  for l:item in l:list
-    let sit = split(l:item, ":")
-    call add(l:ql,
-        \ {"filename": sit[0], "lnum": sit[1], "col": sit[2], "text": sit[3]})
-  endfor
-
-  call setqflist(l:ql, 'r')
-  if len(getqflist())
-    exe 'copen'
-    redraw!
-  else
-    cclose
-    redraw!
-    echo "No match found"
-  endif
-
-endfunction
-command! -nargs=* Rg call Rg(<q-args>)
 
 " Run testsuite in nvim with nanobox and docker-compose
 function! EnvironmentTransform(cmd) abort
