@@ -100,6 +100,7 @@ let g:ale_fixers = {
 \   'markdown': ['mdl']
 \}
 let g:ale_fix_on_save = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Git related stuff -------------------------------------
 " Signify config
