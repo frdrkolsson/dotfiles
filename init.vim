@@ -12,8 +12,10 @@ map <Up> <Nop>
 map <Down> <Nop>
 " 24-bit color support
 set termguicolors
-call plug#begin('~/.vim/plugged')
+
 set grepprg=rg\ --vimgrep
+
+call plug#begin('~/.vim/plugged')
 " Plugin options
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
@@ -21,12 +23,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
-
 " Work habits
 Plug 'wakatime/vim-wakatime'
-
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-ragtag'
 " Git-related plugins
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -43,14 +44,16 @@ Plug 'tpope/vim-projectionist'
 Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
 
-" Automatically adds ends wisely
-Plug 'tpope/vim-endwise'
 " Directory Viewer for Vim
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'tmsvg/pear-tree'
+" Automatically adds ends wisely
+Plug 'tpope/vim-endwise'
 
 " Dark powered asynchronous completion framework for neovim
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -97,9 +100,11 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'ruby': ['rubocop'],
-\   'markdown': ['mdl']
+\   'markdown': ['mdl'],
+\   'vue': ['prettier'],
+\   'js': ['eslint', 'prettier']
 \}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Git related stuff -------------------------------------
@@ -251,12 +256,15 @@ function ToggleNerdTreeFile()
   endif
 endfunction
 
+" Make sure PearTree works with endwise
+imap <CR> <Plug>(PearTreeExpand)<Plug>DiscretionaryEnd
 map <leader>n :call ToggleNerdTreeFile()<CR>
 "" Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 " nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <Leader>r :ALEFix<CR>
 " Fix <C-h>
 nmap <BS> <C-w>h
 " Switch between the last two files
