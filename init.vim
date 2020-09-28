@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 " Plugin options
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
@@ -68,12 +68,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 " Icons
 Plug 'ryanoasis/vim-devicons'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
 " https://github.com/joshdick/onedark.vim#neovim
 " let g:onedark_termcolors = 16
-set background=dark
+" set background=dark
+" COLORSCHEME ---------------------------------------------------
+let g:palenight_color_overrides = overrides#GetColors()
 colorscheme palenight
 " Highlight no breaking space characters
 " highlight NoBreakingSpace guibg=red ctermbg=red guifg=white ctermfg=white
@@ -184,19 +187,18 @@ let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:#697098,bg:#282D40,hl:#B9EB80,fg
 
 " Use ripgrep for fzf
 if executable('rg')
-
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+ let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+ set grepprg=rg\ --vimgrep
+ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
   " Overriding fzf.vim's default :Files command.
-  " Pass zero or one args to Files command (which are then passed to Fzf_dev). Support file path completion too.
-  command! -nargs=? -complete=file Files call Fzf_dev(<q-args>)
+  " Pass zero or one args to Files command (which are then passed to Fzf_dev_icons). Support file path completion too.
+  command! -nargs=? -complete=file Files call Fzf_dev_icons(<q-args>)
 
 endif
 
 " Display Files + devicons with fzf along with preview
-function! Fzf_dev(qargs)
+function! Fzf_dev_icons(qargs)
   let l:fzf_files_options = '--preview "bat --theme="ansi-dark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
 
   function! s:files(dir)
