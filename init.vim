@@ -44,6 +44,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
 
+Plug 'justinmk/vim-sneak'
 " Directory Viewer for Vim
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
@@ -114,7 +115,7 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 " Signify config
 let g:signify_sign_change = '~'
 " Dirvish sort folders first
-let g:dirvish_mode = ':sort ,^.*[\/],'
+let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
 " Statusline
 set laststatus=2
 set statusline=%!CreateStatusline()
@@ -199,7 +200,7 @@ endif
 
 " Display Files + devicons with fzf along with preview
 function! Fzf_dev_icons(qargs)
-  let l:fzf_files_options = '--preview "bat --theme="ansi-dark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
+  let l:fzf_files_options = '--preview "bat --theme="ansi" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
 
   function! s:files(dir)
     let l:cmd = $FZF_DEFAULT_COMMAND
@@ -258,6 +259,7 @@ function ToggleNerdTreeFile()
   endif
 endfunction
 
+nmap - :Dirvish %<CR>
 " Make sure PearTree works with endwise
 imap <CR> <Plug>(PearTreeExpand)<Plug>DiscretionaryEnd
 map <leader>n :call ToggleNerdTreeFile()<CR>
@@ -288,9 +290,14 @@ autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
 " Run testsuite in nvim with nanobox and docker-compose
 function! EnvironmentTransform(cmd) abort
   if filereadable("boxfile.yml")
-    return 'nanobox run '.a:cmd
+    return a:cmd "'nanobox run '.a:cmd
   elseif filereadable("docker-compose.yml")
-    return 'docker-compose run --rm web '.a:cmd
+    if $DCSPEC
+      return 'docker-compose run --rm web '.a:cmd
+    else
+      return a:cmd
+    endif
+    " return a:cmd "'nanobox run '.a:cmd
   else
     return a:cmd
   endif
