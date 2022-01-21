@@ -1,4 +1,4 @@
-language en_US
+language en_US.UTF-8
 syntax on
 filetype plugin indent on
 set noswapfile
@@ -45,12 +45,6 @@ Plug 'janko-m/vim-test'
 Plug 'kevinsjoberg/vim-test-neovim-error-only'
 
 Plug 'justinmk/vim-sneak'
-" Directory Viewer for Vim
-Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
-
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tmsvg/pear-tree'
 " Automatically adds ends wisely
@@ -69,7 +63,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 " Icons
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -114,8 +110,6 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 " Git related stuff -------------------------------------
 " Signify config
 let g:signify_sign_change = '~'
-" Dirvish sort folders first
-let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
 " Statusline
 set laststatus=2
 set statusline=%!CreateStatusline()
@@ -246,23 +240,15 @@ endfunction
 " Enable fzf fuzzy finder with <space>f binding
 let mapleader = " "
 nnoremap <silent> <leader>f :Files<CR>
+" Lua plugins
+luafile ~/.config/nvim/plug-config/nvim-tree.lua
 
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
 
-" NerdTree
-function ToggleNerdTreeFile()
-  if &filetype == 'nerdtree'
-    :NERDTreeToggle
-  else
-    :NERDTreeFind
-  endif
-endfunction
-
-nmap - :Dirvish %<CR>
 " Make sure PearTree works with endwise
 imap <CR> <Plug>(PearTreeExpand)<Plug>DiscretionaryEnd
-map <leader>n :call ToggleNerdTreeFile()<CR>
+map <leader>n :NvimTreeToggle<CR>
 "" Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
