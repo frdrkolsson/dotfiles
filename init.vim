@@ -21,8 +21,6 @@ Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 " Work habits
 Plug 'wakatime/vim-wakatime'
@@ -70,6 +68,8 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'wfxr/minimap.vim'
 
 " Lua plugins
+Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -132,76 +132,17 @@ let g:go_highlight_methods = 1
 let g:go_fmt_command = "goimports"
 " autocmd! BufWritePost * Neomake
 " autocmd! BufReadPost * Neomake
-" FZF Config
-" Remove fzf statusline
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:#697098,bg:#282D40,hl:#B9EB80,fg+:#ffffff,bg+:0,hl+:#7AA9FF --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:#B9EB80'
-
-" Use ripgrep for fzf
-if executable('rg')
- let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
- set grepprg=rg\ --vimgrep
- command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
-  " Overriding fzf.vim's default :Files command.
-  " Pass zero or one args to Files command (which are then passed to Fzf_dev_icons). Support file path completion too.
-  command! -nargs=? -complete=file Files call Fzf_dev_icons(<q-args>)
-
-endif
-
-" Display Files + devicons with fzf along with preview
-function! Fzf_dev_icons(qargs)
-  let l:fzf_files_options = '--preview "bat --theme="ansi" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
-
-  function! s:files(dir)
-    let l:cmd = $FZF_DEFAULT_COMMAND
-    if a:dir != ''
-      let l:cmd .= ' ' . shellescape(a:dir)
-    endif
-    let l:files = split(system(l:cmd), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
-
-    return l:result
-  endfunction
-
-  function! s:edit_file(lines)
-    if len(a:lines) < 2 | return | endif
-
-    let l:cmd = get({'ctrl-x': 'split',
-                 \ 'ctrl-v': 'vertical split',
-                 \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-
-    for l:item in a:lines[1:]
-      let l:pos = stridx(l:item, ' ')
-      let l:file_path = l:item[pos+1:-1]
-      execute 'silent '. l:cmd . ' ' . l:file_path
-    endfor
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(a:qargs),
-        \ 'sink*':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
-
-" Enable fzf fuzzy finder with <space>f binding
 let mapleader = " "
-nnoremap <silent> <leader>f :Files<CR>
+
 " Lua plugins
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/lualine.lua
+" telescope configuration
+luafile ~/.config/nvim/plug-config/telescope.lua
+nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
+" end of Lua plugins
 
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
