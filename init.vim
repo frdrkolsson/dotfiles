@@ -176,15 +176,8 @@ autocmd FileType go,elm set list listchars=tab:\ \ ,trail:¬∑,nbsp:¬∑
 
 " Run testsuite in nvim with nanobox and docker-compose
 function! EnvironmentTransform(cmd) abort
-  if filereadable("boxfile.yml")
-    return a:cmd "'nanobox run '.a:cmd
-  elseif filereadable("docker-compose.yml")
-    if $DCSPEC
-      return 'docker-compose run --rm web '.a:cmd
-    else
-      return a:cmd
-    endif
-    " return a:cmd "'nanobox run '.a:cmd
+  if filereadable("docker-compose.yml")
+    return 'docker-compose run --rm web '.a:cmd
   else
     return a:cmd
   endif
