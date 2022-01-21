@@ -65,6 +65,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'drewtempelmeyer/palenight.vim'
+" Minimap
+Plug 'wfxr/minimap.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 
 " Add plugins to &runtimepath
@@ -402,3 +404,11 @@ map <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 
 " space w to save file
 nnoremap <Leader>w :w!<CR>
+
+" minimap config
+let g:minimap_git_colors = 1
+let g:minimap_highlight_search = 1
+let g:minimap_highlight_range = 0
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'fzf', 'git-messenger', 'gitmessenger']
+let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt', 'floats', 'win']
+map <leader>m :MinimapToggle<CR>
