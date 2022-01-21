@@ -67,6 +67,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'drewtempelmeyer/palenight.vim'
 " Minimap
 Plug 'wfxr/minimap.vim'
+
+" Lua plugins
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 
 " Add plugins to &runtimepath
@@ -112,53 +115,6 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 " Git related stuff -------------------------------------
 " Signify config
 let g:signify_sign_change = '~'
-" Statusline
-set laststatus=2
-set statusline=%!CreateStatusline()
-
-" Colors for ALE in statusline
-hi WarningColor guibg=#E5C07B guifg=#1E1E1E ctermbg=Yellow ctermfg=Black
-hi ErrorColor guibg=#DF6A63 guifg=#1E1E1E ctermbg=Red ctermfg=Black
-
-function! CreateStatusline()
-  let statusline=''
-  let statusline.='%#diffadd#'
-  let statusline.=' %{FugitiveHead()} '
-  let statusline.='%#CursorlineNr#'
-  let statusline.=' %f'                  " Show filename
-  let statusline.=' %m'                  " Show modified tag
-  let statusline.='%='                   " Switch elements to the right
-  if get(g:, 'streamline_enable_devicons', 1) && exists('*WebDevIconsGetFileTypeSymbol')
-      let statusline.=' %{WebDevIconsGetFileTypeSymbol()}'
-  else
-      let statusline.=' %y'              " Show filetype
-  endif
-  let statusline.=' ☰ %l:%c'             " Show line number and column
-  let statusline.=' %p%% '               " Show percentage
-  let statusline.='▏'
-  let statusline.='%#WarningColor#'
-  let statusline.='%{GetAleStatus()[0]}'
-  let statusline.='%#ErrorColor#'
-  let statusline.='%{GetAleStatus()[1]}'
-
-  return statusline
-endfunction
-
-" Lags, use this if change to faster terminal
-"function! GitBranch()
-"    let l:branch = system('cd '.expand('%:p:h').' && git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d "\n"')
-"    return !strlen(l:branch) || !isdirectory(expand('%:p:h')) ? '' : '▏' . l:branch . ' '
-"endfunction
-
-function GetAleStatus()
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:formated_errors = l:all_errors == 0 ? '' : '▏✗ ' . l:all_errors . ' '
-    let l:all_warnings = l:counts.total - l:all_errors
-    let l:formated_warnings = l:all_warnings == 0 ? '' : '▏⊖ ' . l:all_warnings . ' '
-    return [l:formated_warnings, l:formated_errors]
-endfunction
-"------------------------------------------------------------------------------
 
 " colorscheme MaterialPalenightTheme
 let g:neomake_jsx_enabled_makers = ['eslint']
@@ -244,6 +200,7 @@ let mapleader = " "
 nnoremap <silent> <leader>f :Files<CR>
 " Lua plugins
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
+luafile ~/.config/nvim/plug-config/lualine.lua
 
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
