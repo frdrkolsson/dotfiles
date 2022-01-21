@@ -17,6 +17,7 @@ set grepprg=rg\ --vimgrep
 
 call plug#begin('~/.vim/plugged')
 " Plugin options
+Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-vinegar'
