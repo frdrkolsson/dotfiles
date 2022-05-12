@@ -62,7 +62,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 " Show vertical lines
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -99,10 +99,7 @@ set listchars=nbsp:⏚
 set list
 syntax match NoBreakingSpace /.* .*/
 highlight NoBreakingSpace guibg=red guifg=white ctermbg=red ctermfg=white
-"
-" IndentLine config
-let g:indentLine_char = '│'
-"
+
 " Start autocomplete for deoplete.vim
 " let g:deoplete#enable_at_startup = 1
 
@@ -142,9 +139,7 @@ let mapleader = " "
 " Lua plugins
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/lualine.lua
-luafile ~/.config/nvim/plug-config/gitsigns.lua
 luafile ~/.config/nvim/plug-config/indent-blankline.lua
-luafile ~/.config/nvim/plug-config/gitlinker.lua
 " telescope configuration
 luafile ~/.config/nvim/plug-config/telescope.lua
 nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
