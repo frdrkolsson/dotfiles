@@ -22,8 +22,6 @@ Plug 'mhinz/vim-startify'
 
 " Code highlighting
 Plug 'sheerun/vim-polyglot'
-" För att köra treesitter, byt till ett tema med stöd för treesitter
-" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " We recommend updating the parsers on update
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-vinegar'
@@ -59,7 +57,6 @@ Plug 'tpope/vim-endwise'
 "
 " More Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 " Show vertical lines
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -67,21 +64,16 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'drewtempelmeyer/palenight.vim'
-" Plug 'olimorris/onedarkpro.nvim' # overwrite these when migrating to lua
 
 " Minimap
 Plug 'wfxr/minimap.vim'
 
 " Lua plugins
 Plug 'nvim-lua/plenary.nvim' " helper for lua plugins
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ibhagwan/fzf-lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'norcalli/nvim-colorizer.lua'
-
-" Plug 'sidebar-nvim/sidebar.nvim'
 
 "" Git
 Plug 'lewis6991/gitsigns.nvim'
@@ -142,14 +134,10 @@ let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_fmt_command = "goimports"
-" autocmd! BufWritePost * Neomake
-" autocmd! BufReadPost * Neomake
 
 let mapleader = " "
 
 " Lua plugins
-" let g:nvim_tree_quit_on_open = 1
-"luafile ~/.config/nvim/plug-config/drex.lua
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/lualine.lua
 luafile ~/.config/nvim/plug-config/gitsigns.lua
@@ -160,10 +148,6 @@ luafile ~/.config/nvim/plug-config/gitlinker.lua
 
 nnoremap <silent> <leader>ff :FzfLua files<CR>
 nnoremap <silent> <leader>fg :FzfLua live_grep_native<CR>
-" telescope configuration
-luafile ~/.config/nvim/plug-config/telescope.lua
-nnoremap <silent> <leader>lff :Telescope find_files<CR>
-nnoremap <silent> <leader>lfg <cmd>Telescope live_grep<CR>
 " end of Lua plugins
 
 " Set editor ruler
