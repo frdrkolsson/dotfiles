@@ -30,10 +30,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag'
 " Git-related plugins
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/git-messenger.vim'
-Plug 'mhinz/vim-signify'
 
 Plug 'rizzatti/dash.vim'
 
@@ -69,10 +67,14 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'wfxr/minimap.vim'
 
 " Lua plugins
-Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
+Plug 'nvim-lua/plenary.nvim' " helper for lua plugins
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
+
+"" Git
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'ruifm/gitlinker.nvim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -114,9 +116,6 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 0
 let g:ale_ruby_rubocop_executable = 'bundle'
 
-" Git related stuff -------------------------------------
-" Signify config
-let g:signify_sign_change = '~'
 
 " colorscheme MaterialPalenightTheme
 let g:neomake_jsx_enabled_makers = ['eslint']
@@ -139,6 +138,9 @@ let mapleader = " "
 " Lua plugins
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/lualine.lua
+luafile ~/.config/nvim/plug-config/gitsigns.lua
+luafile ~/.config/nvim/plug-config/indent-blankline.lua
+luafile ~/.config/nvim/plug-config/gitlinker.lua
 " telescope configuration
 luafile ~/.config/nvim/plug-config/telescope.lua
 nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
