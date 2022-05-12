@@ -51,11 +51,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'tmsvg/pear-tree'
 " Automatically adds ends wisely
 Plug 'tpope/vim-endwise'
-
-" Dark powered asynchronous completion framework for neovim
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'etordera/deoplete-rails'
-" Plug 'fishbullet/deoplete-ruby'
 "
 " More Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
