@@ -5,7 +5,8 @@ set noswapfile
 set ruler
 set nowritebackup
 set nu
-set re=1
+set re=2
+set maxmempattern=2000
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
