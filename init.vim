@@ -33,6 +33,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/git-messenger.vim'
 
+" Directory Viewer for Vim
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
+
 Plug 'rizzatti/dash.vim'
 
 Plug 'dense-analysis/ale'
@@ -146,6 +150,8 @@ luafile ~/.config/nvim/plug-config/telescope.lua
 nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
 " end of Lua plugins
+"
+" nnoremap - :NvimTreeFindFile%:h<CR>
 
 " Set editor ruler
 set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
