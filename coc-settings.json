@@ -1,0 +1,22 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "elixir",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "ruby",
+    "sh",
+    "typescript",
+    "typescriptreact"
+  ],
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "solargraph.trace.server": "verbose",
+  "solargraph.useBundler": true,
+  "yaml.format.enable": true
+}
