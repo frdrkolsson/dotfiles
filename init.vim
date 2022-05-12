@@ -14,7 +14,7 @@ map <Down> <Nop>
 " 24-bit color support
 set termguicolors
 
-set grepprg=rg\ --vimgrep
+set grepprg=rg\ --vimgrep\ --hidden
 
 call plug#begin('~/.vim/plugged')
 " Plugin options
