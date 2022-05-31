@@ -1,8 +1,18 @@
 require('lualine').setup {
-  options = { section_separators = '', component_separators = '' },
+  options = {
+    component_separators = '',
+    section_separators = { left = '', right = '' },
+    theme = "catppuccin"
+  },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_a = {
+      {
+        'mode',
+        separator = { left = '' },
+        right_padding = 2
+      }
+    },
+    lualine_b = {'branch', 'diff', 'diagnostics' },
     lualine_c = {
       {
         'filename',
@@ -11,9 +21,8 @@ require('lualine').setup {
       },
     },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
+    lualine_y = {'progress', { separator = { right = '' }}},
     lualine_z = {
-      'location',
       { 'diagnostics',
         -- Table of diagnostic sources, available sources are:
         --   'nvim_lsp', 'nvim_diagnostic', 'coc', 'ale', 'vim_lsp'.
@@ -34,8 +43,10 @@ require('lualine').setup {
         -- symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
         colored = true,           -- Displays diagnostics status in color if set to true.
         update_in_insert = false, -- Update diagnostics in insert mode.
-        always_visible = false ,  -- Show diagnostics even if there are none.
-      }
+        always_visible = false,  -- Show diagnostics even if there are none.
+        separator = { right = '', left = '' },
+      },
+      { 'location', separator = { right = '' }, left_padding = 0 },
     }
   }
 }
