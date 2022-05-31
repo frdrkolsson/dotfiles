@@ -149,6 +149,8 @@ luafile ~/.config/nvim/plug-config/gitlinker.lua
 luafile ~/.config/nvim/plug-config/treesitter.lua
 luafile ~/.config/nvim/plug-config/catppuccin.lua
 
+set laststatus=3
+
 nnoremap <silent> <leader>ff :FzfLua files<CR>
 nnoremap <silent> <leader>fg :FzfLua live_grep_native<CR>
 " end of Lua plugins
