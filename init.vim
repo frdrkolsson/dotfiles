@@ -20,9 +20,6 @@ call plug#begin('~/.vim/plugged')
 " Plugin options
 Plug 'mhinz/vim-startify'
 
-" Code highlighting
-Plug 'sheerun/vim-polyglot'
-
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'jremmen/vim-ripgrep'
@@ -63,7 +60,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'drewtempelmeyer/palenight.vim'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Minimap
 Plug 'wfxr/minimap.vim'
@@ -79,6 +78,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ruifm/gitlinker.nvim'
 
+" Colorscheme
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -86,8 +87,8 @@ call plug#end()
 " let g:onedark_termcolors = 16
 " set background=dark
 " COLORSCHEME ---------------------------------------------------
-let g:palenight_color_overrides = overrides#GetColors()
-colorscheme palenight
+let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
+colorscheme catppuccin
 " Highlight no breaking space characters
 " highlight NoBreakingSpace guibg=red ctermbg=red guifg=white ctermfg=white
 " syntax match NoBreakingSpace /.* .*/
@@ -145,6 +146,8 @@ luafile ~/.config/nvim/plug-config/fzf-lua.lua
 luafile ~/.config/nvim/plug-config/nvim-colorizer.lua
 luafile ~/.config/nvim/plug-config/indent-blankline.lua
 luafile ~/.config/nvim/plug-config/gitlinker.lua
+luafile ~/.config/nvim/plug-config/treesitter.lua
+luafile ~/.config/nvim/plug-config/catppuccin.lua
 
 nnoremap <silent> <leader>ff :FzfLua files<CR>
 nnoremap <silent> <leader>fg :FzfLua live_grep_native<CR>
