@@ -2,7 +2,6 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "elixir",
-    "javascript",
     "javascriptreact",
     "json",
     "jsonc",
