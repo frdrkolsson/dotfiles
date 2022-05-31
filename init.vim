@@ -70,9 +70,9 @@ Plug 'wfxr/minimap.vim'
 " Lua plugins
 Plug 'nvim-lua/plenary.nvim' " helper for lua plugins
 Plug 'ibhagwan/fzf-lua'
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'feline-nvim/feline.nvim'
 
 "" Git
 Plug 'lewis6991/gitsigns.nvim'
@@ -140,7 +140,7 @@ let mapleader = " "
 
 " Lua plugins
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
-luafile ~/.config/nvim/plug-config/lualine.lua
+luafile ~/.config/nvim/plug-config/feline.lua
 luafile ~/.config/nvim/plug-config/gitsigns.lua
 luafile ~/.config/nvim/plug-config/fzf-lua.lua
 luafile ~/.config/nvim/plug-config/nvim-colorizer.lua
