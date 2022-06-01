@@ -69,10 +69,10 @@ Plug 'wfxr/minimap.vim'
 
 " Lua plugins
 Plug 'nvim-lua/plenary.nvim' " helper for lua plugins
-Plug 'ibhagwan/fzf-lua'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'feline-nvim/feline.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 "" Git
 Plug 'lewis6991/gitsigns.nvim'
@@ -142,7 +142,7 @@ let mapleader = " "
 luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/feline.lua
 luafile ~/.config/nvim/plug-config/gitsigns.lua
-luafile ~/.config/nvim/plug-config/fzf-lua.lua
+luafile ~/.config/nvim/plug-config/telescope.lua
 luafile ~/.config/nvim/plug-config/nvim-colorizer.lua
 luafile ~/.config/nvim/plug-config/indent-blankline.lua
 luafile ~/.config/nvim/plug-config/gitlinker.lua
@@ -151,8 +151,8 @@ luafile ~/.config/nvim/plug-config/catppuccin.lua
 
 set laststatus=3
 
-nnoremap <silent> <leader>ff :FzfLua files<CR>
-nnoremap <silent> <leader>fg :FzfLua live_grep_native<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " end of Lua plugins
 
 " Set editor ruler
