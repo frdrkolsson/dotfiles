@@ -61,8 +61,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Treesitter
+" Treesitter and other language plugs
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'slim-template/vim-slim'
 
 " Minimap
 Plug 'wfxr/minimap.vim'
