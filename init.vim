@@ -76,6 +76,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'feline-nvim/feline.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 "" Git
 Plug 'lewis6991/gitsigns.nvim'
