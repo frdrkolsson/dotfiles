@@ -64,6 +64,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Treesitter and other language plugs
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'slim-template/vim-slim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'fladson/vim-kitty'
 
 " Minimap
 Plug 'wfxr/minimap.vim'
