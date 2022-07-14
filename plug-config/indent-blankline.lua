@@ -5,4 +5,6 @@ require("indent_blankline").setup {
     -- show_current_context_start = true,
     -- indent_blankline_char = '│',
     -- indent_blankline_char_blankline = '│',
+    -- use {
+    filetype_exclude = { "dashboard" }
 }

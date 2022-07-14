@@ -18,7 +18,8 @@ set grepprg=rg\ --vimgrep\ --hidden
 
 call plug#begin('~/.vim/plugged')
 " Plugin options
-Plug 'mhinz/vim-startify'
+
+Plug 'glepnir/dashboard-nvim'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-vinegar'
@@ -151,6 +152,7 @@ luafile ~/.config/nvim/plug-config/nvim-colorizer.lua
 luafile ~/.config/nvim/plug-config/indent-blankline.lua
 luafile ~/.config/nvim/plug-config/gitlinker.lua
 luafile ~/.config/nvim/plug-config/treesitter.lua
+luafile ~/.config/nvim/plug-config/dashboard-nvim.lua
 luafile ~/.config/nvim/plug-config/catppuccin.lua
 
 set laststatus=3
