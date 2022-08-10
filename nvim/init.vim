@@ -295,9 +295,6 @@ autocmd User ProjectionistDetect
 
 " Trailing whitespace
 " ===================================================
-" Hightlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red ctermfg=white guifg=white
-match ExtraWhitespace /\s\+$/
 " Removes trailing spaces
 function! TrimWhiteSpace()
   mark `

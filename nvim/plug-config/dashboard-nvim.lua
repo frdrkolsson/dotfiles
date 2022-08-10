@@ -1,6 +1,6 @@
 local home = os.getenv('HOME')
 local dashboard = require('dashboard')
-dashboard.preview_command = 'cat | lolcat -F 0.3'
+dashboard.preview_command = 'bat -p'
 dashboard.preview_file_path = home .. '/.config/nvim/static/neovim.cat'
 dashboard.preview_file_height = 12
 dashboard.preview_file_width = 80
