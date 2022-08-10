@@ -34,10 +34,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/git-messenger.vim'
 
-" Directory Viewer for Vim
-Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
-
 Plug 'rizzatti/dash.vim'
 
 Plug 'dense-analysis/ale'
@@ -73,7 +69,6 @@ Plug 'wfxr/minimap.vim'
 
 " Lua plugins
 Plug 'nvim-lua/plenary.nvim' " helper for lua plugins
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'feline-nvim/feline.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -123,10 +118,6 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 0
 let g:ale_ruby_rubocop_executable = 'bundle'
 
-" Dirvish sort folders first
-let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
-nmap - :Dirvish %<CR>
-
 " colorscheme MaterialPalenightTheme
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
@@ -144,7 +135,6 @@ let g:go_fmt_command = "goimports"
 let mapleader = " "
 
 " Lua plugins
-luafile ~/.config/nvim/plug-config/nvim-tree.lua
 luafile ~/.config/nvim/plug-config/feline.lua
 luafile ~/.config/nvim/plug-config/gitsigns.lua
 luafile ~/.config/nvim/plug-config/telescope.lua
@@ -166,7 +156,6 @@ set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980'
 
 " Make sure PearTree works with endwise
 imap <CR> <Plug>(PearTreeExpand)<Plug>DiscretionaryEnd
-map <leader>n :NvimTreeFindFileToggle<CR>
 "" Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
