@@ -11,6 +11,7 @@ if status is-interactive
     set -x AWS_S3_REGION eu-north-1
 end
 
+# asdf and direnv
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 direnv hook fish   | source
