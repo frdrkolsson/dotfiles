@@ -30,6 +30,8 @@ require('packer').startup(function(use)
   use 'ruifm/gitlinker.nvim'
   use 'rhysd/git-messenger.vim'
 
+  use 'tpope/vim-projectionist' -- Projectionist provides granular project configuration using "projections"
+
   use 'norcalli/nvim-colorizer.lua'
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -76,4 +78,5 @@ require 'plugins.treesitter'
 require 'plugins.telescope'
 require 'plugins.nvim-colorizer'
 require 'plugins.dashboard-nvim'
+require 'plugins.projectionist'
 --- }}}
