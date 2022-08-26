@@ -23,6 +23,8 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- A vim plugin to display the indention levels with thin vertical lines
   use 'editorconfig/editorconfig-vim'
 
+  use({ 'mrjones2014/dash.nvim', run = 'make install' }) -- 🏃💨 Search Dash.app from your Neovim fuzzy finder. Built with Rust 🦀 and Lua
+
   use 'janko-m/vim-test' -- A Vim wrapper for running tests on different granularities.
   use 'kevinsjoberg/vim-test-neovim-error-only' -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
@@ -59,6 +61,10 @@ vim.keymap.set('n', '-', ':Explore<CR>') -- Easily use Explore
 vim.keymap.set('n', '<Leader>w', ':w!<CR>') -- Save with leader w
 vim.keymap.set('n', '<Leader><Leader>', '<c-^>') -- Switch between the last two files
 vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>') -- Search documentation with Dash
+vim.cmd([[
+nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+]]) -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 -- }}}
 
