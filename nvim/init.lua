@@ -56,6 +56,11 @@ vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']
 vim.cmd [[set laststatus=3]]
 -- }}}
 
+-- Config {{{ 
+-- Lighter config is placed here
+vim.g['test#strategy'] = 'neovim_error_only'
+-- }}}
+
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
 vim.keymap.set('n', '<Leader>w', ':w!<CR>') -- Save with leader w
