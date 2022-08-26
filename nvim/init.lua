@@ -32,6 +32,7 @@ require('packer').startup(function(use)
   use 'ruifm/gitlinker.nvim'
   use 'rhysd/git-messenger.vim'
 
+  use 'tpope/vim-vinegar' -- Combine with netrw to create a delicious salad dressing
   use 'tpope/vim-projectionist' -- Projectionist provides granular project configuration using "projections"
 
   use 'norcalli/nvim-colorizer.lua'
@@ -57,9 +58,9 @@ vim.cmd [[set laststatus=3]]
 
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
-vim.keymap.set('n', '-', ':Explore<CR>') -- Easily use Explore
 vim.keymap.set('n', '<Leader>w', ':w!<CR>') -- Save with leader w
 vim.keymap.set('n', '<Leader><Leader>', '<c-^>') -- Switch between the last two files
+
 vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
 vim.keymap.set('n', '<Leader>d', ':Dash<CR>') -- Search documentation with Dash
 vim.cmd([[
