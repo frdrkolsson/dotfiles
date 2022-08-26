@@ -56,9 +56,21 @@ vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']
 vim.cmd [[set laststatus=3]]
 -- }}}
 
--- Config {{{ 
+-- Config {{{
 -- Lighter config is placed here
 vim.g['test#strategy'] = 'neovim_error_only'
+
+-- Trailing whitespace
+-- ===================================================
+-- Removes trailing spaces
+vim.cmd([[
+function! TrimWhiteSpace()
+  mark `
+  %s/\s\+$//e
+  normal ``
+endfunction
+autocmd BufWritePre * call TrimWhiteSpace()
+]])
 -- }}}
 
 -- Keymaps {{{
@@ -81,7 +93,7 @@ vim.cmd [[colorscheme catppuccin]]
 
 -- }}}
 
--- {{{ Requires 
+-- {{{ Requires
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
 require 'plugins.catppuccin'
 require 'plugins.feline'
