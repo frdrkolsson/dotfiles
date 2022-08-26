@@ -97,10 +97,11 @@ vim.cmd [[colorscheme catppuccin]]
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
 require 'plugins.catppuccin'
 require 'plugins.feline'
-require 'plugins.treesitter'
-require 'plugins.treesitter'
-require 'plugins.telescope'
+require 'plugins.gitsigns'
+require 'plugins.gitlinker'
 require 'plugins.nvim-colorizer'
 require 'plugins.dashboard-nvim'
 require 'plugins.projectionist'
+require 'plugins.telescope'
+require 'plugins.treesitter'
 --- }}}
