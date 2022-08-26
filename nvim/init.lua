@@ -79,7 +79,7 @@ vim.keymap.set('n', '<Leader>w', ':w!<CR>') -- Save with leader w
 vim.keymap.set('n', '<Leader><Leader>', '<c-^>') -- Switch between the last two files
 
 vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>') -- Search documentation with Dash
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>') -- Search and Replace
 vim.cmd([[
 nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 ]]) -- Search for word under cursor with telescope
