@@ -10,7 +10,10 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use { 'catppuccin/nvim', as = 'catppuccin' } -- colorscheme
-  use 'feline-nvim/feline.nvim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
   use 'kyazdani42/nvim-web-devicons' -- lua `fork` of vim-web-devicons for neovim
   use { 'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end }
@@ -96,7 +99,7 @@ vim.cmd [[colorscheme catppuccin]]
 -- {{{ Requires
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
 require 'plugins.catppuccin'
-require 'plugins.feline'
+require 'plugins.lualine'
 require 'plugins.gitsigns'
 require 'plugins.gitlinker'
 require 'plugins.nvim-colorizer'
