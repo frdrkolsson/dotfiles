@@ -1,9 +1,10 @@
 -- vim:fileencoding=utf-8:foldmethod=marker
 
 -- Plugins {{{
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 require('packer').startup(function(use)
@@ -16,7 +17,7 @@ require('packer').startup(function(use)
   }
   use 'kyazdani42/nvim-web-devicons' -- lua `fork` of vim-web-devicons for neovim
   use { 'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end }
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end }
   -- Language highlighting for languages not supported by treesitter
   use 'slim-template/vim-slim'
   use 'kchmck/vim-coffee-script'
@@ -126,6 +127,8 @@ vim.cmd([[
 nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 ]]) -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
+
+vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.formatting_sync()<CR>') -- Format file
 -- }}}
 
 -- Colorscheme {{{
@@ -137,6 +140,7 @@ vim.cmd [[colorscheme catppuccin]]
 
 -- {{{ Requires
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
+
 require 'plugins.catppuccin'
 require 'plugins.lualine'
 require 'plugins.gitsigns'
