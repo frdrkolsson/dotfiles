@@ -42,6 +42,36 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+  -- LSP
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+  }
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'rafamadriz/friendly-snippets'
+  use 'onsails/lspkind-nvim'
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('null-ls').setup()
+    end,
+    requires = { 'nvim-lua/plenary.nvim' },
+  })
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
@@ -102,9 +132,13 @@ require 'plugins.catppuccin'
 require 'plugins.lualine'
 require 'plugins.gitsigns'
 require 'plugins.gitlinker'
+require 'plugins.lsp-config'
+require 'plugins.nvim-cmp'
+require 'plugins.null-ls'
 require 'plugins.nvim-colorizer'
 require 'plugins.dashboard-nvim'
 require 'plugins.projectionist'
 require 'plugins.telescope'
 require 'plugins.treesitter'
+require 'plugins.luasnip'
 --- }}}
