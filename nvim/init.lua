@@ -32,7 +32,10 @@ require('packer').startup(function(use)
   use 'kevinsjoberg/vim-test-neovim-error-only' -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
   use 'lewis6991/gitsigns.nvim'
-  use 'ruifm/gitlinker.nvim'
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
   use 'rhysd/git-messenger.vim'
 
   use 'tpope/vim-vinegar' -- Combine with netrw to create a delicious salad dressing
