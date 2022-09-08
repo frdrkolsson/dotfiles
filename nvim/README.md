@@ -35,12 +35,12 @@ Feel free to use.
 
 Key | Value
 ---|---
-<Leader> | <kbd>space</kbd>
-Save | <Leader>w
-Search and replace | <Leader>s
-Fuzzy finder (telescope) | <Leader>ff
-Live grep (telescope) | <Leader>fg
-Find string in project (telescope) | <Leader>g
-Refresh configuration | <Leader>fr
-Format file with lsp | <Leader>r
-Switch to previous file <Leader><Leader>
+`<Leader>` | <kbd>Space</kbd>
+Save | `<Leader>w`
+Search and replace | `<Leader>s`
+Fuzzy finder (telescope) | `<Leader>ff`
+Live grep (telescope) | `<Leader>fg`
+Find string in project (telescope) | `<Leader>g`
+Refresh configuration | `<Leader>fr`
+Format file with lsp | `<Leader>r`
+Switch to previous file | `<Leader><Leader>`
