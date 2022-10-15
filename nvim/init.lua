@@ -128,7 +128,7 @@ nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.
 ]]) -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 
-vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.formatting_sync()<CR>') -- Format file
+vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>') -- Format file
 -- }}}
 
 -- Colorscheme {{{
