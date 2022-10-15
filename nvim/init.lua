@@ -41,6 +41,7 @@ require('packer').startup(function(use)
 
   use 'tpope/vim-vinegar' -- Combine with netrw to create a delicious salad dressing
   use 'tpope/vim-projectionist' -- Projectionist provides granular project configuration using "projections"
+  use 'tpope/vim-fugitive' -- A Git wrapper so awesome, it should be illegal
 
   use 'norcalli/nvim-colorizer.lua'
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
