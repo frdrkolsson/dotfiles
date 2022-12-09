@@ -6,7 +6,7 @@ Feel free to use.
 ## Setup
 
 ### Requirements
-* [neovim](https://neovim.io) - At least version 0.70
+* [neovim](https://neovim.io) - At least version 0.7.0
 * [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ### Installation
