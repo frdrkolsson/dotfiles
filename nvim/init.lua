@@ -131,13 +131,6 @@ vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Sour
 vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>') -- Format file
 -- }}}
 
--- Colorscheme {{{
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
-vim.cmd [[colorscheme catppuccin]]
-
--- }}}
-
 -- {{{ Requires
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
 
