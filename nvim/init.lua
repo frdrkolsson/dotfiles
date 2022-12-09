@@ -30,7 +30,7 @@ require('packer').startup(function(use)
   use({ 'mrjones2014/dash.nvim', run = 'make install' }) -- 🏃💨 Search Dash.app from your Neovim fuzzy finder. Built with Rust 🦀 and Lua
 
   use 'janko-m/vim-test' -- A Vim wrapper for running tests on different granularities.
-  use 'kevinsjoberg/vim-test-neovim-error-only' -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
+  use 'hovsater/vim-test-neovim-error-only' -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
   use 'lewis6991/gitsigns.nvim'
   use {
