@@ -1,8 +1,7 @@
 -- require('lspconfig').solargraph.setup()
 require('mason').setup()
 
-local servers = { 'solargraph', 'sumneko_lua', 'tailwindcss', 'sourcekit',
-  'eslint' }
+local servers = { 'solargraph', 'lua_ls', 'tailwindcss', 'eslint' }
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({
@@ -16,7 +15,7 @@ end
 
 local lspconfig = require('lspconfig')
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
