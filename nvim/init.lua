@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'rafamadriz/friendly-snippets'
   use 'onsails/lspkind-nvim'
+
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -114,6 +115,12 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre * call TrimWhiteSpace()
 ]])
+-- }}}
+
+-- Ruby host {{{
+if vim.fn.executable('~/.asdf/shims/ruby') then
+  vim.g.ruby_host_prog = '~/.asdf/shims/ruby'
+end
 -- }}}
 
 -- Keymaps {{{
