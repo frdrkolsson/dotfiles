@@ -9,6 +9,7 @@ if status is-interactive
     set -x AWS_SECRET_ACCESS_KEY $(aws configure get aws_secret_access_key)
 
     set -x AWS_S3_REGION eu-north-1
+    set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$(brew --prefix openssl@1.1)"
 end
 
 # asdf and direnv
