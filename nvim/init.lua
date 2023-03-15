@@ -63,6 +63,16 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'rafamadriz/friendly-snippets'
   use 'onsails/lspkind-nvim'
+  use {
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  }
+  use 'MunifTanjim/prettier.nvim'
 
   use {
     "folke/trouble.nvim",
@@ -76,6 +86,14 @@ require('packer').startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' },
   })
   use 'jayp0521/mason-null-ls.nvim'
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+  use { "windwp/nvim-ts-autotag" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -154,4 +172,6 @@ require 'plugins.projectionist'
 require 'plugins.telescope'
 require 'plugins.treesitter'
 require 'plugins.luasnip'
+require 'plugins.lspsaga'
+require 'plugins.prettier'
 --- }}}
