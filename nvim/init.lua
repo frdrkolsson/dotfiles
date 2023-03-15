@@ -29,8 +29,8 @@ require('packer').startup(function(use)
 
   use({ 'mrjones2014/dash.nvim', run = 'make install' }) -- 🏃💨 Search Dash.app from your Neovim fuzzy finder. Built with Rust 🦀 and Lua
 
-  use 'janko-m/vim-test' -- A Vim wrapper for running tests on different granularities.
-  use 'hovsater/vim-test-neovim-error-only' -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
+  use 'janko-m/vim-test'                                 -- A Vim wrapper for running tests on different granularities.
+  use 'hovsater/vim-test-neovim-error-only'              -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
   use 'lewis6991/gitsigns.nvim'
   use {
@@ -39,9 +39,9 @@ require('packer').startup(function(use)
   }
   use 'rhysd/git-messenger.vim'
 
-  use 'tpope/vim-vinegar' -- Combine with netrw to create a delicious salad dressing
+  use 'tpope/vim-vinegar'       -- Combine with netrw to create a delicious salad dressing
   use 'tpope/vim-projectionist' -- Projectionist provides granular project configuration using "projections"
-  use 'tpope/vim-fugitive' -- A Git wrapper so awesome, it should be illegal
+  use 'tpope/vim-fugitive'      -- A Git wrapper so awesome, it should be illegal
 
   use 'norcalli/nvim-colorizer.lua'
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
@@ -59,7 +59,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'L3MON4D3/LuaSnip'         -- Snippets plugin
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'rafamadriz/friendly-snippets'
   use 'onsails/lspkind-nvim'
@@ -94,8 +94,8 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]] -- Show line numbers
-vim.cmd [[set termguicolors]] -- Enable termgui colors
+vim.cmd [[set number]]                                                            -- Show line numbers
+vim.cmd [[set termguicolors]]                                                     -- Enable termgui colors
 vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
 vim.cmd [[set laststatus=3]]
 -- }}}
@@ -125,17 +125,17 @@ end
 
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
-vim.keymap.set('n', '<Leader>w', ':w!<CR>') -- Save with leader w
-vim.keymap.set('n', '<Leader><Leader>', '<c-^>') -- Switch between the last two files
+vim.keymap.set('n', '<Leader>w', ':w!<CR>')            -- Save with leader w
+vim.keymap.set('n', '<Leader><Leader>', '<c-^>')       -- Switch between the last two files
 
 vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>') -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>')          -- Search and Replace
 vim.cmd([[
 nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-]]) -- Search for word under cursor with telescope
+]])                                                                      -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 
-vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>') -- Format file
+vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>')        -- Format file
 -- }}}
 
 -- {{{ Requires
