@@ -94,6 +94,9 @@ require('packer').startup(function(use)
     end
   }
   use { "windwp/nvim-ts-autotag" }
+  use 'mfussenegger/nvim-dap'                                                 -- Debug Adapter Protocol client implementation for Neovim
+  use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } } -- nvim-dap adapter for vscode-js-debug
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -174,4 +177,7 @@ require 'plugins.treesitter'
 require 'plugins.luasnip'
 require 'plugins.lspsaga'
 require 'plugins.prettier'
+require 'plugins.nvim-dap'
+require 'plugins.nvim-dap-vscode-js'
+require 'plugins.dap-ui'
 --- }}}
