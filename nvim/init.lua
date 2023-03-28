@@ -23,7 +23,6 @@ require('packer').startup(function(use)
   use 'kchmck/vim-coffee-script'
   use 'fladson/vim-kitty'
 
-  use 'glepnir/dashboard-nvim'
   use 'lukas-reineke/indent-blankline.nvim' -- A vim plugin to display the indention levels with thin vertical lines
   use 'editorconfig/editorconfig-vim'
 
@@ -170,7 +169,6 @@ require 'plugins.lsp-config'
 require 'plugins.nvim-cmp'
 require 'plugins.null-ls'
 require 'plugins.nvim-colorizer'
-require 'plugins.dashboard-nvim'
 require 'plugins.projectionist'
 require 'plugins.telescope'
 require 'plugins.treesitter'
