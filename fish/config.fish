@@ -9,6 +9,7 @@ if status is-interactive
     set -x AWS_SECRET_ACCESS_KEY $(aws configure get aws_secret_access_key)
 
     set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$(brew --prefix openssl@1.1)"
+    set -Ux fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 end
 
 # asdf and direnv
