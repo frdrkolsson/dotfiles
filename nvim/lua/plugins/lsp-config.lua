@@ -1,7 +1,7 @@
 -- require('lspconfig').solargraph.setup()
 require('mason').setup()
 
-local servers = { 'solargraph', 'lua_ls', 'tailwindcss', 'eslint' }
+local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'tsserver' }
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({
@@ -9,8 +9,11 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, server_name in ipairs(servers) do
-  require('lspconfig')[server_name].setup {}
+  require('lspconfig')[server_name].setup {
+    capabilities = capabilities
+  }
 end
 
 local lspconfig = require('lspconfig')

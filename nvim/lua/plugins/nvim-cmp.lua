@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lspkind = require 'lspkind'
 
 cmp.setup({
   snippet = {
@@ -21,7 +22,6 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
-
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     -- { name = 'vsnip' }, -- For vsnip users.
@@ -29,7 +29,10 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'buffer' },
-  })
+  }),
+  formatting = {
+    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
+  }
 })
 
 -- Set configuration for specific filetype.
