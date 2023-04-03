@@ -3,6 +3,42 @@ vim.cmd([[
 autocmd User ProjectionistDetect
 \ call projectionist#append(getcwd(),
 \ {
+\    'src/features/*.ts': {
+\      'alternate': [
+\        'src/test/features/{}.test.ts',
+\        'src/spec/features/{}.spec.ts'
+\      ]
+\    },
+\    'src/hooks/*.ts': {
+\      'alternate': [
+\        'src/test/hooks/{}.test.ts',
+\        'src/spec/hooks/{}.spec.ts'
+\      ],
+\      'template': [
+\        'export const {basename|camelcase} = () => {open}{close};'
+\      ]
+\    },
+\    'src/features/*.tsx': {
+\      'alternate': [
+\        'src/test/features/{}.test.tsx',
+\        'src/spec/features/{}.spec.tsx'
+\      ],
+\      'template': [
+\        'export const {basename|capitalize|camelcase} = () => {open}',
+\        '  return;',
+\        '{close};',
+\        '',
+\        'export default {basename|capitalize|camelcase};'
+\      ]
+\    },
+\    'src/test/features/*.test.tsx': {
+\      'alternate': [
+\        'src/features/{}.tsx',
+\      ],
+\      'template': [
+\        "it('tests {basename}', () => {open}{close});",
+\      ]
+\    },
 \    'app/jobs/*_job.rb': {
 \      'alternate': [
 \        'spec/jobs/{}_spec.rb',
