@@ -24,7 +24,6 @@ require('packer').startup(function(use)
   use 'fladson/vim-kitty'
 
   use 'lukas-reineke/indent-blankline.nvim' -- A vim plugin to display the indention levels with thin vertical lines
-  use 'editorconfig/editorconfig-vim'
 
   use({ 'mrjones2014/dash.nvim', run = 'make install' }) -- 🏃💨 Search Dash.app from your Neovim fuzzy finder. Built with Rust 🦀 and Lua
 
