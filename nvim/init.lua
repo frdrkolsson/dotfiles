@@ -84,13 +84,19 @@ require('packer').startup(function(use)
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
+      require("which-key").setup {}
+    end
+  }
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        backdrop = 1,
+        tmux = { enabled = false }
       }
     end
   }
+
   use({
     'jose-elias-alvarez/null-ls.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -167,6 +173,7 @@ nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 
 vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>')        -- Format file
+vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')        -- Format file
 -- }}}
 
 -- {{{ Requires
