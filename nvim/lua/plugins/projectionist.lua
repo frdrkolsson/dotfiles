@@ -31,6 +31,19 @@ autocmd User ProjectionistDetect
 \        'export default {basename|capitalize|camelcase};'
 \      ]
 \    },
+\    'src/*.tsx': {
+\      'alternate': [
+\        'src/test/{}.test.tsx',
+\        'src/spec/{}.spec.tsx'
+\      ],
+\      'template': [
+\        'export const {basename|capitalize|camelcase} = () => {open}',
+\        '  return;',
+\        '{close};',
+\        '',
+\        'export default {basename|capitalize|camelcase};'
+\      ]
+\    },
 \    'src/test/features/*.test.tsx': {
 \      'alternate': [
 \        'src/features/{}.tsx',
