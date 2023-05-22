@@ -7,7 +7,9 @@ null_ls.setup({
         null_ls.builtins.completion.luasnip,
         null_ls.builtins.diagnostics.erb_lint,
         null_ls.builtins.formatting.erb_lint,
-        null_ls.builtins.diagnostics.fish
+        null_ls.builtins.diagnostics.fish,
+        null_ls.builtins.formatting.swiftlint,
+        null_ls.builtins.diagnostics.swiftlint
     },
 })
 
