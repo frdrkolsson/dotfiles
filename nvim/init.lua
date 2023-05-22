@@ -23,7 +23,7 @@ require('packer').startup(function(use)
   use 'kchmck/vim-coffee-script'
   use 'fladson/vim-kitty'
 
-  use 'lukas-reineke/indent-blankline.nvim' -- A vim plugin to display the indention levels with thin vertical lines
+  use 'lukas-reineke/indent-blankline.nvim'              -- A vim plugin to display the indention levels with thin vertical lines
 
   use({ 'mrjones2014/dash.nvim', run = 'make install' }) -- 🏃💨 Search Dash.app from your Neovim fuzzy finder. Built with Rust 🦀 and Lua
 
@@ -175,14 +175,14 @@ vim.keymap.set('n', '<Leader>w', ':w!<CR>')            -- Save with leader w
 vim.keymap.set('n', '<Leader><Leader>', '<c-^>')       -- Switch between the last two files
 
 vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>')          -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>')          -- Search documentation through Dash
 vim.cmd([[
 nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 ]])                                                                      -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 
 vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>')        -- Format file
-vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')        -- Format file
+vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')                         -- ZenMode - Focus on current file only and center it
 -- }}}
 
 -- {{{ Requires
