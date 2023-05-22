@@ -114,6 +114,15 @@ require('packer').startup(function(use)
   use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } } -- nvim-dap adapter for vscode-js-debug
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
+  use({
+    'rcarriga/neotest',
+    requires = {
+      'marilari88/neotest-vitest',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-neotest/neotest-vim-test'
+    }
+  })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
@@ -196,4 +205,5 @@ require 'plugins.prettier'
 require 'plugins.nvim-dap'
 require 'plugins.nvim-dap-vscode-js'
 require 'plugins.dap-ui'
+require 'plugins.neotest'
 --- }}}
