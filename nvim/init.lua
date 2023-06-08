@@ -140,9 +140,9 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]                                                            -- Show line numbers
-vim.cmd [[set termguicolors]]                                                     -- Enable termgui colors
-vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
+vim.cmd [[set number]]        -- Show line numbers
+vim.cmd [[set termguicolors]] -- Enable termgui colors
+-- vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
 vim.cmd [[set laststatus=3]]
 -- }}}
 
