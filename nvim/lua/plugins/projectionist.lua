@@ -18,6 +18,23 @@ autocmd User ProjectionistDetect
 \        'export const {basename|camelcase} = () => {open}{close};'
 \      ]
 \    },
+\    'src/*.ts': {
+\      'alternate': [
+\        'src/test/{}.test.ts',
+\        'src/spec/{}.spec.ts'
+\      ],
+\      'template': [
+\        'export const {basename|camelcase} = () => {open}{close};'
+\      ]
+\    },
+\    'src/*.test.ts': {
+\      'alternate': [
+\        'src/{}.test.ts',
+\      ],
+\      'template': [
+\        "it('tests {basename}', () => {open}{close});",
+\      ]
+\    },
 \    'src/features/*.tsx': {
 \      'alternate': [
 \        'src/test/features/{}.test.tsx',

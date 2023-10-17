@@ -36,6 +36,7 @@ require('packer').startup(function(use)
     requires = 'nvim-lua/plenary.nvim',
   }
   use 'rhysd/git-messenger.vim'
+  use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   use 'tpope/vim-vinegar'       -- Combine with netrw to create a delicious salad dressing
   use 'tpope/vim-projectionist' -- Projectionist provides granular project configuration using "projections"
@@ -118,8 +119,10 @@ require('packer').startup(function(use)
     'rcarriga/neotest',
     requires = {
       'marilari88/neotest-vitest',
+      'haydenmeade/neotest-jest',
       'antoinemadec/FixCursorHold.nvim',
-      'nvim-neotest/neotest-vim-test'
+      'nvim-neotest/neotest-vim-test',
+      'olimorris/neotest-rspec',
     }
   })
 
@@ -140,8 +143,8 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]                                                            -- Show line numbers
-vim.cmd [[set termguicolors]]                                                     -- Enable termgui colors
+vim.cmd [[set number]]        -- Show line numbers
+vim.cmd [[set termguicolors]] -- Enable termgui colors
 vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
 vim.cmd [[set laststatus=3]]
 -- }}}
@@ -206,4 +209,5 @@ require 'plugins.nvim-dap'
 require 'plugins.nvim-dap-vscode-js'
 require 'plugins.dap-ui'
 require 'plugins.neotest'
+require 'plugins.neogit'
 --- }}}

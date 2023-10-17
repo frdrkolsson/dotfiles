@@ -24,3 +24,4 @@ require('telescope').load_extension('fzf')
 
 vim.keymap.set('n', '<Leader>ff', '<CMD>Telescope find_files<CR>') -- Search files by name
 vim.keymap.set('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>') -- Search file by content
+vim.keymap.set('n', '<Leader>fb', '<CMD>Telescope buffers<CR>') -- Search files by buffers

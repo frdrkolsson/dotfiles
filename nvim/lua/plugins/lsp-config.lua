@@ -1,8 +1,8 @@
 -- require('lspconfig').solargraph.setup()
 require('mason').setup()
 
-local servers = { 'lua_ls', 'tailwindcss', 'eslint_d', 'tsserver', 'sourcekit' }
-local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint_d', 'tsserver' }
+local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'tsserver', 'sourcekit', 'solargraph', 'rubocop' }
+local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint', 'tsserver', 'solargraph' }
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({
