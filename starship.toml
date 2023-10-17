@@ -6,6 +6,6 @@ success_symbol = "[➜](bold green)"     # The "symbol" segment is being set to 
 error_symbol = "[➜](bold red)"
 
 [aws]
-format = 'on [$symbol($profile )]($style)'
+format = '' # on [$symbol($profile )]($style)'
 [aws.region_aliases]
 eu-west-1 = 'IRL'
