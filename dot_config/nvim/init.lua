@@ -9,8 +9,8 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]        -- Show line numbers
-vim.cmd [[set termguicolors]] -- Enable termgui colors
+vim.cmd [[set number]]                                                            -- Show line numbers
+vim.cmd [[set termguicolors]]                                                     -- Enable termgui colors
 vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
 vim.cmd [[set laststatus=3]]
 -- }}}
@@ -19,26 +19,27 @@ vim.cmd [[set laststatus=3]]
 require 'plugins.lazy-bootstrap'
 
 require('lazy').setup({
-  { 'catppuccin/nvim', name = 'catppuccin' }, -- colorscheme
+  { 'catppuccin/nvim',  name = 'catppuccin' }, -- colorscheme
   {
     'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
   },
   'nvim-tree/nvim-web-devicons', -- lua `fork` of vim-web-devicons for neovim
-  { 'nvim-treesitter/nvim-treesitter',
-    build = function() require('nvim-treesitter.install').update({ with_sync = true }) end },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = function() require('nvim-treesitter.install').update({ with_sync = true }) end
+  },
   -- Language highlighting for languages not supported by treesitter
   'slim-template/vim-slim',
   'kchmck/vim-coffee-script',
   'fladson/vim-kitty',
 
-  'lukas-reineke/indent-blankline.nvim',              -- A vim plugin to display the indention levels with thin vertical lines
+  'lukas-reineke/indent-blankline.nvim', -- A vim plugin to display the indention levels with thin vertical lines
 
-  'janko-m/vim-test',                                 -- A Vim wrapper for running tests on different granularities.
-  'hovsater/vim-test-neovim-error-only',              -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
+  'janko-m/vim-test',                    -- A Vim wrapper for running tests on different granularities.
+  'hovsater/vim-test-neovim-error-only', -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
   'lewis6991/gitsigns.nvim',
-  {
-    'ruifm/gitlinker.nvim',
+  { 'ruifm/gitlinker.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
   },
   'rhysd/git-messenger.vim',
@@ -49,7 +50,7 @@ require('lazy').setup({
   'tpope/vim-fugitive',      -- A Git wrapper so awesome, it should be illegal
 
   'norcalli/nvim-colorizer.lua',
-  { 'nvim-telescope/telescope.nvim', dependencies = { { 'nvim-lua/plenary.nvim' } } },
+  { 'nvim-telescope/telescope.nvim',            dependencies = { { 'nvim-lua/plenary.nvim' } } },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   -- LSP
@@ -114,20 +115,24 @@ require('lazy').setup({
     end
   },
   "windwp/nvim-ts-autotag",
-  'mfussenegger/nvim-dap',                                                -- Debug Adapter Protocol client implementation for Neovim
+  'mfussenegger/nvim-dap',                                                     -- Debug Adapter Protocol client implementation for Neovim
   { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap" } },
 
   {
     'rcarriga/neotest',
+    lazy = true,
     dependencies = {
       'marilari88/neotest-vitest',
       'haydenmeade/neotest-jest',
       'antoinemadec/FixCursorHold.nvim',
       'nvim-neotest/neotest-vim-test',
       'olimorris/neotest-rspec',
+      'zidhuss/neotest-minitest',
+      'nvim-treesitter/nvim-treesitter'
     }
   },
+  { 'github/copilot.vim' },
 })
 -- }}}
 
