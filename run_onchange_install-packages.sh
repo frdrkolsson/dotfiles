@@ -20,7 +20,8 @@ defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 echo 'Install tmux package manager...'
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 echo 'Add ruby and nodejs to asdf...'
 asdf plugin add ruby
