@@ -16,6 +16,7 @@ SETUVAR _fish_abbr_ls:exa\x20\x2d\x2dicons
 SETUVAR _fish_abbr_n:nvim
 SETUVAR _fish_abbr_rpi:ssh\x20pi\x40raspberrypi\x2elocal
 SETUVAR _fish_abbr_vimconf:nvim\x20\x7e/\x2econfig/nvim/init\x2elua
+SETUVAR _fish_abbr_mc:mutagen-compose
 SETUVAR _fisher_budimanjojo_2F_tmux_2E_fish_files:\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eextra\x2econf\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eonly\x2econf\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux_abbrs\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ebudimanjojo/tmux\x2efish
