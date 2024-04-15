@@ -9,9 +9,10 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]                                                            -- Show line numbers
-vim.cmd [[set termguicolors]]                                                     -- Enable termgui colors
-vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 80
+vim.cmd [[set number]]                                                             -- Show line numbers
+vim.cmd [[set termguicolors]]                                                      -- Enable termgui colors
+vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']]  -- Editor ruler at 80
+vim.cmd [[set colorcolumn=120" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 120
 vim.cmd [[set laststatus=3]]
 -- }}}
 
@@ -39,13 +40,19 @@ require('lazy').setup({
   'hovsater/vim-test-neovim-error-only', -- A custom Neovim strategy for test.vim that reuses the terminal buffer for running tests and automatically close buffer on success.
 
   'lewis6991/gitsigns.nvim',
-  { 'ruifm/gitlinker.nvim',
+  {
+    'ruifm/gitlinker.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
   },
   'rhysd/git-messenger.vim',
   { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
-  'tpope/vim-vinegar',       -- Combine with netrw to create a delicious salad dressing
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   'tpope/vim-projectionist', -- Projectionist provides granular project configuration using "projections"
   'tpope/vim-fugitive',      -- A Git wrapper so awesome, it should be illegal
 
@@ -103,10 +110,7 @@ require('lazy').setup({
     end
   },
 
-  {
-    'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-  'jayp0521/mason-null-ls.nvim',
+  { 'codota/tabnine-nvim',       build = "./dl_binaries.sh" },
 
   {
     "windwp/nvim-autopairs",
@@ -120,9 +124,10 @@ require('lazy').setup({
   { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap" } },
 
   {
-    'rcarriga/neotest',
+    'nvim-neotest/neotest',
     lazy = true,
     dependencies = {
+      'nvim-neotest/nvim-nio',
       'marilari88/neotest-vitest',
       'haydenmeade/neotest-jest',
       'antoinemadec/FixCursorHold.nvim',
@@ -132,7 +137,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter'
     }
   },
-  { 'github/copilot.vim' },
 })
 -- }}}
 
@@ -171,7 +175,6 @@ nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.
 ]])                                                                      -- Search for word under cursor with telescope
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
 
-vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.format()<CR>')        -- Format file
 vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')                         -- ZenMode - Focus on current file only and center it
 -- }}}
 
@@ -184,7 +187,6 @@ require 'plugins.gitsigns'
 require 'plugins.gitlinker'
 require 'plugins.lsp-config'
 require 'plugins.nvim-cmp'
-require 'plugins.null-ls'
 require 'plugins.nvim-colorizer'
 require 'plugins.projectionist'
 require 'plugins.telescope'
@@ -197,4 +199,6 @@ require 'plugins.nvim-dap-vscode-js'
 require 'plugins.dap-ui'
 require 'plugins.neotest'
 require 'plugins.neogit'
+require 'plugins.tabnine'
+require 'plugins.oil'
 --- }}}

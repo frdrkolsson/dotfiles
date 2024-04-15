@@ -6,3 +6,5 @@ require('nvim-treesitter.configs').setup({
     enable = true
   }
 })
+
+vim.filetype.add({ extension = { snap = "html" } })
