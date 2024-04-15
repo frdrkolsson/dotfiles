@@ -9,11 +9,23 @@ vim.o.shiftwidth = 2
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]                                                             -- Show line numbers
-vim.cmd [[set termguicolors]]                                                      -- Enable termgui colors
-vim.cmd [[set colorcolumn=80" highlight ColorColumn ctermbg=0 guibg='#4E557980']]  -- Editor ruler at 80
-vim.cmd [[set colorcolumn=120" highlight ColorColumn ctermbg=0 guibg='#4E557980']] -- Editor ruler at 120
+vim.cmd [[set number]]        -- Show line numbers
+vim.cmd [[set termguicolors]] -- Enable termgui colors
+
+vim.api.nvim_create_augroup("custom_group", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  group = "custom_group",
+  callback = function ()
+  if vim.bo.filetype == 'ruby' then
+    vim.api.nvim_set_option_value("colorcolumn", "80", {}) -- Editor ruler at 80 for ruby
+  else
+    vim.api.nvim_set_option_value("colorcolumn", "120", {}) -- Editor ruler at 120 for everything else
+  end
+end
+})
 vim.cmd [[set laststatus=3]]
+
+
 -- }}}
 
 -- Plugins {{{
