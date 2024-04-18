@@ -2,6 +2,7 @@ tap "apple/apple", "http://github.com/apple/homebrew-apple"
 tap "fsouza/prettierd"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "FelixKratz/formulae"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -44,6 +45,8 @@ brew "tmux"
 brew "wget"
 # prettier, on SPEED!
 brew "fsouza/prettierd/prettierd"
+# A highly customizable macOS status bar replacement
+brew "sketchybar"
 # Memory training application
 cask "anki"
 cask "cursorcerer"
