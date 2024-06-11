@@ -9,4 +9,5 @@ source "$PLUGIN_DIR/colors.sh"
 
 sketchybar --set $NAME \
   label="$(date '+%a %d %b %Y %H:%M:%S')" \
-  icon= icon.color=$MAROON
+  icon= icon.color=$MAROON \
+  click_script="open -a 'Calendar'"

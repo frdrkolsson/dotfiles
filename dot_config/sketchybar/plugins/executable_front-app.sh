@@ -12,7 +12,8 @@ if [ "$SENDER" = "front_app_switched" ]; then
   sketchybar --set "$NAME" label="$INFO"
 fi
 
-ICON_COLOR=$RANDOM_CAT_COLOR
+TEXT_COLOR=0xaa000000
+BACKGROUND_COLOR=$RANDOM_CAT_COLOR
 
 case $INFO in
   "Arc")
@@ -20,121 +21,134 @@ case $INFO in
     ICON=󰞍
     ;;
   "Bitwarden")
-    ICON=󰞀
-    ICON_COLOR=$BLUE
+    ICON=􀙨
+    BACKGROUND_COLOR=$BLUE
     ;;
-  "vscode")
+  "Code")
     ICON_PADDING_RIGHT=2
-    ICON_COLOR=0xff22a1f0
+    BACKGROUND_COLOR=0xff22a1f0
     ICON=󰨞
     ;;
   "Kalender")
-    ICON=
+    ICON=􀉉
     ;;
   "Kartor")
-    ICON=
-    ICON_COLOR=$GREEN
+    ICON=􀙋
+    BACKGROUND_COLOR=$GREEN
     ;;
   "Påminnelser")
-    ICON=
+    ICON=􀷾
     ;;
   "Mail")
-    ICON=
-    ICON_COLOR=$SAPPHIRE
+    ICON=􀍖
+    BACKGROUND_COLOR=$SAPPHIRE
     ;;
   "Discord")
-    ICON_COLOR=$LAVENDER
+    BACKGROUND_COLOR=$LAVENDER
     ICON=󰙯
     ;;
   "FaceTime")
-    ICON=
-    ICON_COLOR=$GREEN
+    ICON=􀌿
+    BACKGROUND_COLOR=$GREEN
     ;;
   "Finder")
-    ICON_COLOR=$SKY
+    BACKGROUND_COLOR=$SKY
     ICON=󰀶
     ;;
   "Firefox")
     ICON=󰈹
+    BACKGROUND_COLOR=$RED
     ;;
   "Google Chrome")
     ICON=
     ;;
   "IINA")
     ICON=󰕼
-    ICON_COLOR=$MAROON
+    BACKGROUND_COLOR=$MAROON
     ;;
   "Infuse")
-    ICON=󰕼
-    ICON_COLOR=$PEACH
+    ICON=􀊃
+    BACKGROUND_COLOR=$PEACH
     ;;
   "iTerm")
     ICON=󰄛
     ;;
   "Logic Pro")
     ICON=
-    ICON_COLOR=$FLAMINGO
+    BACKGROUND_COLOR=$FLAMINGO
     ;;
   "Meddelanden")
-    ICON=󰍦
-    ICON_COLOR=$GREEN
+    ICON=􀌥
+    BACKGROUND_COLOR=$GREEN
     ;;
   "Notion")
-    ICON_COLOR=$TEXT
+    BACKGROUND_COLOR=$TEXT
     ICON=󰰒
     ;;
   "Förhandsvisning")
-    ICON_COLOR=$BLUE
-    ICON=
+    BACKGROUND_COLOR=$BLUE
+    ICON=􀏆
+    ;;
+  "Bilder")
+    BACKGROUND_COLOR=$BLUE
+    ICON=􀏬
     ;;
   "PS Remote Play")
     ICON=
     ;;
   "Riot Client")
     ICON=
-    ICON_COLOR=$TEXT
+    BACKGROUND_COLOR=$TEXT
     ;;
   "League of Legends")
-    ICON=󰰎
-    ICON_COLOR=$YELLOW
+    ICON=􀀚
+    BACKGROUND_COLOR=$YELLOW
     ;;
   "Cider")
-    ICON_COLOR=0xff24D44E
+    BACKGROUND_COLOR=0xff24D44E
     ICON=
     ;;
   "Musik")
-    ICON_COLOR=$RED
+    BACKGROUND_COLOR=$RED
     ICON=
     ;;
   "TextEdit")
     ICON=
     ;;
-  "Transmission")
-    ICON=󰶘
+  "Fork")
+    ICON=􀸩
+    BACKGROUND_COLOR=$SKY
     ;;
   "Safari")
     ICON=
-    ICON_COLOR=$SAPPHIRE
+    BACKGROUND_COLOR=$SAPPHIRE
     ;;
   "Slack")
     ICON=
-    ICON_COLOR=$MAROON
+    BACKGROUND_COLOR=$MAROON
     ;;
   "kitty")
-    ICON=
-    ICON_COLOR=$MAUVE
+    ICON=􀪏
+    BACKGROUND_COLOR=$MAUVE
     ;;
   "zoom.us")
-    ICON=
-    ICON_COLOR=0xff2D8CFF
+    ICON=􀊬
+    BACKGROUND_COLOR=$BLUE
+    ;;
+  "Väder")
+    ICON=􀇔
+    BACKGROUND_COLOR=$YELLOW
     ;;
   *)
-    # INFO="Unknown"
-    ICON_COLOR=0xffff94c6
-    ICON=﯂
+    BACKGROUND_COLOR=0xffff94c6
+    ICON=􀏜
     ;;
 esac
 
 sketchybar --set $NAME \
-  icon=$ICON icon.color=$ICON_COLOR \
-  label="$INFO"
+           label="$INFO"
+
+sketchybar --animate sin 15 --set $NAME \
+           icon.color=$TEXT_COLOR label.color=$TEXT_COLOR \
+           icon=$ICON \
+           background.color=$BACKGROUND_COLOR

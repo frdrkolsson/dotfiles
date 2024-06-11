@@ -54,7 +54,7 @@ fi
 # fi
 
 sketchybar -m --set music icon="$icon" icon.color="$ICON_COLOR" \
-    --set music label="${title} x ${artist}"    \
+    --set music label="${title} x ${artist}" label.padding_right=20    \
     --set music drawing=on \
     --set music label.max_chars=40 \
     --set music scroll_texts=on \

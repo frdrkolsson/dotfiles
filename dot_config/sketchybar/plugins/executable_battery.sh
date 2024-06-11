@@ -35,10 +35,11 @@ esac
 
 if [[ $CHARGING != "" ]]; then
   ICON=􀢋
-  ICON_COLOR=$YELLOW
+  ICON_COLOR=$GREEN
 fi
 
 sketchybar --set $NAME \
   icon=$ICON \
   label="${PERCENTAGE}%" \
-  icon.color=${ICON_COLOR}
+  icon.color=${ICON_COLOR} \
+  click_script="open /System/Library/PreferencePanes/Battery.prefPane"

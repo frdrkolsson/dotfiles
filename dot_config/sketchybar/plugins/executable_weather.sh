@@ -19,35 +19,35 @@ if [ -z $WEATHER_JSON ]; then
 fi
 
 TEMPERATURE=$(echo $WEATHER_JSON | jq '.current_condition[0].temp_C' | tr -d '"')
-WEATHER_DESCRIPTION=$(echo $WEATHER_JSON | jq '.current_condition[0].weatherDesc[0].value' | tr -d '"' | sed 's/\(.\{16\}\).*/\1.../')
+WEATHER_DESCRIPTION=$(echo $WEATHER_JSON | jq '.current_condition[0].weatherDesc[0].value' | tr -d '"')
 
 case ${WEATHER_DESCRIPTION} in
   "Sunny")
-    ICON=􀆭
+    ICON=􀆮
     COLOR="$YELLOW"
     ;;
   "Partly cloudy")
-    ICON=􀇔
+    ICON=􀇕
     COLOR="$LAVENDER"
     ;;
   "Cloudy")
-    ICON=􀇂
+    ICON=􀇃
     COLOR="$LAVENDER"
     ;;
   "Overcast")
-    ICON=􀇂
+    ICON=􀇃
     COLOR="$LAVENDER"
     ;;
   "Fog")
-    ICON=􀇊
+    ICON=􀇋
     COLOR="$LAVENDER"
     ;;
   "Clear")
-    ICON=􀆭
+    ICON=􀆮
     COLOR="$YELLOW"
     ;;
   "Mist")
-    ICON="􀇊 "
+    ICON="􀇋 "
     COLOR="$SAPPHIRE"
     ;;
   "Patchy rain possible")
@@ -79,7 +79,7 @@ case ${WEATHER_DESCRIPTION} in
     COLOR="$SAPPHIRE"
     ;;
   "Freezing fog")
-    ICON="􀇊 "
+    ICON="􀇋 "
     COLOR="$SAPPHIRE"
     ;;
   "Patchy light drizzle")
@@ -90,12 +90,16 @@ case ${WEATHER_DESCRIPTION} in
     ICON=
     COLOR="$SAPPHIRE"
     ;;
+  "Light drizzle and rain")
+    ICON="􀙖"
+    COLOR="$SAPPHIRE"
+    ;;
   "Freezing drizzle")
     ICON=
     COLOR="$SAPPHIRE"
     ;;
   "Heavy freezing drizzle")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Patchy light rain")
@@ -131,39 +135,39 @@ case ${WEATHER_DESCRIPTION} in
     COLOR="$SAPPHIRE"
     ;;
   "Light sleet")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Moderate or heavy sleet")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Patchy light snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Light snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Patchy moderate snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Moderate snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Patchy heavy snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Heavy snow")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Ice pellets")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Light rain shower")
@@ -179,11 +183,11 @@ case ${WEATHER_DESCRIPTION} in
     COLOR="$SAPPHIRE"
     ;;
   "Light sleet showers")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Moderate or heavy sleet showers")
-    ICON="􀇎"
+    ICON="􀇏"
     COLOR="$SAPPHIRE"
     ;;
   "Light snow showers")
@@ -213,5 +217,9 @@ esac
 
 sketchybar --set $NAME \
   label="$TEMPERATURE$(echo '°')C • $WEATHER_DESCRIPTION" \
+  label.max_chars=20 \
+  scroll_texts=on \
+  label.scroll_duration=300 \
   icon=$ICON \
-  icon.color=$COLOR
+  icon.color=$COLOR \
+  click_script="open -a 'Weather'"

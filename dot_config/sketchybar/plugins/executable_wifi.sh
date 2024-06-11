@@ -7,4 +7,8 @@ SSID="$(networksetup -listallhardwareports | awk '/Wi-Fi/{getline; print $2}' | 
 
 sketchybar --set $NAME \
   icon=􀙇  icon.color=$SAPPHIRE \
-  label="$SSID"
+  label="$SSID" \
+  label.max_chars=10 \
+  scroll_texts=on \
+  label.scroll_duration=100
+  click_script="open /System/Library/PreferencePanes/Network.prefPane"

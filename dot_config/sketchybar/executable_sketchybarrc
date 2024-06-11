@@ -1,4 +1,4 @@
-BG=0x00000000
+TRANSPARENT_BG=0x00000000
 
 FONT="JetBrainsMono Nerd Font"
 FONT_SIZE=14
@@ -10,9 +10,10 @@ ITEM_COLOR=0xFF000000
 GAP=10
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+source "$PLUGIN_DIR/colors.sh"
 
 sketchybar --bar \
-  y_offset=5 \
+  y_offset=6 \
   height=34 \
   corner_radius=100 \
   blur_radius=8 \
@@ -22,8 +23,8 @@ sketchybar --bar \
   padding_right=11 \
   shadow.color=0x28000000 \
   shadow.angle=0 \
-  color=$BG \
-  notch_width=100 \
+  color=$TRANSPARENT_BG \
+  notch_width=210 \
 
 sketchybar --default \
   label.font="$FONT:Regular:$FONT_SIZE" label.color=$FONT_COLOR \
@@ -70,12 +71,10 @@ sketchybar --add item battery right \
   script="$PLUGIN_DIR/battery.sh" \
   update_freq=1
 
-
 sketchybar --add item weather right \
   --set weather \
   script="$PLUGIN_DIR/weather.sh" \
-  update_freq=300
-
+  update_freq=7200
 
 sketchybar --add item front-app left \
   --set front-app \
@@ -91,8 +90,8 @@ sketchybar -m --add event song_update com.apple.iTunes.playerInfo
 sketchybar -m --add item music left \
     --set music script="$PLUGIN_DIR/music.sh"  \
     click_script="$PLUGIN_DIR/music_click.sh"  \
-    label.padding_right=10                                   \
-    drawing=off                                              \
+    label.padding_right=10                     \
+    drawing=off                                \
     --subscribe music song_update
 
 sketchybar --update
