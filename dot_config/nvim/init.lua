@@ -6,24 +6,24 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.number = true        -- Show line numbers
+vim.o.termguicolors = true -- Enable termgui colors
+vim.o.laststatus = 3
 
 vim.g.mapleader = ' '
 
-vim.cmd [[set number]]        -- Show line numbers
-vim.cmd [[set termguicolors]] -- Enable termgui colors
 
 vim.api.nvim_create_augroup("custom_group", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = "custom_group",
-  callback = function ()
-  if vim.bo.filetype == 'ruby' then
-    vim.api.nvim_set_option_value("colorcolumn", "80", {}) -- Editor ruler at 80 for ruby
-  else
-    vim.api.nvim_set_option_value("colorcolumn", "120", {}) -- Editor ruler at 120 for everything else
+  callback = function()
+    if vim.bo.filetype == 'ruby' then
+      vim.api.nvim_set_option_value("colorcolumn", "80", {})  -- Editor ruler at 80 for ruby
+    else
+      vim.api.nvim_set_option_value("colorcolumn", "120", {}) -- Editor ruler at 120 for everything else
+    end
   end
-end
 })
-vim.cmd [[set laststatus=3]]
 
 
 -- }}}
@@ -32,11 +32,9 @@ vim.cmd [[set laststatus=3]]
 require 'plugins.lazy-bootstrap'
 
 require('lazy').setup({
-  { 'catppuccin/nvim',  name = 'catppuccin' }, -- colorscheme
-  {
-    'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
-  },
-  'nvim-tree/nvim-web-devicons', -- lua `fork` of vim-web-devicons for neovim
+  { 'catppuccin/nvim',           name = 'catppuccin' }, -- colorscheme
+  { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true } },
+  'nvim-tree/nvim-web-devicons',                        -- lua `fork` of vim-web-devicons for neovim
   {
     'nvim-treesitter/nvim-treesitter',
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end
@@ -57,7 +55,7 @@ require('lazy').setup({
     dependencies = 'nvim-lua/plenary.nvim',
   },
   'rhysd/git-messenger.vim',
-  { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
+  { 'NeogitOrg/neogit',                         dependencies = 'nvim-lua/plenary.nvim' },
 
   {
     'stevearc/oil.nvim',
@@ -122,7 +120,7 @@ require('lazy').setup({
     end
   },
 
-  { 'codota/tabnine-nvim',       build = "./dl_binaries.sh" },
+  { 'codota/tabnine-nvim',          build = "./dl_binaries.sh" },
 
   {
     "windwp/nvim-autopairs",
@@ -131,9 +129,11 @@ require('lazy').setup({
     end
   },
   "windwp/nvim-ts-autotag",
-  'mfussenegger/nvim-dap',                                                     -- Debug Adapter Protocol client implementation for Neovim
-  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
-  { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap" } },
+  'mfussenegger/nvim-dap',                                                        -- Debug Adapter Protocol client implementation for Neovim
+  { "mxsdev/nvim-dap-vscode-js",    dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
+  { "rcarriga/nvim-dap-ui",         dependencies = { "mfussenegger/nvim-dap" } },
+  { 'wakatime/vim-wakatime',        lazy = false },
+  { 'ActivityWatch/aw-watcher-vim', lazy = false },
 
   {
     'nvim-neotest/neotest',
@@ -177,16 +177,11 @@ end
 
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
-vim.keymap.set('n', '<Leader>w', ':w!<CR>')            -- Save with leader w
-vim.keymap.set('n', '<Leader><Leader>', '<c-^>')       -- Switch between the last two files
-
-vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>')          -- Search documentation through Dash
-vim.cmd([[
-nnoremap <leader>g :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-]])                                                                      -- Search for word under cursor with telescope
+vim.keymap.set('n', '<Leader>w', ':w!<CR>')                              -- Save with leader w
+vim.keymap.set('n', '<Leader><Leader>', '<c-^>')                         -- Switch between the last two files
+vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>')                   -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>')                            -- Search documentation through Dash
 vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
-
 vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')                         -- ZenMode - Focus on current file only and center it
 -- }}}
 

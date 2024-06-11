@@ -11,19 +11,17 @@ local js_languages = { "typescript", "javascript", "typescriptreact", "typescrip
 for _, language in ipairs(js_languages) do
   dap.configurations[language] = {
     {
-      {
-        type = "pwa-node",
-        request = "launch",
-        name = "Launch Test Program (pwa-node with vitest)",
-        cwd = "${workspaceFolder}",
-        program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-        args = { "--threads", "false", },
-        autoAttachChildProcesses = false,
-        trace = true,
-        console = "integratedTerminal",
-        sourceMaps = true,
-        smartStep = true,
-      },
-    }
+      type = "pwa-node",
+      request = "launch",
+      name = "Launch Test Program (pwa-node with vitest)",
+      cwd = "${workspaceFolder}",
+      program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      args = { "--threads", "false", },
+      autoAttachChildProcesses = false,
+      trace = true,
+      console = "integratedTerminal",
+      sourceMaps = true,
+      smartStep = true,
+    },
   }
 end
