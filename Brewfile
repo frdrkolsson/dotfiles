@@ -14,7 +14,7 @@ brew "chezmoi"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Modern replacement for 'ls'
-brew "exa"
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems

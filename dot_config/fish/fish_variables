@@ -12,7 +12,7 @@ SETUVAR _fish_abbr_gs:git\x20switch
 SETUVAR _fish_abbr_gsc:git\x20switch\x20\x2dc
 SETUVAR _fish_abbr_gsd:git\x20switch\x20\x2dd
 SETUVAR _fish_abbr_gsom:git\x20switch\x20\x2dd\x20origin/main
-SETUVAR _fish_abbr_ls:exa\x20\x2d\x2dicons
+SETUVAR _fish_abbr_ls:eza\x20\x2d\x2dicons
 SETUVAR _fish_abbr_mc:mutagen\x2dcompose
 SETUVAR _fish_abbr_n:nvim
 SETUVAR _fish_abbr_rpi:ssh\x20pi\x40raspberrypi\x2elocal
