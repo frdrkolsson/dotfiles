@@ -1,8 +1,7 @@
--- require('lspconfig').solargraph.setup()
 require('mason').setup()
 
-local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'tsserver', 'sourcekit', 'solargraph', 'rubocop', 'cssls' }
-local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint', 'tsserver', 'solargraph', 'cssls' }
+local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'sourcekit', 'cssls', 'ruby_lsp' }
+local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'cssls', 'ruby_lsp' }
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({
@@ -14,11 +13,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require('lspconfig')
-for _, server_name in ipairs(servers) do
-  lspconfig[server_name].setup {
-    capabilities = capabilities
-  }
-end
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    lspconfig[server_name].setup {
+      capabilities = capabilities,
+      settings = servers[server_name],
+    }
+  end
+}
 
 
 lspconfig.lua_ls.setup {
@@ -28,12 +31,13 @@ lspconfig.lua_ls.setup {
       diagnostics = {
         globals = { 'vim' }
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    }
-  }
+    },
+  }, servers = {
+    ruby_lsp = {
+      mason = false,
+      cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
+    },
+  },
 }
 
 lspconfig.cssls.setup {
@@ -42,6 +46,8 @@ lspconfig.cssls.setup {
     provideFormatter = true
   },
 }
+
+lspconfig.jdtls.setup({})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -63,7 +69,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
@@ -71,7 +76,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'td', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)

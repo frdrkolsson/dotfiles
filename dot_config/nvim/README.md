@@ -22,7 +22,7 @@ Feel free to use.
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Statusline
 * [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - Icons with colors, used by lualine and other plugins
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Syntax highlighting using tree-sitter, a parser generator tool and an incremental parsing library written in rust.
-* [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time.
+* [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua.
 
 ### LSP
 

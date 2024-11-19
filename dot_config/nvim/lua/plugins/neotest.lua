@@ -41,19 +41,19 @@ neotest.setup({
     require('neotest-vim-test')({ allow_file_types = { 'swift' } }),
   },
   discovery = {
-		enabled = false,
-	},
+    enabled = false,
+  },
 })
 
 vim.keymap.set('n', '<Leader>tf', function()
-  local absolutePathToTestFile = vim.fn.expand('%:p')
-  local relativeTestFile = vim.fn.expand('%')
-  if string.find(absolutePathToTestFile, kingsLandingPath) then
-    print()
-    relativeTestFile = string.gsub(relativeTestFile, 'client/', '')
-  end
-  neotest.run.run(relativeTestFile)
-end,
+    local absolutePathToTestFile = vim.fn.expand('%:p')
+    local relativeTestFile = vim.fn.expand('%')
+    if string.find(absolutePathToTestFile, kingsLandingPath) then
+      print()
+      relativeTestFile = string.gsub(relativeTestFile, 'client/', '')
+    end
+    neotest.run.run(relativeTestFile)
+  end,
   { desc = 'neotest: Run test file' })
 vim.keymap.set('n', '<Leader>tr', function() neotest.run.run { suite = true } end,
   { desc = 'neotest: Run the entire suite' })

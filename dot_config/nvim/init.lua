@@ -12,7 +12,6 @@ vim.o.laststatus = 3
 
 vim.g.mapleader = ' '
 
-
 vim.api.nvim_create_augroup("custom_group", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = "custom_group",
@@ -55,7 +54,7 @@ require('lazy').setup({
     dependencies = 'nvim-lua/plenary.nvim',
   },
   'rhysd/git-messenger.vim',
-  { 'NeogitOrg/neogit',                         dependencies = 'nvim-lua/plenary.nvim' },
+  { 'NeogitOrg/neogit',         dependencies = 'nvim-lua/plenary.nvim' },
 
   {
     'stevearc/oil.nvim',
@@ -67,8 +66,11 @@ require('lazy').setup({
   'tpope/vim-fugitive',      -- A Git wrapper so awesome, it should be illegal
 
   'norcalli/nvim-colorizer.lua',
-  { 'nvim-telescope/telescope.nvim',            dependencies = { { 'nvim-lua/plenary.nvim' } } },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons", { "junegunn/fzf", build = "./install --bin" } }
+  },
 
   -- LSP
   'williamboman/mason.nvim',
@@ -120,7 +122,10 @@ require('lazy').setup({
     end
   },
 
-  { 'codota/tabnine-nvim',          build = "./dl_binaries.sh" },
+  --{ 'codota/tabnine-nvim',      build = "./dl_binaries.sh" },
+  { 'zbirenbaum/copilot.lua' },
+  { 'zbirenbaum/copilot-cmp' },
+  { 'AndreM222/copilot-lualine' },
 
   {
     "windwp/nvim-autopairs",
@@ -149,6 +154,28 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter'
     }
   },
+  { 'nvim-java/nvim-java' },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "written",
+          },
+          opts = { skip = true },
+        },
+      },
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  }
 })
 -- }}}
 
@@ -177,18 +204,20 @@ end
 
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
-vim.keymap.set('n', '<Leader>w', ':w!<CR>')                              -- Save with leader w
-vim.keymap.set('n', '<Leader><Leader>', '<c-^>')                         -- Switch between the last two files
-vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>')                   -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>')                            -- Search documentation through Dash
-vim.keymap.set('n', '<Leader>fr', ':source ~/.config/nvim/init.lua<CR>') -- Source config
-vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>')                         -- ZenMode - Focus on current file only and center it
+vim.keymap.set('n', '<Leader>w', '<cmd>:w!<CR>')                -- Save with leader w
+vim.keymap.set('n', '<Leader><Leader>', '<c-^>')                -- Switch between the last two files
+vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>')          -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>')                   -- Search documentation through Dash
+vim.keymap.set('n', '<Leader>z', '<cmd>:ZenMode<CR>')           -- ZenMode - Focus on current file only and center it
+vim.keymap.set('n', '<Leader><Esc>', '<cmd>:Noice dismiss<CR>') -- Noice - Dismiss messages
 -- }}}
 
 -- {{{ Requires
 -- require 'plugins' -- TODO: did not get this one to work in separate plugins init file
 
 require 'plugins.catppuccin'
+require 'plugins.copilot'
+require 'plugins.nvim-java'
 require 'plugins.lualine'
 require 'plugins.gitsigns'
 require 'plugins.gitlinker'
@@ -196,7 +225,7 @@ require 'plugins.lsp-config'
 require 'plugins.nvim-cmp'
 require 'plugins.nvim-colorizer'
 require 'plugins.projectionist'
-require 'plugins.telescope'
+require 'plugins.fzf-lua'
 require 'plugins.treesitter'
 require 'plugins.luasnip'
 require 'plugins.lspsaga'
