@@ -1,106 +1,133 @@
 tap "apple/apple", "http://github.com/apple/homebrew-apple"
+tap "felixkratz/formulae"
 tap "fsouza/prettierd"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "FelixKratz/formulae"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
-# Clone of cat(1) with syntax highlighting and Git integration
+tap "homebrew/services"
+tap "marcus-crane/tap"
+tap "mutagen-io/mutagen"
+tap "playcover/playcover"
+brew "awscli"
+brew "libgit2"
 brew "bat"
-# Secure and free password manager for all of your devices
+brew "node"
 brew "bitwarden-cli"
-# Manage your dotfiles across multiple diverse machines, securely
-brew "chezmoi"
-# Load/unload environment variables based on $PWD
-brew "direnv"
-# Modern replacement for 'ls'
-brew "eza"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
-# GNU compiler collection
 brew "gcc"
-# Distributed revision control system
+brew "cava"
+brew "chezmoi"
+brew "cmake"
+brew "csview"
+brew "deno"
+brew "exercism"
+brew "eza"
+brew "faust"
+brew "fd"
+brew "ffmpeg"
+brew "fish"
+brew "gh"
 brew "git"
-# Improved top (interactive process viewer)
+brew "git-delta"
+brew "glow"
 brew "htop"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# NCurses Disk Usage
-brew "ncdu"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
-# Development kit for the Java programming language
+brew "imagemagick"
 brew "openjdk"
-# Search tool like grep and The Silver Searcher
+brew "jdtls"
+brew "jq"
+brew "libgit2@1.7"
+brew "libyaml"
+brew "llvm"
+brew "llvm@15"
+brew "lolcat"
+brew "mise"
+brew "nasm"
+brew "ncdu"
+brew "neofetch"
+brew "neovim"
+brew "ollama"
+brew "pnpm"
+brew "postgresql@14"
 brew "ripgrep"
-# Cross-shell prompt for astronauts
+brew "rust"
 brew "starship"
-# Simplified and community-driven man pages
+brew "terminal-notifier"
+brew "testdisk"
 brew "tldr"
-# Terminal multiplexer
 brew "tmux"
-# Internet file retriever
+brew "vercel-cli"
+brew "viu"
+brew "watchman"
 brew "wget"
-# prettier, on SPEED!
+brew "xcbeautify"
+brew "xcode-build-server"
+brew "yt-dlp"
+brew "felixkratz/formulae/sketchybar"
 brew "fsouza/prettierd/prettierd"
-# A highly customizable macOS status bar replacement
-brew "sketchybar"
-# Memory training application
+brew "marcus-crane/tap/khinsider"
+brew "mutagen-io/mutagen/mutagen-compose"
+cask "activitywatch"
 cask "anki"
+cask "audacity"
+cask "battle-net"
+cask "bruno"
+cask "calibre"
 cask "cursorcerer"
-# API documentation browser and code snippet manager
 cask "dash"
-# Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
 cask "docker"
-# Google Chromium, sans integration with Google
 cask "eloston-chromium"
-# Collaborative team software
 cask "figma"
-# Web browser
 cask "firefox"
-# Typeface made for developers
 cask "font-jetbrains-mono"
-# Developer targeted fonts with a high number of glyphs
 cask "font-jetbrains-mono-nerd-font"
-# GIT client
+cask "font-monaspace"
 cask "fork"
-# Graphically shows disk usage within a file system
+cask "ghostty"
 cask "grandperspective"
-# Free and open-source media player
+cask "hyper"
 cask "iina"
-# HTTP and GraphQL Client
+cask "inkscape"
 cask "insomnia"
-# File archiver
 cask "keka"
-# GPU-based terminal emulator
+cask "keycastr"
 cask "kitty"
-# Reverse proxy, secure introspectable tunnels to localhost
+cask "krita"
+cask "league-of-legends"
+cask "mark-text"
+cask "microsoft-auto-update"
+cask "minecraft"
+cask "mp3tag"
 cask "ngrok"
-# App to write, plan, collaborate, and get organized
 cask "notion"
-# Simple Gtk# Paint Program
+cask "openemu"
+cask "openmtp"
+cask "openvpn-connect"
 cask "pinta"
-# Peer to peer Bitorrent client
+cask "playcover-community"
 cask "qbittorrent"
-# Control your tools with a few keystrokes
+cask "rawtherapee"
 cask "raycast"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
-# Team communication and collaboration software
+cask "sf-symbols"
 cask "slack"
-# Quicklook extension for source files
+cask "sonos"
+cask "steam"
 cask "syntax-highlight"
-# Open-source code editor
+cask "toinane-colorpicker"
+cask "tor-browser"
 cask "visual-studio-code"
-vscode "Catppuccin.catppuccin-vsc"
+cask "whatsapp"
+cask "wowup"
+cask "zoom"
+vscode "castwide.solargraph"
+vscode "catppuccin.catppuccin-vsc"
 vscode "dbaeumer.vscode-eslint"
 vscode "eamodio.gitlens"
-vscode "EditorConfig.EditorConfig"
+vscode "editorconfig.editorconfig"
+vscode "elia.erb-formatter"
 vscode "esbenp.prettier-vscode"
+vscode "misogi.ruby-rubocop"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode.live-server"
 vscode "ms-vsliveshare.vsliveshare"
+vscode "rubocop.vscode-rubocop"
+vscode "shopify.ruby-lsp"

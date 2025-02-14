@@ -4,6 +4,7 @@ SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_buc:brew\x20update\x20\x26\x26\x20brew\x20upgrade\x20\x26\x26\x20brew\x20upgrade\x20\x2d\x2dcask
 SETUVAR _fish_abbr_cat:bat\x20\x2d\x2dtheme\x3dOneHalfDark
 SETUVAR _fish_abbr_dc:docker\x20compose
+SETUVAR _fish_abbr_dcr:docker\x20compose\x20exec\x20\x2de\x20RAILS_ENV\x3dtest\x20\x2de\x20MUTANT\x3d1\x20web\x20bundle\x20exec\x20rspec
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_glo:git\x20log\x20\x2d\x2doneline\x20\x2d\x2dgraph
 SETUVAR _fish_abbr_gri:git\x20rebase\x20\x2di\x20origin/main
@@ -14,6 +15,7 @@ SETUVAR _fish_abbr_gsd:git\x20switch\x20\x2dd
 SETUVAR _fish_abbr_gsom:git\x20switch\x20\x2dd\x20origin/main
 SETUVAR _fish_abbr_ls:eza\x20\x2d\x2dicons
 SETUVAR _fish_abbr_mc:mutagen\x2dcompose
+SETUVAR _fish_abbr_mcr:mutagen\x2dcompose\x20exec\x20\x2de\x20RAILS_ENV\x3dtest\x20\x2de\x20MUTANT\x3d1\x20mutagen\x2dweb\x20bundle\x20exec\x20rspec
 SETUVAR _fish_abbr_n:nvim
 SETUVAR _fish_abbr_rpi:ssh\x20pi\x40raspberrypi\x2elocal
 SETUVAR _fish_abbr_vimconf:nvim\x20\x7e/\x2econfig/nvim/init\x2elua

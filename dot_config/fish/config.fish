@@ -1,7 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set -x EDITOR nvim
-    set -x DIRENV_LOG_FORMAT
 
     # kubernetes cluster environment
     # set -x AWS_PROFILE precisit
@@ -12,12 +11,6 @@ if status is-interactive
     # set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$(brew --prefix openssl@1.1)"
     set -Ux fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 end
-
-# asdf and direnv
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
-
-direnv hook fish   | source
-direnv export fish | source
 
 # prompt
 starship init fish | source

@@ -15,29 +15,30 @@ neotest.setup({
     }),
     require("neotest-rspec")({
       rspec_cmd = "./neotest-run-in-docker.sh",
-    }),
-    require('neotest-jest')({
-      jestCommand = function()
-        -- local absolutePathToTest = vim.fn.expand('%:p')
-        -- if string.find(absolutePathToTest, kingsLandingPath) then
-        --   return 'cd client/ && npm test --'
-        -- end
-        return 'npm test'
-      end,
-      jestConfigFile = 'custom.jest.config.ts',
-      env = { CI = true },
-      cwd = function(path)
-        --if string.find(path, kingsLandingPath) then
-        --  local abosultPathToTest = vim.fn.expand('%:p')
-        --  local relativePathToTest = vim.fn.expand('%')
-        --  local cwd = string.gsub(abosultPathToTest, relativePathToTest, '')
-        --  print(cwd)
-        --  return cwd
-        --end
+      -- rspec_cmd = function()
+      --   return vim.tbl_flatten({
+      --     "mutagen-compose",
+      --     "exec",
+      --     -- "-w", "/app",
+      --     "-e", "RAILS_ENV=test",
+      --     "-e", "MUTANT=1",
+      --     "mutagen-web",
+      --     -- "app",
+      --     "bundle",
+      --     "exec",
+      --     "rspec"
+      --   })
+      -- end,
 
-        return vim.fn.getcwd()
-      end,
+      -- transform_spec_path = function(path)
+      --   local prefix = require('neotest-rspec').root(path)
+      --   return string.sub(path, string.len(prefix) + 2, -1)
+      -- end,
+
+      -- results_path = "tmp/rspec.output",
+      formatter = "json"
     }),
+    require('neotest-jest'),
     require('neotest-vim-test')({ allow_file_types = { 'swift' } }),
   },
   discovery = {

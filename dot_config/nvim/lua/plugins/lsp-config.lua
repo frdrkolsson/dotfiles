@@ -1,7 +1,7 @@
 require('mason').setup()
 
-local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'sourcekit', 'cssls', 'ruby_lsp' }
-local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'cssls', 'ruby_lsp' }
+local servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'sourcekit', 'cssls', 'ruby_lsp', 'stylelint_lsp' }
+local mason_servers = { 'lua_ls', 'tailwindcss', 'eslint', 'ts_ls', 'cssls', 'ruby_lsp', 'stylelint_lsp'}
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({

@@ -1,0 +1,12 @@
+
+theme = catppuccin-macchiato.conf
+
+font-family = Monaspace Neon Var
+font-family-italic = Monaspace Argon Var
+font-feature = calt, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, liga
+
+font-size = 14.0
+font-thicken = true
+# font-thicken-strength = 255
+# adjust-cell-width = -5%
+adjust-cell-height = -12%

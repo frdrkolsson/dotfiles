@@ -122,7 +122,6 @@ require('lazy').setup({
     end
   },
 
-  --{ 'codota/tabnine-nvim',      build = "./dl_binaries.sh" },
   { 'zbirenbaum/copilot.lua' },
   { 'zbirenbaum/copilot-cmp' },
   { 'AndreM222/copilot-lualine' },
@@ -158,19 +157,6 @@ require('lazy').setup({
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      routes = {
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = "written",
-          },
-          opts = { skip = true },
-        },
-      },
-      -- add any options here
-    },
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
@@ -201,7 +187,6 @@ if vim.fn.executable('~/.asdf/shims/ruby') then
   vim.g.ruby_host_prog = '~/.asdf/shims/ruby'
 end
 -- }}}
-
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
 vim.keymap.set('n', '<Leader>w', '<cmd>:w!<CR>')                -- Save with leader w
@@ -235,6 +220,7 @@ require 'plugins.nvim-dap-vscode-js'
 require 'plugins.dap-ui'
 require 'plugins.neotest'
 require 'plugins.neogit'
-require 'plugins.tabnine'
 require 'plugins.oil'
+require 'plugins.noice'
+require 'plugins.notify'
 --- }}}
