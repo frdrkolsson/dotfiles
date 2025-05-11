@@ -66,3 +66,8 @@ vim.keymap.set('n', '<Leader>ts', neotest.summary.toggle, { desc = 'neotest: Tog
 vim.keymap.set('n', '<Leader>to', neotest.output_panel.toggle, { desc = 'neotest: Toggle output panel' })
 vim.keymap.set('n', '<leader>tw', function() neotest.run.run({ jestCommand = 'jest --watch ' }) end,
   { desc = 'neotest: Run tests in watch mode' })
+vim.keymap.set("n", "<leader>tu", function()
+    local baseCommand = require('neotest-jest.jest-util').getJestCommand(vim.fn.expand '%:p:h')
+    neotest.run.run({ jestCommand = baseCommand .. " --updateSnapshot" })
+  end,
+  { desc = 'neotest: Run tests with --updateSnapshot' })

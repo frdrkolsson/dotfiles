@@ -40,6 +40,9 @@ cmp.setup({
       mode = "symbol",
       symbol_map = { Copilot = "" }
     })
+  },
+  per_filetype = {
+    codecompanion = { "codecompanion" },
   }
 })
 

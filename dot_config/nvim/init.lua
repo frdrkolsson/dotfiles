@@ -133,12 +133,10 @@ require('lazy').setup({
     end
   },
   "windwp/nvim-ts-autotag",
-  'mfussenegger/nvim-dap',                                                        -- Debug Adapter Protocol client implementation for Neovim
-  { "mxsdev/nvim-dap-vscode-js",    dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
-  { "rcarriga/nvim-dap-ui",         dependencies = { "mfussenegger/nvim-dap" } },
-  { 'wakatime/vim-wakatime',        lazy = false },
-  { 'ActivityWatch/aw-watcher-vim', lazy = false },
-
+  'mfussenegger/nvim-dap',                                                     -- Debug Adapter Protocol client implementation for Neovim
+  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
+  { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap" } },
+  { 'wakatime/vim-wakatime',     lazy = false },
   {
     'nvim-neotest/neotest',
     lazy = true,
@@ -153,7 +151,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter'
     }
   },
-  { 'nvim-java/nvim-java' },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -161,7 +158,81 @@ require('lazy').setup({
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      { 'echasnovski/mini.diff', version = '*' }
+    },
+  },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      -- {
+      --   -- support for image pasting
+      --   "HakonHarnes/img-clip.nvim",
+      --   event = "VeryLazy",
+      --   opts = {
+      --     -- recommended settings
+      --     default = {
+      --       embed_image_as_base64 = false,
+      --       prompt_for_file_name = false,
+      --       drag_and_drop = {
+      --         insert_mode = true,
+      --       },
+      --     },
+      --   },
+      -- },
+    },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    opts = {
+      preview = {
+        filetypes = { "markdown", "codecompanion", "Avante" },
+        ignore_buftypes = {},
+      },
+    },
+  },
+  {
+    "sotte/presenting.nvim",
+    opts = {
+      -- fill in your options here
+      -- see :help Presenting.config
+    },
+    cmd = { "Presenting" },
   }
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   opts = {
+  --     file_types = { "markdown", "Avante", "codecompanion" },
+  --   },
+  --   ft = { "markdown", "Avante", "codecompanion" },
+  -- },
 })
 -- }}}
 
@@ -223,4 +294,6 @@ require 'plugins.neogit'
 require 'plugins.oil'
 require 'plugins.noice'
 require 'plugins.notify'
+require 'plugins.avante'
+require 'plugins.codecompanion'
 --- }}}
