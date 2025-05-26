@@ -3,6 +3,13 @@ if (not status) then return end
 
 codecompanion.setup({
   display = {
+    diff = {
+      enabled = true,
+      close_chat_at = 240,
+      layout = "vertical",
+      opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
+      provider = "mini_diff",
+    },
     chat = {
       show_settings = true,
       window = {
@@ -16,7 +23,7 @@ codecompanion.setup({
       return require("codecompanion.adapters").extend("copilot", {
         schema = {
           model = {
-            default = "claude-3.7-sonnet",
+            default = "claude-sonnet-4",
           },
           max_tokens = {
             default = 60000,
@@ -40,12 +47,12 @@ codecompanion.setup({
         },
       })
     end,
-    qwen3 = function()
+    gemma3 = function()
       return require("codecompanion.adapters").extend("ollama", {
-        name = "qwen3", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        name = "gemma3", -- Give this adapter a different name to differentiate it from the default ollama adapter
         schema = {
           model = {
-            default = "qwen3:4b",
+            default = "gemma3",
           },
           num_ctx = {
             default = 16384,
@@ -63,12 +70,12 @@ codecompanion.setup({
       tools = {
         ["cmd_runner"] = {
           opts = {
-            requires_approval = false,
+            requires_approval = true,
           }
         },
         ["files"] = {
           opts = {
-            requires_approval = false,
+            requires_approval = true,
           }
         },
       },
@@ -91,3 +98,4 @@ vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, si
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab ccc CodeCompanionChat]])
+vim.cmd([[cab cca CodeCompanionActions]])

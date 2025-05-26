@@ -24,6 +24,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
+    { name = "copilot" },
     { name = 'nvim_lsp' },
     -- { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
@@ -31,8 +32,6 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'buffer' },
     { name = "path" },
-    -- Copilot Source
-    -- { name = "copilot" },
   }),
   formatting = {
     format = lspkind.cmp_format({

@@ -9,6 +9,8 @@ vim.o.shiftwidth = 2
 vim.o.number = true        -- Show line numbers
 vim.o.termguicolors = true -- Enable termgui colors
 vim.o.laststatus = 3
+vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'
 
 vim.g.mapleader = ' '
 
@@ -31,18 +33,22 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 require 'plugins.lazy-bootstrap'
 
 require('lazy').setup({
-  { 'catppuccin/nvim',           name = 'catppuccin' }, -- colorscheme
-  { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true } },
-  'nvim-tree/nvim-web-devicons',                        -- lua `fork` of vim-web-devicons for neovim
+  { 'catppuccin/nvim',          name = 'catppuccin' }, -- colorscheme
+  {
+    'echasnovski/mini.icons',
+    lazy = false,
+    version = false,
+    config = function()
+      require("mini.icons").setup()
+
+      require("mini.icons").mock_nvim_web_devicons()
+    end
+  },
+  { 'nvim-lualine/lualine.nvim' },
   {
     'nvim-treesitter/nvim-treesitter',
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   },
-  -- Language highlighting for languages not supported by treesitter
-  'slim-template/vim-slim',
-  'kchmck/vim-coffee-script',
-  'fladson/vim-kitty',
-
   'lukas-reineke/indent-blankline.nvim', -- A vim plugin to display the indention levels with thin vertical lines
 
   'janko-m/vim-test',                    -- A Vim wrapper for running tests on different granularities.
@@ -54,14 +60,9 @@ require('lazy').setup({
     dependencies = 'nvim-lua/plenary.nvim',
   },
   'rhysd/git-messenger.vim',
-  { 'NeogitOrg/neogit',         dependencies = 'nvim-lua/plenary.nvim' },
+  { 'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim' },
 
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
+  { 'stevearc/oil.nvim' },
   'tpope/vim-projectionist', -- Projectionist provides granular project configuration using "projections"
   'tpope/vim-fugitive',      -- A Git wrapper so awesome, it should be illegal
 
@@ -69,7 +70,7 @@ require('lazy').setup({
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons", { "junegunn/fzf", build = "./install --bin" } }
+    dependencies = { { "junegunn/fzf", build = "./install --bin" } }
   },
 
   -- LSP
@@ -90,7 +91,6 @@ require('lazy').setup({
     "glepnir/lspsaga.nvim",
     branch = "main",
     dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
       --Please make sure you install markdown and markdown_inline parser
       { "nvim-treesitter/nvim-treesitter" }
     }
@@ -99,7 +99,6 @@ require('lazy').setup({
 
   {
     "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {}
     end
@@ -136,7 +135,6 @@ require('lazy').setup({
   'mfussenegger/nvim-dap',                                                     -- Debug Adapter Protocol client implementation for Neovim
   { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } }, -- nvim-dap adapter for vscode-js-debug
   { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap" } },
-  { 'wakatime/vim-wakatime',     lazy = false },
   {
     'nvim-neotest/neotest',
     lazy = true,
@@ -187,10 +185,9 @@ require('lazy').setup({
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      "hrsh7th/nvim-cmp",       -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",       -- for file_selector provider fzf
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       -- {
       --   -- support for image pasting
       --   "HakonHarnes/img-clip.nvim",
@@ -215,24 +212,11 @@ require('lazy').setup({
       preview = {
         filetypes = { "markdown", "codecompanion", "Avante" },
         ignore_buftypes = {},
-      },
+        icon_provider = "mini",
+      }
     },
-  },
-  {
-    "sotte/presenting.nvim",
-    opts = {
-      -- fill in your options here
-      -- see :help Presenting.config
-    },
-    cmd = { "Presenting" },
+    dependencies = { 'echasnovski/mini.icons' }
   }
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   opts = {
-  --     file_types = { "markdown", "Avante", "codecompanion" },
-  --   },
-  --   ft = { "markdown", "Avante", "codecompanion" },
-  -- },
 })
 -- }}}
 
