@@ -1,5 +1,4 @@
-
-theme = catppuccin-macchiato.conf
+theme = catppuccin-macchiato
 
 font-family = Monaspace Neon Var
 font-family-italic = Monaspace Argon Var
@@ -9,4 +8,7 @@ font-size = 14.0
 font-thicken = true
 # font-thicken-strength = 255
 # adjust-cell-width = -5%
-adjust-cell-height = -12%
+adjust-cell-height = -10%
+
+keybind = alt+right=unbind
+keybind = alt+left=unbind

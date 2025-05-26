@@ -1,0 +1,13 @@
+layout {
+  pane split_direction="vertical" {
+    pane cwd="~/Glooko/A06103-analyzer_server/" command="docker" {
+      args "compose" "up" "-d" "--build" "analyzer"
+    }
+    pane cwd="~/Glooko/A24006-medical_data_service/" command="docker" {
+      args "compose" "up" "-d" "--build" "medical_data_service"
+    }
+  }
+  pane size=1 borderless=true {
+    plugin location="zellij:status-bar"
+  }
+}

@@ -1,8 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fish_abbr_buc:brew\x20update\x20\x26\x26\x20brew\x20upgrade\x20\x26\x26\x20brew\x20upgrade\x20\x2d\x2dcask
-SETUVAR _fish_abbr_cat:bat\x20\x2d\x2dtheme\x3dOneHalfDark
+SETUVAR _fish_abbr_cat:bat
 SETUVAR _fish_abbr_dc:docker\x20compose
 SETUVAR _fish_abbr_dcr:docker\x20compose\x20exec\x20\x2de\x20RAILS_ENV\x3dtest\x20\x2de\x20MUTANT\x3d1\x20web\x20bundle\x20exec\x20rspec
 SETUVAR _fish_abbr_g:git
@@ -13,17 +13,16 @@ SETUVAR _fish_abbr_gs:git\x20switch
 SETUVAR _fish_abbr_gsc:git\x20switch\x20\x2dc
 SETUVAR _fish_abbr_gsd:git\x20switch\x20\x2dd
 SETUVAR _fish_abbr_gsom:git\x20switch\x20\x2dd\x20origin/main
-SETUVAR _fish_abbr_ls:eza\x20\x2d\x2dicons
+SETUVAR _fish_abbr_ls:eza\x20\x2d\x2dicons\x20auto
 SETUVAR _fish_abbr_mc:mutagen\x2dcompose
 SETUVAR _fish_abbr_mcr:mutagen\x2dcompose\x20exec\x20\x2de\x20RAILS_ENV\x3dtest\x20\x2de\x20MUTANT\x3d1\x20mutagen\x2dweb\x20bundle\x20exec\x20rspec
 SETUVAR _fish_abbr_n:nvim
-SETUVAR _fish_abbr_rpi:ssh\x20pi\x40raspberrypi\x2elocal
+SETUVAR _fish_abbr_rpi:ssh\x20dietpi\x40dietpi\x2elocal
 SETUVAR _fish_abbr_vimconf:nvim\x20\x7e/\x2econfig/nvim/init\x2elua
-SETUVAR _fisher_budimanjojo_2F_tmux_2E_fish_files:\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eextra\x2econf\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eonly\x2econf\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux_abbrs\x2efish
 SETUVAR _fisher_franciscolourenco_2F_done_files:\x7e/\x2econfig/fish/conf\x2ed/done\x2efish
 SETUVAR _fisher_ik11235_2F_wakatime_2E_fish_files:\x7e/\x2econfig/fish/conf\x2ed/wakatime\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ebudimanjojo/tmux\x2efish\x1efranciscolourenco/done\x1eik11235/wakatime\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1efranciscolourenco/done\x1eik11235/wakatime\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
