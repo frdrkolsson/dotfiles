@@ -150,14 +150,6 @@ require('lazy').setup({
     }
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
-  },
-  {
     "zbirenbaum/copilot-cmp",
     config = function()
       require("copilot_cmp").setup()
@@ -176,7 +168,7 @@ require('lazy').setup({
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    version = false, -- Never set this value to "*"! Never!
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     dependencies = {
@@ -188,21 +180,23 @@ require('lazy').setup({
       "hrsh7th/nvim-cmp",       -- autocompletion for avante commands and mentions
       "ibhagwan/fzf-lua",       -- for file_selector provider fzf
       "zbirenbaum/copilot.lua", -- for providers='copilot'
-      -- {
-      --   -- support for image pasting
-      --   "HakonHarnes/img-clip.nvim",
-      --   event = "VeryLazy",
-      --   opts = {
-      --     -- recommended settings
-      --     default = {
-      --       embed_image_as_base64 = false,
-      --       prompt_for_file_name = false,
-      --       drag_and_drop = {
-      --         insert_mode = true,
-      --       },
-      --     },
-      --   },
-      -- },
+      {
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
+          },
+          -- required for Windows users
+          -- use_absolute_path = true,
+        },
+      },
+    },
     },
   },
   {
@@ -216,6 +210,16 @@ require('lazy').setup({
       }
     },
     dependencies = { 'echasnovski/mini.icons' }
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+    config = function()
+      require("mcphub").setup()
+    end
   }
 })
 -- }}}
@@ -244,12 +248,12 @@ end
 -- }}}
 -- Keymaps {{{
 -- Additional keymaps can be found in its respective plugins file, e.g. Telescopes <leader>ff
-vim.keymap.set('n', '<Leader>w', '<cmd>:w!<CR>')                -- Save with leader w
-vim.keymap.set('n', '<Leader><Leader>', '<c-^>')                -- Switch between the last two files
-vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>')          -- Search and Replace
-vim.keymap.set('n', '<Leader>d', ':Dash<CR>')                   -- Search documentation through Dash
-vim.keymap.set('n', '<Leader>z', '<cmd>:ZenMode<CR>')           -- ZenMode - Focus on current file only and center it
-vim.keymap.set('n', '<Leader><Esc>', '<cmd>:Noice dismiss<CR>') -- Noice - Dismiss messages
+vim.keymap.set('n', '<Leader>w', '<cmd>:w!<CR>')       -- Save with leader w
+vim.keymap.set('n', '<Leader><Leader>', '<c-^>')       -- Switch between the last two files
+vim.keymap.set('n', '<Leader>s', ':%s//g<Left><Left>') -- Search and Replace
+vim.keymap.set('n', '<Leader>d', ':Dash<CR>')          -- Search documentation through Dash
+vim.keymap.set('n', '<Leader>z', '<cmd>:ZenMode<CR>')  -- ZenMode - Focus on current file only and center it
+-- vim.keymap.set('n', '<Leader><Esc>', '<cmd>:Noice dismiss<CR>') -- Noice - Dismiss messages
 -- }}}
 
 -- {{{ Requires
@@ -276,8 +280,6 @@ require 'plugins.dap-ui'
 require 'plugins.neotest'
 require 'plugins.neogit'
 require 'plugins.oil'
-require 'plugins.noice'
-require 'plugins.notify'
 require 'plugins.avante'
 require 'plugins.codecompanion'
 --- }}}

@@ -52,7 +52,7 @@ codecompanion.setup({
         name = "gemma3", -- Give this adapter a different name to differentiate it from the default ollama adapter
         schema = {
           model = {
-            default = "gemma3",
+            default = "gemma3:12b-it-qat",
           },
           num_ctx = {
             default = 16384,
@@ -86,14 +86,17 @@ codecompanion.setup({
     inline = {
       adapter = "copilot",
     },
+    opts = {
+      completion_provider = "cmp",
+    }
   },
 })
 
-require('plugins.extensions.codecompanion-noice-notifications').init()
+-- require('plugins.extensions.codecompanion-noice-notifications').init()
 
-vim.keymap.set({ "n", "v" }, "<Leader>ac", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<Leader>ac", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])

@@ -26,11 +26,6 @@ lualine.setup {
     },
     lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
     lualine_y = {
-      {
-        noice.api.status.search.get,
-        cond = noice.api.status.search.has,
-        color = { fg = catppuccin.base, bg = catppuccin.yellow, gui = 'bold' }
-      },
       'progress',
       { separator = { right = '' }
       },
