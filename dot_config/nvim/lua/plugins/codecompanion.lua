@@ -1,6 +1,9 @@
 local status, codecompanion = pcall(require, 'codecompanion')
 if (not status) then return end
 
+local has_catppuccin = pcall(require, 'catppuccin')
+local winhighlight = has_catppuccin and "normal:catppuccinmantle,floatborder:catppuccinmantle" or "normal:normal,floatborder:floatborder"
+
 codecompanion.setup({
   display = {
     diff = {
@@ -15,6 +18,10 @@ codecompanion.setup({
       window = {
         position = "right",
         width = 0.33,
+        opts = {
+          winhighlight = winhighlight,
+          number = false,
+        }
       }
     }
   },
@@ -25,9 +32,9 @@ codecompanion.setup({
           model = {
             default = "claude-sonnet-4",
           },
-          max_tokens = {
-            default = 60000,
-          },
+          -- max_tokens = {
+          --   default = 60000,
+          -- },
         },
       })
     end,
@@ -94,9 +101,9 @@ codecompanion.setup({
 
 -- require('plugins.extensions.codecompanion-noice-notifications').init()
 
--- vim.keymap.set({ "n", "v" }, "<Leader>ac", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
--- vim.keymap.set({ "n", "v" }, "<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
--- vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<Leader>ac", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
