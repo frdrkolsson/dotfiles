@@ -1,6 +1,5 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "setColorColumn"
-    ]
+  "diagnostics.globals": [
+    "vim",
+  ]
 }

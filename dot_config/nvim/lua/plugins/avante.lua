@@ -1,47 +1,68 @@
-local status, avante = pcall(require, "avante")
-if (not status) then return end
+if true then
+  return {}
+end
 
-avante.setup({
-  auto_suggestions = false,
-  provider = "copilot",
-  behaviour = {
-    enable_cursor_planning_mode = true,
-  },
-  providers = {
-    copilot = {
-      model = "claude-sonnet-4",
-      timeout = 60000, -- 60 seconds
-      extra_request_body = {
-        {
-          max_completion_tokens = 60000,
+return {
+  "yetone/avante.nvim",
+  build = "make",
+  event = "VeryLazy",
+  version = false, -- Never set this value to "*"! Never!
+  ---@module 'avante'
+  ---@type avante.Config
+  opts = {
+    auto_suggestions = false,
+    provider = "copilot",
+    behaviour = {
+      enable_cursor_planning_mode = true,
+    },
+    providers = {
+      copilot = {
+        model = "gpt-4.1-2025-04-14",
+        -- model = "claude-sonnet-4"
+      },
+      ollama = {
+        model = "gemma3:12b-it-qat",
+        extra_request_body = {
+          options = {
+            num_ctx = 32768,
+            temperature = 0,
+          },
         },
+        endpoint = "http://127.0.0.1:11434",
+        stream = true,
+        disable_tools = true
+      },
+    },
+  },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    {
+      "zbirenbaum/copilot.lua",
+      opts = {
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>",
+            accept_word = false,
+            accept_line = false,
+            next = "<C-l>",
+            prev = "<C-h>",
+            dismiss = "<C-k>",
+          },
+        },
+        panel = { enabled = false },
+
       }
     },
-    ollama = {
-      -- model = "codellama:latest"
-      -- model = "deepseek-coder-v2"
-      model = "gemma3:12b-it-qat",
-      extra_request_body = {
-        options = {
-          num_ctx = 32768,
-          temperature = 0,
-        },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { "markdown", "Avante" },
       },
-      endpoint = "http://127.0.0.1:11434",
-      stream = true,
-      disable_tools = true
+      ft = { "markdown", "Avante", "codecompanion" },
     },
   },
-  -- system_prompt as function ensures LLM always has latest MCP server state
-  -- This is evaluated for every message, even in existing chats
-  system_prompt = function()
-    local hub = require("mcphub").get_hub_instance()
-    return hub and hub:get_active_servers_prompt() or ""
-  end,
-  -- Using function prevents requiring mcphub before it's loaded
-  custom_tools = function()
-    return {
-      require("mcphub.extensions.avante").mcp_tool(),
-    }
-  end,
-})
+}

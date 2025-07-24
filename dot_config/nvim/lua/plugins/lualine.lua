@@ -1,6 +1,21 @@
 local lualine = require('lualine')
-local noice = require('noice')
 local catppuccin = require("catppuccin.palettes").get_palette "macchiato"
+
+local processing = false
+local spinner_index = 1
+
+local spinner_symbols = {
+  "⠋",
+  "⠙",
+  "⠹",
+  "⠸",
+  "⠼",
+  "⠴",
+  "⠦",
+  "⠧",
+  "⠇",
+  "⠏",
+}
 
 lualine.setup {
   options = {
