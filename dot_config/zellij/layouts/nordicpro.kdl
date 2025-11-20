@@ -1,0 +1,44 @@
+layout {
+  tab-with-status-bar name="nordic-pro" cwd="~/NordicPro/nordic-pro-app/" {
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        pane command="npm" {
+          args "run" "dev"
+        }
+        pane
+      }
+      pane command="nvim" close_on_exit=false focus=true
+    }
+  }
+
+  tab-with-status-bar name="nordic-pro-old" cwd="~/NordicPro/nordic_pro_web_app/" {
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        pane command="npm" {
+          args "run" "dev"
+        }
+        pane
+      }
+      pane command="nvim" close_on_exit=false focus=true
+    }
+  }
+  tab_template name="tab-with-status-bar" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+}

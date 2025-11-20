@@ -1,4 +1,4 @@
-theme = catppuccin-macchiato
+theme = Catppuccin Macchiato
 
 font-family = Monaspace Neon Var
 font-family-italic = Monaspace Argon Var
@@ -10,5 +10,12 @@ font-thicken = true
 # adjust-cell-width = -5%
 adjust-cell-height = -10%
 
-keybind = alt+right=unbind
-keybind = alt+left=unbind
+copy-on-select = clipboard
+
+quick-terminal-position = center
+quick-terminal-size = 100%
+
+background-opacity = 0.95
+background-blur = true
+
+keybind = cmd+shift+f=toggle_quick_terminal

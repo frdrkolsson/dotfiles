@@ -8,11 +8,20 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "marilari88/neotest-vitest",
     "vim-test/vim-test",
-    "nvim-neotest/neotest-vim-test"
+    "nvim-neotest/neotest-vim-test",
+    'nvim-neotest/neotest-jest',
   },
   opts = {
     adapters = {
       ["neotest-vitest"] = {},
+      ["neotest-jest"] = {
+        jestCommand = "npm test --",
+        jestConfigFile = "custom.jest.config.ts",
+        env = { CI = true },
+        cwd = function(path)
+          return vim.fn.getcwd()
+        end,
+      },
     },
   },
   keys = {

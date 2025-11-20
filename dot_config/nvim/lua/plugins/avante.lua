@@ -1,6 +1,6 @@
-if true then
-  return {}
-end
+--if true then
+--  return {}
+--end
 
 return {
   "yetone/avante.nvim",
@@ -17,11 +17,10 @@ return {
     },
     providers = {
       copilot = {
-        model = "gpt-4.1-2025-04-14",
-        -- model = "claude-sonnet-4"
+        model = "claude-sonnet-4"
       },
       ollama = {
-        model = "gemma3:12b-it-qat",
+        model = "gpt-oss:latest",
         extra_request_body = {
           options = {
             num_ctx = 32768,
@@ -37,6 +36,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    "folke/snacks.nvim",
     {
       "zbirenbaum/copilot.lua",
       opts = {

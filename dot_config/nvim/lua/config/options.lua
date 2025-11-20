@@ -10,5 +10,7 @@ opt.laststatus = 3
 opt.cursorline = true
 opt.cursorlineopt = 'number'
 opt.colorcolumn = '120'
+opt.winborder = 'solid'
+opt.signcolumn = 'yes'
 
 return {}

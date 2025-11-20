@@ -43,5 +43,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 -- }}}
+-- Transparent background {{{
+vim.api.nvim_create_augroup('user_colors', { clear = true })
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = 'user_colors',
+  pattern = '*',
+  callback = function()
+    vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'NONE', bg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'NormalNC', { ctermbg = 'NONE', bg = 'NONE' })
+  end,
+})
+-- }}}
 
 return {}

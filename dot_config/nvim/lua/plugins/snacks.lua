@@ -9,13 +9,6 @@ return {
       enabled = true,
       sections = {
         { section = "header" },
-        {
-          pane = 2,
-          section = "terminal",
-          cmd = "fortune | lolcat",
-          height = 5,
-          padding = 1,
-        },
         { section = "keys",  gap = 1, padding = 1 },
         {
           pane = 2,
