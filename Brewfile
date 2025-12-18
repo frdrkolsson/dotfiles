@@ -1,5 +1,4 @@
-tap "marcus-crane/tap"
-# File encryption tool using the age format
+# Simple, modern, secure file encryption
 brew "age"
 # Next-gen compiler infrastructure
 brew "llvm"
@@ -15,14 +14,12 @@ brew "libgit2"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
+brew "container"
 # High performance csv viewer for cli
 brew "csview"
 # Command-line tool to interact with exercism.io
@@ -39,6 +36,8 @@ brew "ffmpeg"
 brew "fish"
 # GNU compiler collection
 brew "gcc"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -58,11 +57,11 @@ brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
+brew "libgit2@1.7", link: true
 # YAML Parser
 brew "libyaml"
 # Next-gen compiler infrastructure
-brew "llvm@15"
+brew "llvm@15", link: true
 # Language Server for the Lua language
 brew "lua-language-server"
 # Polyglot runtime manager (asdf rust clone)
@@ -81,8 +80,6 @@ brew "ollama", restart_service: :changed
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
-# Open-source implementation of the Java Platform
-brew "openjdk"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Perl-powered file rename script with many helpful built-ins
@@ -117,10 +114,6 @@ brew "wget"
 brew "yt-dlp"
 # Easily fetch videogame soundtracks from downloads.khinsider.com
 brew "marcus-crane/tap/khinsider"
-# Format and beautify Xcode build output
-brew "xcbeautify"
-# Xcode Build Server
-brew "xcode-build-server"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Control the platform power state of your Apple Silicon device
@@ -172,8 +165,6 @@ cask "microsoft-teams"
 cask "minecraft"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Open-source media transfer protocol tool
-cask "openmtp"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Simple Gtk# Paint Program
@@ -192,27 +183,9 @@ cask "sonos"
 cask "steam"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Remote desktop software
-cask "teamviewer"
-# Anonymity-focused web browser
+# Web browser focusing on security
 cask "tor-browser"
 # Open-source code editor
 cask "visual-studio-code"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-vscode "castwide.solargraph"
-vscode "catppuccin.catppuccin-vsc"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
-vscode "eamodio.gitlens"
-vscode "editorconfig.editorconfig"
-vscode "elia.erb-formatter"
-vscode "esbenp.prettier-vscode"
-vscode "misogi.ruby-rubocop"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode.live-server"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "rubocop.vscode-rubocop"
-vscode "shopify.ruby-lsp"
