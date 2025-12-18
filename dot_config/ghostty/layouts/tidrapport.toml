@@ -1,0 +1,21 @@
+[[layout]]
+splits = ["70%", "30%"]
+
+[[layout.tabs]]
+name = "tidrapport"
+
+[[layout.tabs.splits]]
+working_directory = "~/Precisit/tidrapport/"
+command = "npm"
+args = ["start"]
+
+[[layout.tabs.splits]]
+working_directory = "~/Precisit/tidrapport/"
+
+[[layout.tabs]]
+name = "editor"
+focus = true
+
+[[layout.tabs.splits]]
+working_directory = "~/Precisit/tidrapport/"
+command = "nvim"

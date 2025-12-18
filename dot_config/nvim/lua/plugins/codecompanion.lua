@@ -14,27 +14,29 @@ return {
         }
       }
     },
-    memory = {
+    rules = {
       opts = {
         chat = {
           enabled = true,
-          default_memory = { "default", "tidrapport" },
+          autoload = { "default", "tidrapport" },
         },
       },
       tidrapport = {
         description = "Tidrapport React DynamoDB project context",
         files = {
-          "CLAUDE.md",
           "package.json",
           "deno.json",
+          "workspace.json",
           "src/app/types/types.ts",
-          "src/app/api/services/dynamoDBService.ts",
-          "src/app/api/services/dynamoSchemas.ts",
+          "README.md"
         },
       },
     },
     adapters = {
       http = {
+        opts = {
+          show_presets = false,
+        },
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
@@ -46,7 +48,7 @@ return {
         end,
         ollama = function()
           return require("codecompanion.adapters").extend("ollama", {
-            name = "ollama", -- Give this adapter a different name to differentiate it from the default ollama adapter
+            name = "ollama",
             schema = {
               model = {
                 default = "gpt-oss:latest",
@@ -60,26 +62,10 @@ return {
             },
           })
         end,
-        gemma3 = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "gemma3", -- Give this adapter a different name to differentiate it from the default ollama adapter
-            schema = {
-              model = {
-                default = "gemma3:12b-it-qat",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              num_predict = {
-                default = -1,
-              },
-            },
-          })
-        end,
       },
     },
   },
-  strategies = {
+  interactions = {
     chat = {
       roles = {
         user = "fredrikolsson"

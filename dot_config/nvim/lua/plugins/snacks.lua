@@ -7,6 +7,23 @@ return {
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
+      preset = {
+        header = [[
+           🎄
+           /🌟\
+          /o o o\
+         /o o o o\
+        /🎁 o o o o\
+       /o o o o o o\
+      /o o o o o o o\
+     /_______________\
+           | |
+           |_|
+
+  🎅 Merry Christmas! 🎁
+      Happy Coding! ⛄
+        ]],
+      },
       sections = {
         { section = "header" },
         { section = "keys",  gap = 1, padding = 1 },

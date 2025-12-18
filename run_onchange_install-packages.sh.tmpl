@@ -1,0 +1,47 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+
+echo "🚀 Starting macOS setup..."
+
+# 1. Install Command Line Tools (Check if missing first)
+if ! xcode-select -p &>/dev/null; then
+  echo "Installing Command Line Tools..."
+  xcode-select --install
+fi
+
+# 2. Install Rosetta (Only on Apple Silicon)
+if [[ "$(uname -p)" == "arm" ]]; then
+  if ! /usr/bin/pgrep -q oahd; then
+    echo "Installing Rosetta..."
+    /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+  fi
+fi
+
+# 3. Install Homebrew (If missing)
+if ! command -v brew &>/dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# 4. Install Brew Packages
+# We point directly to the Brewfile in the source directory since it's ignored in target
+echo "🍺 Installing Brew packages..."
+brew bundle --file={{ joinPath .chezmoi.sourceDir "Brewfile" }} --no-lock
+
+# 5. Fish Setup
+if ! grep -q "$(which fish)" /etc/shells; then
+  echo "Adding Fish to /etc/shells..."
+  echo "$(which fish)" | sudo tee -a /etc/shells
+  echo "Changing shell to Fish..."
+  chsh -s "$(which fish)"
+fi
+
+# 6. macOS Defaults (Fast Key Repeat)
+echo "⚡ Speeding up keyboard..."
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 1
+
+echo "✅ macOS setup complete!"
+{{ end -}}

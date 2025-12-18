@@ -5,3 +5,5 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+[alias]
+	s = "!f() { rev=${1-HEAD}; git difftool $rev^ $rev; }; f"

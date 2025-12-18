@@ -1,4 +1,6 @@
 [tools]
+deno = "latest"
+node = "23.9.0"
 ruby = "3.2.8"
 
 [settings]
