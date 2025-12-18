@@ -1,8 +1,0 @@
-require 'catppuccin-main'
-require 'feline.main'
-require 'treesitter.main'
-require 'telescope-config'
-require 'nvim-colorizer-config'
-require 'dashboard-nvim-config'
-require 'gitlinker-config'
-require 'gitsigns-config'
