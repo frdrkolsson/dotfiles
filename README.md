@@ -19,28 +19,28 @@ This will:
 - Auto-generate `~/.config/fish/secrets.fish` from the encrypted template
 - **Automatically run the Bitwarden setup script** (see step 2 below)
 
-### 2. Bitwarden Setup (Automated during chezmoi apply)
+### 2. Bitwarden Setup (Interactive during chezmoi apply)
 
-The chezmoi initialization automatically runs a setup script that:
-- ✅ Configures the Bitwarden server: `https://aifa.dedyn.io`
-- ✅ Prompts you to login with `bw login`
+The chezmoi initialization automatically runs a setup script that will prompt you for:
+
+1. **Bitwarden Server URL** - Enter your self-hosted or cloud Bitwarden URL
+   - Example: `https://vault.bitwarden.com` (official)
+   - Or your self-hosted instance: `https://your-server.example.com`
+
+2. **Bitwarden Login** - Your email and password when prompted
+
+The script then:
+- ✅ Configures the Bitwarden CLI with your server
 - ✅ Stores your session token in macOS Keychain
 - ✅ Skips re-login if already configured on that machine
 
-**What you need to do:**
-When prompted, enter your Bitwarden credentials (email and password).
+**What you need to do when prompted:**
+1. Enter your Bitwarden server URL
+2. Enter your Bitwarden credentials (email and password)
 
 If you need to manually trigger the setup again:
 ```shell
 chezmoi apply run_onchange_setup-bitwarden.sh.tmpl
-```
-
-Or manually setup:
-```shell
-bw config server https://aifa.dedyn.io
-bw login
-BW_SESSION=$(bw session)
-security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
 ```
 
 ### 3. Verify the setup

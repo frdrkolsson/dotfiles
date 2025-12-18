@@ -4,8 +4,6 @@
 
 set -euo pipefail
 
-BW_SERVER="https://aifa.dedyn.io"
-
 echo "=== Bitwarden CLI Setup ==="
 echo ""
 
@@ -17,8 +15,14 @@ if ! command -v bw &>/dev/null; then
   exit 0
 fi
 
-# Configure Bitwarden server URL
-echo "📋 Configuring Bitwarden server: $BW_SERVER"
+# Prompt for Bitwarden server URL if not already configured
+echo "📋 Configuring Bitwarden server..."
+read -p "   Enter your Bitwarden server URL (e.g., https://vault.bitwarden.com): " BW_SERVER
+if [ -z "$BW_SERVER" ]; then
+  echo "✗ Server URL cannot be empty"
+  exit 1
+fi
+
 bw config server "$BW_SERVER"
 
 # Check if already logged in
