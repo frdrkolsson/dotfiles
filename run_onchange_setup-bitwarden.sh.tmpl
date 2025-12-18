@@ -1,35 +1,64 @@
 #!/usr/bin/env bash
-# Set up Bitwarden session in macOS Keychain on first deploy
+# Set up Bitwarden CLI configuration and session in macOS Keychain
 # This runs only when the chezmoi state changes (run_onchange)
 
 set -euo pipefail
 
-# Check if BW_SESSION already exists in Keychain
-if security find-generic-password -a "$USER" -s "bitwarden-session" &>/dev/null; then
-  echo "✓ BW_SESSION already exists in Keychain"
-  exit 0
-fi
+BW_SERVER="https://aifa.dedyn.io"
 
-echo "Setting up Bitwarden session in Keychain..."
+echo "=== Bitwarden CLI Setup ==="
+echo ""
 
 # Check if bw command is available
 if ! command -v bw &>/dev/null; then
-  echo "⚠ Bitwarden CLI (bw) not found in PATH"
-  echo "Please install it first: brew install bitwarden-cli"
+  echo "⚠️  Bitwarden CLI (bw) not found in PATH"
+  echo "   Will be installed via: npm install -g @bitwarden/cli"
+  echo "   (Make sure mise has Node.js activated)"
   exit 0
 fi
 
-# Prompt user to unlock Bitwarden
-echo "Please unlock your Bitwarden vault..."
-BW_SESSION=$(bw unlock --raw)
+# Configure Bitwarden server URL
+echo "📋 Configuring Bitwarden server: $BW_SERVER"
+bw config server "$BW_SERVER"
 
-if [ -z "$BW_SESSION" ]; then
-  echo "✗ Failed to get BW_SESSION"
+# Check if already logged in
+if bw status &>/dev/null 2>&1; then
+  CURRENT_SERVER=$(bw status 2>/dev/null | jq -r '.serverUrl // "unknown"' || echo "unknown")
+  if [ "$CURRENT_SERVER" = "$BW_SERVER" ]; then
+    echo "✅ Bitwarden already configured and logged in"
+    
+    # Still check/update Keychain session
+    if BW_SESSION=$(bw session 2>/dev/null); then
+      security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION" -U 2>/dev/null || \
+      security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
+      echo "✅ Session token updated in Keychain"
+    fi
+    exit 0
+  fi
+fi
+
+# Prompt user to login
+echo ""
+echo "🔑 Please login to Bitwarden:"
+echo "   (You will be prompted for your email and password)"
+echo ""
+if ! bw login; then
+  echo "✗ Bitwarden login failed"
   exit 1
 fi
 
-# Store in Keychain
-security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
+# Extract session token and store in Keychain
+echo ""
+echo "💾 Storing session token in Keychain..."
+if BW_SESSION=$(bw session); then
+  security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION" -U 2>/dev/null || \
+  security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
+  echo "✅ Session token stored in Keychain"
+else
+  echo "✗ Failed to get session token"
+  exit 1
+fi
 
-echo "✓ BW_SESSION stored in Keychain"
-echo "  Your Bitwarden secrets are now ready to use!"
+echo ""
+echo "✅ Bitwarden setup complete!"
+echo "   Your secrets will be fetched from Bitwarden when fish shell starts."
