@@ -1,7 +1,6 @@
-tap "apple/apple", "http://github.com/apple/homebrew-apple"
-tap "felixkratz/formulae"
 tap "marcus-crane/tap"
-tap "mhaeuser/mhaeuser"
+# File encryption tool using the age format
+brew "age"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Columnar in-memory analytics layer designed to accelerate big data
@@ -18,8 +17,6 @@ brew "bat"
 brew "bat-extras"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Secure and free password manager for all of your devices
-brew "bitwarden-cli"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Cross-platform make
@@ -84,6 +81,8 @@ brew "ollama", restart_service: :changed
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
+# Open-source implementation of the Java Platform
+brew "openjdk"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Perl-powered file rename script with many helpful built-ins
@@ -118,8 +117,10 @@ brew "wget"
 brew "yt-dlp"
 # Easily fetch videogame soundtracks from downloads.khinsider.com
 brew "marcus-crane/tap/khinsider"
-# Memory training application
-cask "anki"
+# Format and beautify Xcode build output
+brew "xcbeautify"
+# Xcode Build Server
+brew "xcode-build-server"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Control the platform power state of your Apple Silicon device
@@ -140,8 +141,6 @@ cask "dash"
 cask "discord"
 # Collaborative team software
 cask "figma"
-# Web browser
-cask "firefox"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-monaspace"
@@ -173,6 +172,8 @@ cask "microsoft-teams"
 cask "minecraft"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Open-source media transfer protocol tool
+cask "openmtp"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Simple Gtk# Paint Program
@@ -185,12 +186,16 @@ cask "raycast"
 cask "sf-symbols"
 # Team communication and collaboration software
 cask "slack"
+# Control your Sonos system
+cask "sonos"
 # Video game digital distribution service
 cask "steam"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Google Chromium, sans integration with Google
-cask "ungoogled-chromium"
+# Remote desktop software
+cask "teamviewer"
+# Anonymity-focused web browser
+cask "tor-browser"
 # Open-source code editor
 cask "visual-studio-code"
 # Native desktop client for WhatsApp
