@@ -1,0 +1,134 @@
+# Added by OrbStack: 'orb' SSH host for Linux machines
+# This only works if it's at the top of ssh_config (before any Host blocks).
+# This won't be added again if you remove it.
+Include ~/.orbstack/ssh/config
+
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+#  IdentityFile ~/.ssh/id_ed25519
+# Barkley
+# Old IPs
+# 10.165.1.56
+Host barkley-cluster
+  HostName 10.165.51.30
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly no
+  ServerAliveInterval 250
+  ServerAliveCountMax 10
+  ProxyJump barkley-jumphost
+Host barkley-jumphost
+  HostName 44.205.7.102
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly yes
+  ForwardAgent yes
+# Abby
+Host abby-cluster
+  HostName 10.174.1.249
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly no
+  ProxyJump abby-jumphost
+Host abby-jumphost
+  HostName 34.252.90.72
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly yes
+  ForwardAgent yes
+# Rudy
+Host rudy-cluster
+  HostName 10.175.1.220
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly no
+  ProxyJump rudy-jumphost
+Host rudy-jumphost
+  HostName 3.76.189.222
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly yes
+  ForwardAgent yes
+# Elmo
+Host elmo-cluster
+  HostName 10.167.1.37
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly no
+  ProxyJump elmo-jumphost
+Host elmo-jumphost
+  HostName 44.201.16.87
+  User ec2-user
+  IdentityFile ~/.ssh/gk-feat-2019.pem
+  IdentitiesOnly yes
+  ForwardAgent yes
+# QA2-US
+Host qa2-us-web
+  HostName 10.130.1.221
+  User deployer
+  IdentityFile ~/.ssh/gk-qa2-us-virginia.pem
+  IdentitiesOnly no
+  ProxyJump qa2-us-jumphost
+Host qa2-us-cluster
+  HostName 10.130.1.150
+  User ec2-user
+  IdentityFile ~/.ssh/gk-qa2-us-virginia.pem
+  IdentitiesOnly no
+  ProxyJump qa2-us-jumphost
+Host qa2-us-mongo
+  HostName 10.130.2.81
+  User ec2-user
+  IdentityFile ~/.ssh/gk-qa2-us-virginia.pem
+  IdentitiesOnly no
+  ProxyJump qa2-us-jumphost
+Host qa2-us-jumphost
+  HostName 52.1.81.112
+  User ec2-user
+  IdentityFile ~/.ssh/gk-qa2-us-virginia.pem
+  ForwardAgent yes
+# QA2-EU
+Host qa2-eu-cluster
+  HostName 10.140.1.68
+  User ec2-user
+  IdentityFile ~/.ssh/gk-QA2-EU.pem
+  IdentitiesOnly no
+  ProxyJump qa2-eu-jumphost
+Host qa2-eu-jumphost
+  HostName 54.78.54.147
+  User ec2-user
+  IdentityFile ~/.ssh/gk-QA2-EU.pem
+  ForwardAgent yes
+# QA-US
+Host qa-us-cluster
+  HostName 10.25.2.219
+  User ec2-user
+  IdentityFile ~/.ssh/gk-QA.pem
+  IdentitiesOnly no
+  ProxyJump qa-us-jumphost
+Host qa-us-mongo
+  HostName 10.25.2.81
+  User ec2-user
+  IdentityFile ~/.ssh/gk-QA.pem
+  IdentitiesOnly no
+  ProxyJump qa-us-jumphost
+Host qa-us-jumphost
+  HostName 54.204.219.173
+  User ec2-user
+  IdentityFile ~/.ssh/gk-QA.pem
+  ForwardAgent yes
+
+Host staging-us-jumphost
+ HostName 35.171.27.94
+ User ec2-user
+ IdentityFile ~/.ssh/pem/gk-staging-2020.pem
+ IdentitiesOnly yes
+ TCPKeepAlive yes
+ ServerAliveInterval 30
+ ForwardAgent yes
+Host staging-ccm-db-tunnel
+ HostName 35.171.27.94 # Note that this is the Jumphost IP, not the cluster IP!
+ User ec2-user
+ IdentityFile ~/.ssh/pem/gk-staging-2020.pem
+ LocalForward 5432 staging-us-ccm.cluster-cpwpfwuxvsfs.us-east-1.rds.amazonaws.com:5432
+ RemoteCommand tail -f

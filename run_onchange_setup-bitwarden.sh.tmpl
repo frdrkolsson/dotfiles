@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Set up Bitwarden session in macOS Keychain on first deploy
+# This runs only when the chezmoi state changes (run_onchange)
+
+set -euo pipefail
+
+# Check if BW_SESSION already exists in Keychain
+if security find-generic-password -a "$USER" -s "bitwarden-session" &>/dev/null; then
+  echo "✓ BW_SESSION already exists in Keychain"
+  exit 0
+fi
+
+echo "Setting up Bitwarden session in Keychain..."
+
+# Check if bw command is available
+if ! command -v bw &>/dev/null; then
+  echo "⚠ Bitwarden CLI (bw) not found in PATH"
+  echo "Please install it first: brew install bitwarden-cli"
+  exit 0
+fi
+
+# Prompt user to unlock Bitwarden
+echo "Please unlock your Bitwarden vault..."
+BW_SESSION=$(bw unlock --raw)
+
+if [ -z "$BW_SESSION" ]; then
+  echo "✗ Failed to get BW_SESSION"
+  exit 1
+fi
+
+# Store in Keychain
+security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
+
+echo "✓ BW_SESSION stored in Keychain"
+echo "  Your Bitwarden secrets are now ready to use!"
