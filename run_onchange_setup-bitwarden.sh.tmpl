@@ -7,12 +7,47 @@ set -euo pipefail
 echo "=== Bitwarden CLI Setup ==="
 echo ""
 
-# Check if bw command is available
+# Check if bw command is available, if not try to install it
 if ! command -v bw &>/dev/null; then
   echo "⚠️  Bitwarden CLI (bw) not found in PATH"
-  echo "   Will be installed via: npm install -g @bitwarden/cli"
-  echo "   (Make sure mise has Node.js activated)"
-  exit 0
+  echo ""
+  echo "📦 Attempting to install Bitwarden CLI..."
+  echo ""
+  
+  # Try brew first
+  if command -v brew &>/dev/null; then
+    echo "   Trying: brew install bitwarden-cli"
+    if brew install bitwarden-cli 2>/dev/null; then
+      echo "   ✅ Installed via brew"
+    else
+      echo "   ⚠️  Brew installation failed, trying npm instead..."
+      if command -v npm &>/dev/null; then
+        echo "   Trying: npm install -g @bitwarden/cli"
+        npm install -g @bitwarden/cli
+        echo "   ✅ Installed via npm"
+      else
+        echo "   ✗ npm not found either. Please install Node.js and try again."
+        exit 1
+      fi
+    fi
+  elif command -v npm &>/dev/null; then
+    echo "   Trying: npm install -g @bitwarden/cli"
+    npm install -g @bitwarden/cli
+    echo "   ✅ Installed via npm"
+  else
+    echo "   ✗ Neither brew nor npm found. Please install Bitwarden CLI manually:"
+    echo "      brew install bitwarden-cli"
+    echo "   Or:"
+    echo "      npm install -g @bitwarden/cli"
+    exit 1
+  fi
+  echo ""
+fi
+
+# Verify bw is now available
+if ! command -v bw &>/dev/null; then
+  echo "✗ Bitwarden CLI still not available after installation attempt"
+  exit 1
 fi
 
 # Prompt for Bitwarden server URL if not already configured

@@ -73,7 +73,9 @@ echo $TAVILY_API_KEY
 * `chezmoi` - Dotfiles manager
 * `fish` - Shell
 * `mise` - Runtime version manager (Node, Ruby, etc.)
-* `bw` - Bitwarden CLI (installed globally via mise in Node)
+* `bw` - Bitwarden CLI (auto-installed via brew or npm)
+  - Tries `brew install bitwarden-cli` first
+  - Falls back to `npm install -g @bitwarden/cli` if brew fails
 * `nvim` - Text editor
 * `bat` - Cat alternative
 * `fd` - Find alternative
