@@ -17,23 +17,30 @@ This will:
 - Decrypt encrypted files using the age private key (you'll be prompted if needed)
 - Apply all configurations to your home directory
 - Auto-generate `~/.config/fish/secrets.fish` from the encrypted template
+- **Automatically run the Bitwarden setup script** (see step 2 below)
 
-### 2. Setup Bitwarden session in Keychain (one-time)
+### 2. Bitwarden Setup (Automated during chezmoi apply)
 
-The encrypted secrets template requires a Bitwarden session token stored in macOS Keychain:
+The chezmoi initialization automatically runs a setup script that:
+- ✅ Configures the Bitwarden server: `https://aifa.dedyn.io`
+- ✅ Prompts you to login with `bw login`
+- ✅ Stores your session token in macOS Keychain
+- ✅ Skips re-login if already configured on that machine
 
+**What you need to do:**
+When prompted, enter your Bitwarden credentials (email and password).
+
+If you need to manually trigger the setup again:
 ```shell
-# Login to Bitwarden and get your session token
-bw login
-
-# Extract the session token from the output and store in Keychain
-security add-generic-password -a "$USER" -s "bitwarden-session" -w "YOUR_SESSION_TOKEN_HERE"
+chezmoi apply run_onchange_setup-bitwarden.sh.tmpl
 ```
 
-Or if you already have a session from another machine:
-
+Or manually setup:
 ```shell
-security add-generic-password -a "$USER" -s "bitwarden-session" -w "YOUR_EXISTING_SESSION_TOKEN"
+bw config server https://aifa.dedyn.io
+bw login
+BW_SESSION=$(bw session)
+security add-generic-password -a "$USER" -s "bitwarden-session" -w "$BW_SESSION"
 ```
 
 ### 3. Verify the setup
