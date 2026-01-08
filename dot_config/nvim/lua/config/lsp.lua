@@ -1,7 +1,8 @@
 vim.lsp.enable({
   "lua_ls",
-  "eslint",
-  "denols",
+  -- "eslint",
+  -- "denols",
+  "biome",
   "ruby_lsp",
   "tailwindcss",
   "json",
