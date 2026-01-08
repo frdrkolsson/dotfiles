@@ -4,14 +4,13 @@ if status is-interactive
   set -x SAM_CLI_TELEMETRY 0
 
   # ⚠️ TODO: Move these secrets out of this file if you track it in Git!
-  # Consider using 'source ~/.config/fish/.secrets.fish' (and gitignore it)
-  set -x OPENAI_API_KEY bgous
+  # Consider using 'source ~/.config/fish/.secrets.fish' (and gitignore it) or bitwarden-cli
+  set -x OPENAI_API_KEY bogus
   set -x TAVILY_API_KEY bogus
 
   # --- Tmux Auto-start Settings ---
   set -x fish_tmux_autoconnect true
   set -x fish_tmux_autostart true
-  # Note: Using $HOME makes it portable across users/machines
   set -x fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 
   # --- Abbreviations (Migrated from fish_variables) ---
@@ -35,28 +34,14 @@ if status is-interactive
 
   # Docker / Mutagen
   abbr -a dc 'docker compose'
-  abbr -a dcr 'docker compose exec -e RAILS_ENV=test -e MUTANT=1 web bundle exec rspec'
-  abbr -a mc mutagen-compose
-  abbr -a mcr 'mutagen-compose exec -e RAILS_ENV=test -e MUTANT=1 mutagen-web bundle exec rspec'
 
-  # --- Chezmoi Shortcuts (From our previous chat) ---
-  abbr -a ca 'chezmoi re-add'
+  # Chezmoi Shortcuts
+  abbr -a cra 'chezmoi re-add'
   abbr -a cdif 'chezmoi diff --reverse'
   abbr -a cgit 'chezmoi git --'
   abbr -a cp 'chezmoi git -- push'
 end
 
-# --- Paths ---
-# Add Homebrew (standard location)
-fish_add_path /opt/homebrew/bin
-# Add Ruby
-fish_add_path (ruby -e 'puts Gem.user_dir')/bin
-# Add Ghostty (if it exists)
-if test -d /Applications/Ghostty.app/Contents/MacOS
-  fish_add_path /Applications/Ghostty.app/Contents/MacOS
-end
-
-# --- Initializers ---
 # Starship prompt
 if type -q starship
   starship init fish | source
