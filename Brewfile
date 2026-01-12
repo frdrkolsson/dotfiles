@@ -1,7 +1,5 @@
-tap "apple/apple", "http://github.com/apple/homebrew-apple"
-tap "felixkratz/formulae"
-tap "marcus-crane/tap"
-tap "mhaeuser/mhaeuser"
+# Simple, modern, secure file encryption
+brew "age"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Columnar in-memory analytics layer designed to accelerate big data
@@ -16,20 +14,14 @@ brew "libgit2"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# Secure and free password manager for all of your devices
-brew "bitwarden-cli"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
-# Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
 # High performance csv viewer for cli
 brew "csview"
-# Command-line tool to interact with exercism.io
-brew "exercism"
 # Modern, maintained replacement for ls
 brew "eza"
 # Functional programming language for real time signal processing
@@ -42,6 +34,8 @@ brew "ffmpeg"
 brew "fish"
 # GNU compiler collection
 brew "gcc"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -61,11 +55,11 @@ brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
+brew "libgit2@1.7", link: true
 # YAML Parser
 brew "libyaml"
 # Next-gen compiler infrastructure
-brew "llvm@15"
+brew "llvm@15", link: true
 # Language Server for the Lua language
 brew "lua-language-server"
 # Polyglot runtime manager (asdf rust clone)
@@ -118,8 +112,6 @@ brew "wget"
 brew "yt-dlp"
 # Easily fetch videogame soundtracks from downloads.khinsider.com
 brew "marcus-crane/tap/khinsider"
-# Memory training application
-cask "anki"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Control the platform power state of your Apple Silicon device
@@ -134,14 +126,10 @@ cask "calibre"
 cask "container"
 # Preference Pane for controlling cursor hiding
 cask "cursorcerer"
-# API documentation browser and code snippet manager
-cask "dash"
 # Voice and text chat software
 cask "discord"
 # Collaborative team software
 cask "figma"
-# Web browser
-cask "firefox"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-monaspace"
@@ -159,12 +147,8 @@ cask "insomnia"
 cask "keka"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Free and open-source painting and sketching program
-cask "krita"
 # Multiplayer online battle arena game
 cask "league-of-legends"
-# Markdown editor
-cask "mark-text"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Meet, chat, call, and collaborate in just one place
@@ -189,25 +173,9 @@ cask "slack"
 cask "steam"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Google Chromium, sans integration with Google
-cask "ungoogled-chromium"
+# Remote access and connectivity software focused on security
+cask "teamviewer"
 # Open-source code editor
 cask "visual-studio-code"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-vscode "castwide.solargraph"
-vscode "catppuccin.catppuccin-vsc"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
-vscode "eamodio.gitlens"
-vscode "editorconfig.editorconfig"
-vscode "elia.erb-formatter"
-vscode "esbenp.prettier-vscode"
-vscode "misogi.ruby-rubocop"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode.live-server"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "rubocop.vscode-rubocop"
-vscode "shopify.ruby-lsp"

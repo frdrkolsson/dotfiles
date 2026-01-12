@@ -24,11 +24,8 @@ return {
       tidrapport = {
         description = "Tidrapport React DynamoDB project context",
         files = {
-          "package.json",
-          "deno.json",
           "workspace.json",
-          "src/app/types/types.ts",
-          "README.md"
+          ".ai-context.json"
         },
       },
     },
