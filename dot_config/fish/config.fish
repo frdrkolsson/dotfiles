@@ -1,16 +1,13 @@
 if status is-interactive
   # --- Environment Variables ---
   set -x EDITOR nvim
-  set -x SAM_CLI_TELEMETRY 0
 
-  # ⚠️ TODO: Move these secrets out of this file if you track it in Git!
-  # Consider using 'source ~/.config/fish/.secrets.fish' (and gitignore it) or bitwarden-cli
-  set -x OPENAI_API_KEY bogus
-  set -x TAVILY_API_KEY bogus
+  set -x BEMENU_OPTS '--fb "#24273a" --ff "#cad3f5" --nb "#24273a" --nf "#cad3f5" --tb "#24273a" --hb "#24273a" --tf "#ed8796" --hf "#eed49f" --af "#cad3f5" --ab "#24273a"'
+
 
   # --- Tmux Auto-start Settings ---
-  set -x fish_tmux_autoconnect true
-  set -x fish_tmux_autostart true
+  set -x fish_tmux_autoconnect false
+  set -x fish_tmux_autostart false
   set -x fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 
   # --- Abbreviations (Migrated from fish_variables) ---
@@ -27,7 +24,9 @@ if status is-interactive
   # Tools
   abbr -a n nvim
   abbr -a vimconf 'nvim ~/.config/nvim/init.lua'
-  abbr -a cat bat
+  abbr -a fishconf 'nvim ~/.config/fish/config.fish'
+  abbr -a swayconf 'nvim ~/.config/sway/config'
+  abbr -a cat batcat
   abbr -a ls 'eza --icons auto'
   abbr -a rpi 'ssh dietpi@dietpi.local'
   abbr -a buc 'brew update && brew upgrade && brew upgrade --cask'
@@ -39,7 +38,9 @@ if status is-interactive
   abbr -a cra 'chezmoi re-add'
   abbr -a cdif 'chezmoi diff --reverse'
   abbr -a cgit 'chezmoi git --'
-  abbr -a cp 'chezmoi git -- push'
+  # abbr -a cp 'chezmoi git -- push'
+
+  source ~/.keyboard_speed.sh
 end
 
 # Starship prompt
@@ -54,5 +55,12 @@ end
 
 ulimit -n 10240
 
-# OrbStack
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+/usr/bin/mise activate fish | source
+
+# opencode
+fish_add_path /home/ehmusr/.opencode/bin
+
+# Add ~/.local/bin to PATH
+if test -d "$HOME/.local/bin"
+    fish_add_path $HOME/.local/bin
+end
