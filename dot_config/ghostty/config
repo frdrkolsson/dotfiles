@@ -4,6 +4,11 @@ font-family = Monaspace Neon Var
 font-family-italic = Monaspace Argon Var
 font-feature = calt, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, liga
 
+window-theme = ghostty
+gtk-titlebar = false
+gtk-toolbar-style = flat
+window-decoration = none
+
 font-size = 14.0
 font-thicken = true
 # font-thicken-strength = 255
@@ -15,7 +20,10 @@ copy-on-select = clipboard
 quick-terminal-position = center
 quick-terminal-size = 100%
 
-background-opacity = 0.95
-background-blur = true
+background-opacity = 1
+background-blur = false
 
-keybind = cmd+shift+f=toggle_quick_terminal
+keybind = alt+shift+f=toggle_quick_terminal
+keybind = alt+d=new_split:right
+keybind = alt+shift+d=new_split:down
+keybind = ctrl+t=new_tab
