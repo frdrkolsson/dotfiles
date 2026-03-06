@@ -1,7 +1,6 @@
 [tools]
-deno = "latest"
-node = "23.9.0"
-ruby = "3.2.8"
+node = "lts"
+python = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
