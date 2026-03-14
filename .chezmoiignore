@@ -2,11 +2,11 @@ README.md
 Brewfile
 Sketchybar.jpg
 
-{{ if ne.chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" }}
 .config/ghostty
 {{ end }}
 
-{{ if ne.chezmoi.os "linux" }}
+{{ if ne .chezmoi.os "linux" }}
 .config/sway
 .config/swaylock
 .config/waybar
