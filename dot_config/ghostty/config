@@ -13,7 +13,7 @@ adjust-cell-height = -10%
 copy-on-select = clipboard
 
 quick-terminal-position = center
-quick-terminal-size = 100%
+quick-terminal-size = 70%
 
 background-opacity = 0.95
 background-blur = true
