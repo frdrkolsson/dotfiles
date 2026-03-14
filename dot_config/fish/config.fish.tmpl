@@ -1,0 +1,50 @@
+if status is-interactive
+  # Commands to run in interactive sessions can go here
+  {{ if eq .chezmoi.os "linux" }}
+  set -gx PATH $HOME/.local/bin $PATH
+  {{ end }}
+  set -x EDITOR nvim
+
+  # Git
+  abbr -a g git
+  abbr -a gs 'git switch'
+  abbr -a gsc 'git switch -c'
+  abbr -a gsd 'git switch -d'
+  abbr -a gsom 'git switch -d origin/main'
+  abbr -a glo 'git log --oneline --graph'
+  abbr -a gri 'git rebase -i origin/main'
+  abbr -a gris 'git rebase -i --autosquash origin/main'
+
+  # Tools
+  abbr -a n nvim
+  abbr -a vimconf 'nvim ~/.config/nvim/init.lua'
+  abbr -a fishconf 'nvim ~/.config/fish/config.fish'
+  abbr -a cat bat
+  abbr -a ls 'eza --icons auto'
+
+  abbr -a dc 'docker compose'
+  {{ if eq .chezmoi.os "linux" }}
+  abbr -a swayconf 'nvim ~/.config/sway/config'
+  abbr -a imgcat 'chafa'
+  abbr -a yeet 'yay -Rcs'
+  {{ end }}
+  {{ if eq .client "ehm" }}
+  abbr -a winclip 'nvim /mnt/utveckling/clipboard.txt'
+  abbr -a towinclip 'wl-paste >> /mnt/utveckling/clipboard.txt'
+  {{ end }}
+
+  if type -q starship
+    starship init fish | source
+  end
+end
+
+{{ if eq .client "ehm" }}
+if not mountpoint -q /mnt/utveckling/
+  vmhgfs-fuse .host:/utveckling /mnt/utveckling -o subtype=vmhgfs-fuse,allow_other
+end
+if not mountpoint -q /mnt/keepassxc/
+  vmhgfs-fuse .host:/keepassxc /mnt/keepassxc -o subtype=vmhgfs-fuse,allow_other
+end
+{{ end }}
+
+mise activate fish | source
