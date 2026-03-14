@@ -3,6 +3,11 @@ if status is-interactive
   {{ if eq .chezmoi.os "linux" }}
   set -gx PATH $HOME/.local/bin $PATH
   {{ end }}
+
+  {{ if eq .chezmoi.os "darwin" }}
+  set -x SAM_CLI_TELEMETRY 0
+  {{ end }}
+
   set -x EDITOR nvim
 
   # Git
@@ -14,6 +19,15 @@ if status is-interactive
   abbr -a glo 'git log --oneline --graph'
   abbr -a gri 'git rebase -i origin/main'
   abbr -a gris 'git rebase -i --autosquash origin/main'
+
+
+  {{ if eq .client "personal" }}
+  abbr -a rpi 'ssh dietpi@dietpi.local'
+  {{ end }}
+
+  {{ if eq .chezmoi.os "darwin" }}
+  abbr -a buc 'brew update && brew upgrade && brew upgrade --cask'
+  {{ end }}
 
   # Tools
   abbr -a n nvim
@@ -36,6 +50,14 @@ if status is-interactive
   if type -q starship
     starship init fish | source
   end
+  if type -q mise
+    mise activate fish | source
+  end
+  {{ if eq .chezmoi.os "darwin" }}
+  if type -q brew
+    brew shellenv | source
+  end
+  {{ end }}
 end
 
 {{ if eq .client "ehm" }}
@@ -47,4 +69,9 @@ if not mountpoint -q /mnt/keepassxc/
 end
 {{ end }}
 
-mise activate fish | source
+
+ulimit -n 10240
+
+{{ if eq .chezmoi.os "darwin" }}
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+{{ end }}
