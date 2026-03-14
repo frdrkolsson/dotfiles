@@ -1,0 +1,10 @@
+[Unit]
+Description=Run khal-notify every 10 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=10min
+Unit=khal-notify.service
+
+[Install]
+WantedBy=timers.target

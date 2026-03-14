@@ -12,4 +12,8 @@ Sketchybar.jpg
 .config/waybar
 .config/fuzzel
 .config/mako
+.config/khal
+.config/systemd/
+.config/vdirsyncer
+.local/bin/khal-notify.sh
 {{ end }}

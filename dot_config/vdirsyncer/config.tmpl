@@ -1,0 +1,20 @@
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+{{- if eq .client "ehm" -}}
+[pair ehm_sync]
+a = "local_calendar"
+b = "ehm_calendar"
+collections = null
+
+conflict_resolution = "b wins"
+
+[storage ehm_calendar]
+type = "http"
+url = {{ .company_ics_url | quote }}
+
+[storage local_calendar]
+type = "filesystem"
+path = "~/.local/share/khal/calendars/ehm"
+fileext = ".ics"
+{{- end -}}

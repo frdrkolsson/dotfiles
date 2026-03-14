@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+
+vdirsyncer sync > /dev/null 2>&1
+
+EVENTS=$(khal list now 15m --notstarted --day-format "" --format "{start-time} {title}")
+
+EVENTS=$(echo $EVENTS | sed '/^[[:space:]]*$/d')
+
+{{- if eq .client "ehm" -}}
+CALENDAR_NAME="EHM"
+{{- else -}}
+CALENDAR_NAME="Calendar"
+{{- end -}}
+
+if [ -n "$EVENTS" ]; then
+  notify-send " Upcoming $CALENDAR_NAME Event" "$EVENTS" -a "khal"
+fi
+

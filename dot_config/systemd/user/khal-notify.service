@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync vdirsyncer and check khal for upcoming events
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/khal-notify.sh

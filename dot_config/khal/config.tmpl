@@ -1,0 +1,24 @@
+[calendars]
+
+{{- if eq .client "ehm" -}}
+[[ehm]]
+path = ~/.local/share/khal/calendars/ehm
+type = discover
+
+[default]
+default_calendar = ehm1
+{{- else -}}
+[default]
+default_calendar = private1
+{{- end -}}
+
+[[private]]
+path = /home/fredrik/.local/share/khal/calendars/private
+type = calendar
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
