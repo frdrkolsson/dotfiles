@@ -17,3 +17,13 @@ Sketchybar.jpg
 .config/vdirsyncer
 .local/bin/khal-notify.sh
 {{ end }}
+
+{{ if eq .client "ehm" }}
+.config/nvim/lua/plugins/avante.lua
+.config/nvim/lua/plugins/codecompanion.lua
+.config/nvim/lua/plugins/copilot.lua
+{{ end }}
+
+{{ if ne .client "ehm" }}
+.config/nvim/lua/plugins/nvim-java.lua
+{{ end }}
