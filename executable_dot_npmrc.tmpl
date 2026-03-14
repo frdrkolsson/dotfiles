@@ -1,0 +1,7 @@
+{{ if eq .client "ehm" }}
+registry={{ .npm_registry }}
+cafile=/usr/local/share/ca-certificates/SGITHWCAv1.crt,/usr/local/share/ca-certificates/SGITRootCAv1.crt
+strict-ssl=false
+{{ else }}
+registry=https://registry.npmjs.org/
+{{ end }}

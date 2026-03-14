@@ -1,0 +1,16 @@
+{{- $client:= promptStringOnce . "client" "Which client is this machine for? (e.g., personal, ehm)" -}}
+{{- $email := promptStringOnce . "email" "What email address should be used? (e.g. for Git)" -}}
+
+{{- $ics_url := "" -}}
+{{- $npm_registry := "" -}}
+
+{{- if eq $client "ehm" -}}
+{{-   $ics_url = promptStringOnce . "ics_url" "What is the EHM ics_url for email?" -}}
+{{-   $npm_registry = promptStringOnce . "npm_registry" "What is the EHM npm registry?" -}}
+{{- end -}}
+
+[data]
+  client = {{ $client | quote }}
+  git_email = {{ $email | quote }}
+  company_ics_url = {{ $ics_url | quote }}
+  npm_registry = {{ $npm_registry | quote }}

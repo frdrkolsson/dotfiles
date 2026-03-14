@@ -1,9 +1,0 @@
-[user]
-	name = Fredrik Olsson
-	email = 51903586+frdrkolsson@users.noreply.github.com
-[init]
-	defaultBranch = main
-[push]
-	autoSetupRemote = true
-[alias]
-	s = "!f() { rev=${1-HEAD}; git difftool $rev^ $rev; }; f"
