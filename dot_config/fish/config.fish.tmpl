@@ -9,6 +9,7 @@ if status is-interactive
   {{ end }}
 
   set -x EDITOR nvim
+  set -x MANPAGER "bat -plman"
 
   # Git
   abbr -a g git

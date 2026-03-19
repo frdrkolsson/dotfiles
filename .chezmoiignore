@@ -22,6 +22,7 @@ Sketchybar.jpg
 .config/nvim/lua/plugins/avante.lua
 .config/nvim/lua/plugins/codecompanion.lua
 .config/nvim/lua/plugins/copilot.lua
+.config/nvim/lua/plugins/opencode.lua
 {{ end }}
 
 {{ if ne .client "ehm" }}
