@@ -1,16 +1,16 @@
 [calendars]
 
-{{- if eq .client "ehm" -}}
+{{ if eq .client "ehm" }}
 [[ehm]]
 path = ~/.local/share/khal/calendars/ehm
 type = discover
 
 [default]
 default_calendar = ehm1
-{{- else -}}
+{{ else }}
 [default]
 default_calendar = private1
-{{- end -}}
+{{ end }}
 
 [[private]]
 path = /home/fredrik/.local/share/khal/calendars/private
