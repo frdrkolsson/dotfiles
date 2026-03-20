@@ -13,5 +13,6 @@ opt.colorcolumn = '120'
 opt.winborder = 'solid'
 opt.signcolumn = 'yes'
 opt.guicursor = 'i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150'
+opt.title = true
 
 return {}
