@@ -1,5 +1,9 @@
 [calendars]
 
+[[private]]
+path = /home/fredrik/.local/share/khal/calendars/private
+type = calendar
+
 {{ if eq .client "ehm" }}
 [[ehm]]
 path = ~/.local/share/khal/calendars/ehm
@@ -11,10 +15,6 @@ default_calendar = ehm1
 [default]
 default_calendar = private1
 {{ end }}
-
-[[private]]
-path = /home/fredrik/.local/share/khal/calendars/private
-type = calendar
 
 [locale]
 timeformat = %H:%M
