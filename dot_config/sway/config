@@ -60,7 +60,7 @@ exec mako
 include sway-font-awesome/icons-wl
 include /etc/sway/config-vars.d/*
 
-font pango:JetBrainsMono NF, Twemoji 12
+font pango:JetBrains Mono 12
 
 ### Output configuration
 #
