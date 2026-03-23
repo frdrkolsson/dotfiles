@@ -8,11 +8,11 @@ EVENTS=$(khal list now 15m --notstarted --day-format "" --format "{start-time} {
 
 EVENTS=$(echo $EVENTS | sed '/^[[:space:]]*$/d')
 
-{{- if eq .client "ehm" -}}
+{{ if eq .client "ehm" }}
 CALENDAR_NAME="EHM"
-{{- else -}}
+{{ else }}
 CALENDAR_NAME="Calendar"
-{{- end -}}
+{{ end }}
 
 if [ -n "$EVENTS" ]; then
   notify-send " Upcoming $CALENDAR_NAME Event" "$EVENTS" -a "khal"

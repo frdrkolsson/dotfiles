@@ -1,7 +1,7 @@
 [general]
 status_path = "~/.local/share/vdirsyncer/status/"
 
-{{- if eq .client "ehm" -}}
+{{ if eq .client "ehm" }}
 [pair ehm_sync]
 a = "local_calendar"
 b = "ehm_calendar"
@@ -17,4 +17,4 @@ url = {{ .company_ics_url | quote }}
 type = "filesystem"
 path = "~/.local/share/khal/calendars/ehm"
 fileext = ".ics"
-{{- end -}}
+{{ end }}
