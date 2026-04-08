@@ -6,7 +6,6 @@
 include catppuccin-macchiato
 
 ### Variables
-#
 # Logo key. Use Mod1 for Alt, and Mod4 for Logo key (Windows key)
 set $mod Mod1
 # Home row direction keys, like vim
@@ -41,8 +40,11 @@ output Virtual-1 {
   scale 1
   # mode 3840x2400@60Hz
   # mode 2560x1600@60Hz
-  mode 1920x1200@60Hz
+  # mode 2560x1440@60Hz
+  # mode 1920x1200@60Hz
   # mode 1920x1080@60Hz
+  render_bit_depth 10
+  scale_filter nearest
   subpixel none
 }
 
@@ -53,9 +55,18 @@ input "type:keyboard" {
     xkb_options caps:escape
 }
 
+seat "*" {
+    hide_cursor 3000
+    hide_cursor when-typing enable
+}
+
+mouse_warping none
+
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec mako
+exec_always swayrd
+exec_always --no-startup-id keepassxc
 
 include sway-font-awesome/icons-wl
 include /etc/sway/config-vars.d/*
@@ -114,9 +125,22 @@ output * bg ~/.config/sway/evening-sky.png fill
     bindsym $mod+d exec $menu
     bindsym $mod+c exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
 
+    # Window management
+    bindsym $mod+Tab         exec swayr switch-window
+    bindsym $mod+Escape      exec swayr switch-to-urgent-or-lru-window
+    bindsym $mod+Delete      exec swayr quit-window
+    bindsym $mod+Shift+Tab   exec swayr switch-workspace-or-window
+
     # Notification management
     bindsym $mod+n exec makoctl dismiss
     bindsym $mod+Shift+n exec makoctl dismiss -a
+
+    # Screenshots
+    # bindsym $mod+Print exec grim ~/Pictures/screenshot-$(date +%s).png
+    # bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%s).png
+    # Screenshots to clipboard instead
+    bindsym $mod+p exec grim - | wl-copy
+    bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -290,8 +314,8 @@ for_window [app_id="keepassxc"] floating enable
 # Keep Firefox Picture-in-Picture flotaing and sticky (stays on screen switching workspace)
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable
 
-gaps inner 10
-gaps outer 10
+gaps inner 8
+gaps outer 8
 smart_gaps on
 smart_borders on
 
