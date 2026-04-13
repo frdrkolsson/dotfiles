@@ -27,4 +27,5 @@ Sketchybar.jpg
 
 {{ if ne .client "ehm" }}
 .config/nvim/lua/plugins/nvim-java.lua
+.config/nvim/lua/plugins/sonarlint.lua
 {{ end }}

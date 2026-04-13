@@ -8,6 +8,10 @@ if status is-interactive
   set -x SAM_CLI_TELEMETRY 0
   {{ end }}
 
+  {{ if eq .client "ehm" }}
+  set -x SONAR_TOKEN {{ .sonar_token | quote }}
+  {{ end }}
+
   set -x EDITOR nvim
   set -x MANPAGER "bat -plman"
 

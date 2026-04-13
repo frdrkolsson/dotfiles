@@ -3,10 +3,12 @@
 
 {{- $ics_url := "" -}}
 {{- $npm_registry := "" -}}
+{{- $sonar_token := "" -}}
 
 {{- if eq $client "ehm" -}}
 {{-   $ics_url = promptStringOnce . "ics_url" "What is the EHM ics_url for email?" -}}
 {{-   $npm_registry = promptStringOnce . "npm_registry" "What is the EHM npm registry?" -}}
+{{-   $sonar_token = promptStringOnce . "sonar_token" "What is the EHM sonar token?" -}}
 {{- end -}}
 
 [data]
@@ -14,3 +16,4 @@
   git_email = {{ $email | quote }}
   company_ics_url = {{ $ics_url | quote }}
   npm_registry = {{ $npm_registry | quote }}
+  sonar_token = {{ $sonar_token | quote }}
