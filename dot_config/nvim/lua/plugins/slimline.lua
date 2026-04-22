@@ -3,5 +3,6 @@ return {
   opts = {
     style = "fg"
   },
+  lazy = false,
   dependencies = {}
 }
