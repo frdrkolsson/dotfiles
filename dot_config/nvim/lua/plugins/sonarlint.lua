@@ -1,3 +1,5 @@
+local mason_share = vim.fn.stdpath("data") .. "/mason/share/sonarlint-analyzers"
+
 return {
   "https://gitlab.com/schrieveslaach/sonarlint.nvim",
   main = "sonarlint",
@@ -7,10 +9,12 @@ return {
     "javascript",
     "typescript",
     "vue",
+    "html",
+    "xml",
   },
   opts = {
     connected = {
-      get_credentials = function(client_id, url)
+      get_credentials = function()
         return vim.fn.getenv("SONAR_TOKEN")
       end
     },
@@ -19,8 +23,15 @@ return {
         "sonarlint-language-server",
         "-stdio",
         "-analyzers",
-        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjava.jar"),
-        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjs.jar"),
+        mason_share .. "/sonarjava.jar",
+        mason_share .. "/sonarjs.jar",
+        mason_share .. "/sonarhtml.jar",
+        mason_share .. "/sonarxml.jar",
+      },
+      handlers = {
+        ["sonarlint/hasJoinedIdeLabs"] = function()
+          return false
+        end,
       },
       settings = {
         sonarlint = {
@@ -45,8 +56,8 @@ return {
         -- In the future a integration with https://github.com/folke/neoconf.nvim or some similar
         -- plugin, might be worthwhile.
         local project_root_and_ids = {
-          ["~/Code/uppgiftslamning"] = "se.ehalsomyndigheten.uppgiftslamning:uppgiftslamning-branch",
-          ["~/Code/ndi-tokenservice"] = "se.ehalsomyndigheten.ndi-tokenservice:ndi-tokenservice",
+          ["/home/fredrik/Code/uppgiftslamning"] = "se.ehalsomyndigheten.uppgiftslamning:uppgiftslamning-branch",
+          ["/home/fredrik/Code/ndi-tokenservice"] = "se.ehalsomyndigheten.ndi-tokenservice:ndi-tokenservice",
           -- … further mappings …
         }
 
@@ -62,6 +73,8 @@ return {
       "typescript",
       "vue",
       "java",
+      "html",
+      "xml",
     },
   },
   config = function(_, opts)

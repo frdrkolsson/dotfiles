@@ -9,21 +9,16 @@ return {
     "marilari88/neotest-vitest",
     "vim-test/vim-test",
     "nvim-neotest/neotest-vim-test",
-    'nvim-neotest/neotest-jest',
+    "rcasia/neotest-java"
   },
-  opts = {
-    adapters = {
-      ["neotest-vitest"] = {},
-      ["neotest-jest"] = {
-        jestCommand = "npm test --",
-        jestConfigFile = "custom.jest.config.ts",
-        env = { CI = true },
-        cwd = function()
-          return vim.fn.getcwd()
-        end,
+  config = function()
+    require("neotest").setup({
+      adapters = {
+        require("neotest-vitest")({}),
+        require("neotest-java")({}),
       },
-    },
-  },
+    })
+  end,
   keys = {
     { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end,      desc = "Run File (Neotest)" },
     { "<leader>tn", function() require("neotest").run.run() end,                        desc = "Run Nearest (Neotest)" },
