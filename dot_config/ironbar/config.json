@@ -1,0 +1,41 @@
+{
+  "position": "top",
+  "height": 24,
+  "start": [
+    {
+      "type": "workspaces"
+    }
+  ],
+  "center": [
+    {
+      "type": "focused",
+      "icon_size": 16
+    }
+  ],
+  "end": [
+    {
+      "type": "sys_info",
+      "format": [
+        "{cpu_percent@sum:1}% ",
+        "{memory_percent:1}% "
+      ]
+    },
+    {
+      "type": "battery",
+      "format": "{percentage}%",
+      "profiles": {
+        "warning": 30,
+        "critical": {
+          "when": { "percent":  10, "charging": false },
+          "format": "[LOW] {percentage}%"
+        }
+      }
+    },
+    {
+      "type": "tray"
+    },
+    {
+      "type": "clock"
+    }
+  ]
+}

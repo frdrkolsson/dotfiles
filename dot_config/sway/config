@@ -292,7 +292,7 @@ client.background        $base
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar
+    swaybar_command ironbar
     # position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
