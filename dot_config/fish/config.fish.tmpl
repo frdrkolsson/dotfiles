@@ -34,6 +34,10 @@ if status is-interactive
   abbr -a buc 'brew update && brew upgrade && brew upgrade --cask'
   {{ end }}
 
+  {{ if eq .chezmoi.os "linux" }}
+  abbr -a rm 'trash-put'
+  {{ end }}
+
   # Tools
   abbr -a n nvim
   abbr -a vimconf 'nvim ~/.config/nvim/init.lua'
