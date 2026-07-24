@@ -1,105 +1,138 @@
 @import 'colors.css';
 
 :root {
-    --margin-lg: 1em;
-    --margin-sm: 0.5em;
+  --margin-lg: 1em;
+  --margin-sm: 0.5em;
 }
 
 * {
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    background-image: none;
-    font-family: "JetBrains Mono";
-    font-size: 14px;
-    font-weight: 700;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background-image: none;
+  font-family: "JetBrains Mono";
+  font-size: 14px;
+  font-weight: 700;
 }
 
-#bar, .background {
-    background-color: transparent;
+#bar,
+.background {
+  background-color: transparent;
 }
 
-scale > trough > highlight {
-    background-color: @rosewater;
-    border-style: solid;
-    border-color: @rosewater;
-    border-width: 0.2em;
+scale>trough>highlight {
+  background-color: @rosewater;
+  border-style: solid;
+  border-color: @rosewater;
+  border-width: 0.2em;
 }
 
-scale > trough > slider {
-    background-color: @text;
+scale>trough>slider {
+  background-color: @text;
 }
 
-switch > slider {
-    background-color: @text;
+switch>slider {
+  background-color: @text;
 }
 
 switch:checked {
-    background-color: @rosewater;
+  background-color: @rosewater;
 }
 
 switch:not(:checked) {
   background-color: @surface0;
 }
 
+popover,
+popover contents,
+calendar {
+  background-color: @surface0;
+  border-radius: 0 10px;
 
-popover, popover contents, calendar {
-    background-color: @surface0;
-    border-radius: 0 10px;
-
-    &:focus {
+  &:focus {
     color: @surface0;
   }
 }
 
-box, button, label {
-    background-color: #0000;
-    color: @text;
+box,
+button,
+label {
+  background-color: #0000;
+  color: @text;
 }
 
 button {
-    padding-left: var(--margin-sm);
-    padding-right: var(--margin-sm);
-    border-radius: 0 0 4px 4px;
+  padding-left: var(--margin-sm);
+  padding-right: var(--margin-sm);
+  border-radius: 0 0 4px 4px;
 }
 
-button:hover, button:active {
-    background-color: alpha(@surface0, 0.5);
+button:hover,
+button:active {
+  background-color: alpha(@surface0, 0.5);
 }
 
-#end > * + * {
-    margin-left: var(--margin-lg);
-}
-
-.sysinfo > * + * {
-    margin-left: var(--margin-sm);
+#end>*+* {
+  margin-left: var(--margin-sm);
 }
 
 .clock {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .popup-clock .calendar-clock {
-    font-size: 2.0em;
+  font-size: 2.0em;
 }
 
 .popup-clock .calendar .today {
-    background-color: @rosewater;
+  background-color: @rosewater;
 }
 
 .workspaces .item {
-    border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
 }
 
 .workspaces .item.visible {
-    box-shadow: inset 0 -1px @text;
+  box-shadow: inset 0 -1px @text;
 }
 
 .workspaces .item.focused {
-    box-shadow: inset 0 1px @text;
-    background-color: alpha(@surface0, 0.5);
+  box-shadow: inset 0 1px @text;
+  background-color: alpha(@surface0, 0.5);
 }
 
 .workspaces .item.urgent {
-    background-color: @peach;
+  background-color: @peach;
+}
+
+.power-menu #power-btn {
+  color: @text;
+  background-color: transparent;
+}
+
+.power-menu #power-btn:hover {
+  background-color: alpha(@surface0, 0.5);
+}
+
+.popup-power-menu {
+  padding: 1em;
+}
+
+.popup-power-menu #header {
+  color: @text;
+  font-size: 1.4em;
+  border-bottom: 1px solid alpha(@text, 0.5);
+  padding-bottom: var(--margin-sm);
+  margin-bottom: var(--margin-lg);
+}
+
+.popup-power-menu .power-btn {
+  color: @text;
+  background-color: @surface1;
+  border: 1px solid @text;
+  padding: var(--margin-sm) var(--margin-lg);
+}
+
+.popup-power-menu .power-btn:hover {
+  background-color: @surface0;
 }
