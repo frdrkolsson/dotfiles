@@ -29,6 +29,7 @@ return {
       enabled = true,
       sources = {
         files = { hidden = true },
+        grep = { hidden = true },
       },
     },
     git = { enabled = true },
